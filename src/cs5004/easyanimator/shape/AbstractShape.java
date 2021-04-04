@@ -8,17 +8,15 @@ import java.awt.Color;
 public abstract class AbstractShape implements Shape {
 
   protected Point2D reference;
-  private String name;
-  private Color color;
-  private double canvasWidth;
-  private double canvasHeight;
-  private int appearTime;
-  private int disappearTime;
+  protected String name;
+  private ColorNames color;
+  protected int appearTime;
+  protected int disappearTime;
+  protected double canvasWidth;
+  protected double canvasHeight;
 
   public AbstractShape(Point2D reference, String name, Color color, double canvasWidth,
       double canvasHeight, int appearTime, int disappearTime) throws IllegalArgumentException {
-
-
 
     if (canvasHeight < 0 || canvasWidth < 0) {
       throw new IllegalArgumentException("Canvas dimensions cannot be negative.");
@@ -26,17 +24,17 @@ public abstract class AbstractShape implements Shape {
       throw new IllegalArgumentException("Object cannot be placed outside the canvas.");
     }
 
-    if (disappearTime < appearTime || appearTime < 0 || disappearTime < 0) {
+    if (appearTime < 0 || disappearTime < 0 || disappearTime < appearTime) {
       throw new IllegalArgumentException("Appear or disappear time is invalid.");
     }
 
-    this.canvasHeight = canvasHeight;
-    this.canvasWidth = canvasWidth;
+    changeColor(color);
     this.reference = reference;
     this.name = name;
-    this.color = color;
     this.disappearTime = disappearTime;
     this.appearTime = appearTime;
+    this.canvasHeight = canvasHeight;
+    this.canvasWidth = canvasWidth;
   }
 
   @Override
@@ -76,12 +74,19 @@ public abstract class AbstractShape implements Shape {
 
   @Override
   public void changeColor(Color newColor) {
-    this.color = newColor;
+    for (ColorNames c : ColorNames.values()) {
+      if (c.getValue().equals(newColor)) {
+        this.color = c;
+      }
+    }
+    if (this.color == null) {
+      throw new IllegalArgumentException("Invalid color entered.");
+    }
   }
 
   @Override
-  public Color getColor() {
-    return this.color;
+  public String getColor() {
+    return this.color.getText();
   }
 
   @Override

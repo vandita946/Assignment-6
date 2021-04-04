@@ -42,7 +42,7 @@ public interface Shape extends Comparable<Shape>{
 
   void changeColor(Color newColor);
 
-  Color getColor();
+  String getColor();
 
   String getName();
 

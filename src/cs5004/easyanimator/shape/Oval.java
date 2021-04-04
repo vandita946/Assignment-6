@@ -7,14 +7,8 @@ import java.awt.Color;
  */
 public class Oval extends AbstractShape {
 
-  private double x, y;
   private double xRadius, yRadius;
-  private String name;
-  private Color color;
-  private double canvasWidth;
-  private double canvasHeight;
-  private int appearTime;
-  private int disappearTime;
+  private ColorNames color;
 
   /**
    * Construct a circle object using the given center and radius
@@ -30,10 +24,17 @@ public class Oval extends AbstractShape {
     if ((x - radius) < 0 || (y - radius) < 0 || (x + radius) > canvasWidth || (y + radius) > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
     } else if (radius <= 0) {
-      throw new IllegalArgumentException("cs5004.easyanimator.shape.Shape dimensions cannot be negative or zero.");
+      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
 
-    this.xRadius = this.yRadius = radius;
+    for (ColorNames c : ColorNames.values()) {
+      if (c.getValue().equals(color)) {
+        this.color = c;
+      }
+    }
+    if (this.color == null) {
+      throw new IllegalArgumentException("Invalid color entered.");
+    }    this.xRadius = this.yRadius = radius;
   }
 
   public Oval(double x, double y, double xRadius, double yRadius, String name, Color color,
@@ -43,9 +44,16 @@ public class Oval extends AbstractShape {
     if ((x - xRadius) < 0 || (y - yRadius) < 0 || (x + xRadius) > canvasWidth || (y + yRadius) > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
     } else if (xRadius <= 0 || yRadius <= 0) {
-      throw new IllegalArgumentException("cs5004.easyanimator.shape.Shape dimensions cannot be negative or zero.");
+      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
-    this.xRadius = xRadius;
+    for (ColorNames c : ColorNames.values()) {
+      if (c.getValue().equals(color)) {
+        this.color = c;
+      }
+    }
+    if (this.color == null) {
+      throw new IllegalArgumentException("Invalid color entered.");
+    }    this.xRadius = xRadius;
     this.yRadius = yRadius;
   }
 
@@ -79,7 +87,7 @@ public class Oval extends AbstractShape {
 //    }
 
     return new Oval(reference.getX(), reference.getY(), newXRadius, newYRadius, name,
-        color, canvasWidth, canvasHeight, appearTime, disappearTime);
+        color.getValue(), canvasWidth, canvasHeight, appearTime, disappearTime);
   }
 
   @Override
@@ -95,7 +103,7 @@ public class Oval extends AbstractShape {
 
   public String toString() {
     return String.format("%s oval %s with center at (%.2f,%.2f), radius %.2f %.2f",
-        this.color.toString(), this.name, this.reference.getX(), this.reference.getY(),
+        color.getText(), this.name, this.reference.getX(), this.reference.getY(),
         this.xRadius, this.yRadius);
   }
 }

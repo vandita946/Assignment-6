@@ -7,13 +7,8 @@ import java.awt.Color;
  * the cs5004.easyanimator.shape.Shape interface
  */
 public class Rectangle extends AbstractShape {
-  private double x, y;
   private double width, height;
-  private String name;
-  private Color color;
-  private double canvasWidth;
-  private double canvasHeight;
-  private int appearTime, disappearTime;
+  private ColorNames color;
 
   /**
    * Constructs a rectangle object with the given location of its lower-left
@@ -31,9 +26,16 @@ public class Rectangle extends AbstractShape {
     if (x + width > canvasWidth || y + height > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
     } else if (width <= 0 || height <= 0) {
-      throw new IllegalArgumentException("cs5004.easyanimator.shape.Shape dimensions cannot be negative or zero.");
+      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
-
+    for (ColorNames c : ColorNames.values()) {
+      if (c.getValue().equals(color)) {
+        this.color = c;
+      }
+    }
+    if (this.color == null) {
+      throw new IllegalArgumentException("Invalid color entered.");
+    }
     this.width = width;
     this.height = height;
   }
@@ -61,7 +63,7 @@ public class Rectangle extends AbstractShape {
     return new Rectangle(
         this.reference.getX(), this.reference.getY(),
         newWidth, newHeight,
-        name, color,
+        name, color.getValue(),
         canvasWidth, canvasHeight,
         appearTime,disappearTime
     );
@@ -80,7 +82,7 @@ public class Rectangle extends AbstractShape {
 
   public String toString() {
     return String.format("%s rectangle %s with corner at (%.2f,%.2f), width %.2f and height %.2f",
-        this.color.toString(), this.name, this.reference.getX(), this.reference.getY(),
+        this.color.getText(), this.name, this.reference.getX(), this.reference.getY(),
         this.width, this.height);
   }
 }
