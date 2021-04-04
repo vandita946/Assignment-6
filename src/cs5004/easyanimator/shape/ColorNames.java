@@ -9,7 +9,11 @@ public enum ColorNames {
   GREEN (Color.GREEN, "green"),
   BLACK (Color.BLACK, "black"),
   WHITE (Color.WHITE, "white"),
-  PINK (Color.PINK, "pink");
+  PINK (Color.PINK, "pink"),
+  ORANGE (Color.ORANGE, "orange"),
+  CYAN (Color.CYAN, "cyan"),
+  YELLOW (Color.YELLOW, "yellow");
+
 
 
   private final Color val;
