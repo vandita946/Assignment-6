@@ -34,7 +34,8 @@ public class Oval extends AbstractShape {
     }
     if (this.color == null) {
       throw new IllegalArgumentException("Invalid color entered.");
-    }    this.xRadius = this.yRadius = radius;
+    }
+    this.xRadius = this.yRadius = radius;
   }
 
   public Oval(double x, double y, double xRadius, double yRadius, String name, Color color,
