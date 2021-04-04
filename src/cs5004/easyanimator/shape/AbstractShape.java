@@ -84,14 +84,16 @@ public abstract class AbstractShape implements Shape {
 
   @Override
   public void changeColor(Color newColor) {
+    ColorNames temp = null;
     for (ColorNames c : ColorNames.values()) {
       if (c.getValue().equals(newColor)) {
-        this.color = c;
+        temp = c;
       }
     }
-    if (this.color == null) {
+    if (temp == null) {
       throw new IllegalArgumentException("Invalid color entered.");
     }
+    this.color = temp;
   }
 
   @Override
