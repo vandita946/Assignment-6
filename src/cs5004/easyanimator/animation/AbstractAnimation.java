@@ -7,12 +7,15 @@ import cs5004.easyanimator.shape.Shape;
  * to it to make it an animation.
  */
 public class AbstractAnimation implements Animation {
-  private Shape shape;
-  private int startingTime;
-  private int endingTime;
-  private TypeOfAnimation type;
+  protected Shape shape;
+  protected int startingTime;
+  protected int endingTime;
+  protected TypeOfAnimation type;
 
   public AbstractAnimation(Shape shape, int startingTime, int endingTime, TypeOfAnimation type) throws IllegalArgumentException{
+    if (shape == null) {
+      throw new IllegalArgumentException("Shape cannot be null.");
+    }
     if(startingTime < shape.getAppearTime() || endingTime > shape.getDisappearTime() ) {
       throw new IllegalArgumentException("Starting and ending time must be within shape's appear and disappear time.");
     }
@@ -20,7 +23,9 @@ public class AbstractAnimation implements Animation {
     this.startingTime = startingTime;
     this.endingTime = endingTime;
     this.type = type;
+
   }
+
 
   @Override
   public void actionStep() {
