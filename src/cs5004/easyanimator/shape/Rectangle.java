@@ -1,8 +1,10 @@
+package cs5004.easyanimator.shape;
+
 import java.awt.Color;
 
 /**
  * This class represents a rectangle.  It defines all the operations mandated by
- * the Shape interface
+ * the cs5004.easyanimator.shape.Shape interface
  */
 public class Rectangle extends AbstractShape {
   private double x, y;
@@ -29,7 +31,7 @@ public class Rectangle extends AbstractShape {
     if (x + width > canvasWidth || y + height > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
     } else if (width <= 0 || height <= 0) {
-      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
+      throw new IllegalArgumentException("cs5004.easyanimator.shape.Shape dimensions cannot be negative or zero.");
     }
 
     this.width = width;

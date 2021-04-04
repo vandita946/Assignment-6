@@ -1,5 +1,12 @@
+package cs5004.easyanimator.animation;
+
+import cs5004.easyanimator.animation.AbstractAnimation;
+import cs5004.easyanimator.animation.TypeOfAnimation;
+import cs5004.easyanimator.shape.Shape;
+import cs5004.easyanimator.shape.TypeOfShape;
+
 /**
- * This class extends the AbstractAnimation class and represents the methods needed to move a shape
+ * This class extends the cs5004.easyanimator.animation.AbstractAnimation class and represents the methods needed to move a shape
  * as part of an animation.
  */
 public class Move extends AbstractAnimation {

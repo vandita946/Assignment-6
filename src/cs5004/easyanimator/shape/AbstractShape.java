@@ -1,3 +1,5 @@
+package cs5004.easyanimator.shape;
+
 import java.awt.Color;
 
 /**

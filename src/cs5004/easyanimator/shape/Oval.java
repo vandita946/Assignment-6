@@ -1,7 +1,9 @@
+package cs5004.easyanimator.shape;
+
 import java.awt.Color;
 
 /**
- * This class represents a circle.  It offers all the operations mandated by the Shape interface.
+ * This class represents a circle.  It offers all the operations mandated by the cs5004.easyanimator.shape.Shape interface.
  */
 public class Oval extends AbstractShape {
 
@@ -28,7 +30,7 @@ public class Oval extends AbstractShape {
     if ((x - radius) < 0 || (y - radius) < 0 || (x + radius) > canvasWidth || (y + radius) > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
     } else if (radius <= 0) {
-      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
+      throw new IllegalArgumentException("cs5004.easyanimator.shape.Shape dimensions cannot be negative or zero.");
     }
 
     this.xRadius = this.yRadius = radius;
@@ -41,7 +43,7 @@ public class Oval extends AbstractShape {
     if ((x - xRadius) < 0 || (y - yRadius) < 0 || (x + xRadius) > canvasWidth || (y + yRadius) > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
     } else if (xRadius <= 0 || yRadius <= 0) {
-      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
+      throw new IllegalArgumentException("cs5004.easyanimator.shape.Shape dimensions cannot be negative or zero.");
     }
     this.xRadius = xRadius;
     this.yRadius = yRadius;
@@ -64,7 +66,7 @@ public class Oval extends AbstractShape {
    *
    * @param newXRadius  new width
    * @param newYRadius new height
-   * @return the new Shape with changed dimensions
+   * @return the new cs5004.easyanimator.shape.Shape with changed dimensions
    */
   @Override
   public Shape changeDimensions(double newXRadius, double newYRadius) {

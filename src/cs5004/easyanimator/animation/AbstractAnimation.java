@@ -1,5 +1,9 @@
+package cs5004.easyanimator.animation;
+
+import cs5004.easyanimator.shape.Shape;
+
 /**
- * This class implements the Animation interface and represents a shape and the methods available
+ * This class implements the cs5004.easyanimator.animation.Animation interface and represents a shape and the methods available
  * to it to make it an animation.
  */
 public class AbstractAnimation implements Animation {

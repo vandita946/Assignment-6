@@ -1,10 +1,19 @@
+package cs5004.easyanimator.model;
+
+import cs5004.easyanimator.animation.Animation;
+import cs5004.easyanimator.animation.ChangeColor;
+import cs5004.easyanimator.animation.Move;
+import cs5004.easyanimator.animation.Scale;
+import cs5004.easyanimator.animation.TypeOfAnimation;
+import cs5004.easyanimator.shape.Shape;
+import cs5004.easyanimator.shape.TypeOfShape;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 /**
- * This class implements the Model interface. It stores the shapes and animations in an animator and
+ * This class implements the cs5004.easyanimator.model.Model interface. It stores the shapes and animations in an animator and
  * contains the methods to manipulate and manage them.
  */
 public class ModelImpl implements Model {
@@ -24,12 +33,12 @@ public class ModelImpl implements Model {
 
   public void addShape(Shape shape) {
     if (shape == null) {
-      throw new IllegalArgumentException("Shape cannot be null.");
+      throw new IllegalArgumentException("cs5004.easyanimator.shape.Shape cannot be null.");
     }
     if (!shapeList.contains(shape)) {
       shapeList.add(shape);
     } else {
-      throw new IllegalArgumentException("Shape already exists in the model.");
+      throw new IllegalArgumentException("cs5004.easyanimator.shape.Shape already exists in the model.");
     }
   }
 

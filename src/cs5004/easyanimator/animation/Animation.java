@@ -1,3 +1,5 @@
+package cs5004.easyanimator.animation;
+
 /**
  * This class is an interface that outlines the methods available to a shape such that it can be
  * animated.

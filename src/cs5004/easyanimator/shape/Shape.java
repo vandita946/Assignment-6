@@ -1,3 +1,5 @@
+package cs5004.easyanimator.shape;
+
 import java.awt.Color;
 /**
  * This interface contains all operations that all types of shapes
@@ -30,7 +32,7 @@ public interface Shape extends Comparable<Shape>{
    * dimensions changed by the provided new width and height.
    * @param newWidth new width
    * @param newHeight new height
-   * @return the new Shape with changed dimensions
+   * @return the new cs5004.easyanimator.shape.Shape with changed dimensions
    */
   Shape changeDimensions(double newWidth, double newHeight);
 

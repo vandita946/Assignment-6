@@ -1,7 +1,12 @@
+package cs5004.easyanimator.animation;
+
+import cs5004.easyanimator.animation.AbstractAnimation;
+import cs5004.easyanimator.animation.TypeOfAnimation;
+import cs5004.easyanimator.shape.Shape;
 import java.awt.Color;
 
 /**
- * This class extends the AbstractAnimation class and represents the methods needed to change the
+ * This class extends the cs5004.easyanimator.animation.AbstractAnimation class and represents the methods needed to change the
  * color of a shape as part of an animation.
  */
 public class ChangeColor extends AbstractAnimation {
