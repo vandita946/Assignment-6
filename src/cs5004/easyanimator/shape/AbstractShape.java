@@ -66,6 +66,9 @@ public abstract class AbstractShape implements Shape {
 
   @Override
   public void setPosition(double newX, double newY) {
+    if (newX > canvasWidth || newY > canvasHeight) {
+      throw new IllegalArgumentException("Object cannot be placed outside the canvas.");
+    }
     this.reference = new Point2D(newX, newY);
   }
 

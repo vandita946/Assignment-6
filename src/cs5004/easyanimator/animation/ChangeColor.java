@@ -10,7 +10,7 @@ import java.awt.Color;
  * color of a shape as part of an animation.
  */
 public class ChangeColor extends AbstractAnimation {
-  
+
   private Color newColor;
 
   public ChangeColor(Shape shape, int startingTime, int endingTime, Color newColor) {
