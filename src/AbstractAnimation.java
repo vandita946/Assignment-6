@@ -6,15 +6,13 @@ public class AbstractAnimation implements Animation {
   private Shape shape;
   private int startingTime;
   private int endingTime;
+  private TypeOfAnimation type;
 
-  public enum TypeOfAnimation {
-    MOVE, SCALE, COLOR;
-  }
-
-  public AbstractAnimation(Shape shape, int startingTime, int endingTime) {
+  public AbstractAnimation(Shape shape, int startingTime, int endingTime, TypeOfAnimation type) {
     this.shape = shape;
     this.startingTime = startingTime;
     this.endingTime = endingTime;
+    this.type = type;
   }
 
   @Override
@@ -32,5 +30,9 @@ public class AbstractAnimation implements Animation {
 
   public Shape getShape() {
     return this.shape;
+  }
+
+  public TypeOfAnimation getType() {
+    return this.type;
   }
 }

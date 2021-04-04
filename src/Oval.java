@@ -5,10 +5,12 @@ import java.awt.Color;
  */
 public class Oval extends AbstractShape {
 
-  private double xRadius;
-  private double yRadius;
+  private double x, y;
+  private double xRadius, yRadius;
   private String name;
   private Color color;
+  private double canvasWidth;
+  private double canvasHeight;
 
   /**
    * Construct a circle object using the given center and radius
@@ -17,13 +19,26 @@ public class Oval extends AbstractShape {
    * @param y      y coordinate of the center of this circle
    * @param radius the radius of this circle
    */
-  public Oval(double x, double y, double radius, String name, String colorName) {
-    super(new Point2D(x, y), name, colorName);
+  public Oval(double x, double y, double radius, String name, Color color, double canvasWidth, double canvasHeight) {
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight);
+
+    if ((x - radius) < 0 || (y - radius) < 0 || (x + radius) > canvasWidth || (y + radius) > canvasHeight) {
+      throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
+    } else if (radius <= 0) {
+      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
+    }
+
     this.xRadius = this.yRadius = radius;
   }
 
-  public Oval(double x, double y, double xRadius, double yRadius, String name, String colorName) {
-    super(new Point2D(x, y), name, colorName);
+  public Oval(double x, double y, double xRadius, double yRadius, String name, Color color, double canvasWidth, double canvasHeight) {
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight);
+
+    if ((x - xRadius) < 0 || (y - yRadius) < 0 || (x + xRadius) > canvasWidth || (y + yRadius) > canvasHeight) {
+      throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
+    } else if (xRadius <= 0 || yRadius <= 0) {
+      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
+    }
     this.xRadius = xRadius;
     this.yRadius = yRadius;
   }
@@ -39,24 +54,36 @@ public class Oval extends AbstractShape {
     return 2 * Math.PI * Math.sqrt((Math.pow(xRadius, 2) + Math.pow(yRadius, 2)) / 2);
   }
 
-  @Override
-  public Shape resize(double factor) {
-    return new Oval(reference.getX(), reference.getY(), Math.sqrt(factor) *
-        xRadius, Math.sqrt(factor) * yRadius, name, color.toString());
-  }
-
   /**
    * Create and return a shape of the same kind as this one, with its dimensions changed by the
    * provided new width and height.
    *
-   * @param newWidth  new width
-   * @param newHeight new height
+   * @param newXRadius  new width
+   * @param newYRadius new height
    * @return the new Shape with changed dimensions
    */
   @Override
-  public Shape changeDimensions(double newWidth, double newHeight) {
-    return new Oval(reference.getX(), reference.getY(), newWidth, newHeight, name,
-        color.toString());
+  public Shape changeDimensions(double newXRadius, double newYRadius) {
+//    if (x + newXRadius > canvasWidth) {
+//      throw new IllegalArgumentException("New width causes shape to be out of bounds.");
+//    } else if (y + newYRadius > canvasHeight) {
+//      throw new IllegalArgumentException("New height causes shape to be out of bounds.");
+//    } else if (newXRadius < 0 || newYRadius < 0) {
+//      throw new IllegalArgumentException("Height and width values have to be positive.");
+//    }
+
+    return new Oval(reference.getX(), reference.getY(), newXRadius, newYRadius, name,
+        color, canvasWidth, canvasHeight);
+  }
+
+  @Override
+  public double getWidth() {
+    return this.xRadius;
+  }
+
+  @Override
+  public double getHeight() {
+    return this.yRadius;
   }
 
 

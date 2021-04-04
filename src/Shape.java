@@ -25,13 +25,6 @@ public interface Shape extends Comparable<Shape>{
    */
   double perimeter();
 
-  /**
-   * Create and return a shape of the same kind as this one, resized
-   * in area by the provided factor
-   * @param factor factor of resizing
-   * @return the resized Shape
-   */
-  Shape resize(double factor);
 
   /**
    * Create and return a shape of the same kind as this one, with its
@@ -51,4 +44,8 @@ public interface Shape extends Comparable<Shape>{
   Color getColor();
 
   String getName();
+
+  double getWidth();
+
+  double getHeight();
 }

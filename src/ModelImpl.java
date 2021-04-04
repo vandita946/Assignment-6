@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -7,14 +8,20 @@ import java.util.Map;
  */
 public class ModelImpl implements Model {
 
+  //check that canvas width and height do not conflict when doing move and scale animations
   private double canvasWidth;
   private double canvasHeight;
   private Map<String, Shape> shapeList;
   private List<Animation> animationList;
 
+  public enum TypeOfAnimation {
+    MOVE, SCALE, COLOR;
+  }
+
   public ModelImpl(double canvasWidth, double canvasHeight) {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
+    animationList = new ArrayList<Animation>();
   }
 
   public void addChangeColorAnimation(Shape shape, int startingTime, int endingTime,
@@ -23,30 +30,35 @@ public class ModelImpl implements Model {
     animationList.add(colorChange);
   }
 
-  public void addScaleAnimation(Shape shape, int startingTime, int endingTime, double factor) {
-    Animation scale = new Scale(shape, startingTime, endingTime, factor);
-    animationList.add(scale);
-  }
-
-  public void addScaleAnimation(Shape shape, int startingTime, int endingTime, double newWidth,
+  public void addScaleAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, double newWidth,
       double newHeight) {
-    Animation scale = new Scale(shape, startingTime, endingTime, newWidth, newHeight);
+    Animation scale = new Scale(shape, type, startingTime, endingTime, newWidth, newHeight, canvasWidth,
+        canvasHeight);
     animationList.add(scale);
   }
 
-  public void addMoveAnimation(Shape shape, int startingTime, int endingTime, double toX,
+  public void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, double toX,
       double toY) {
-    Animation move = new Move(shape, startingTime, endingTime, toX, toY);
+    Animation move = new Move(shape, type, startingTime, endingTime, toX, toY, canvasWidth, canvasHeight);
     animationList.add(move);
   }
 
-//  private boolean checkLegalAnimation(int startingTime, int endingTime) {
-//
-//  }
-//
+  private boolean checkLegalTime(int startingTime, int endingTime, TypeOfAnimation type) {
+    for (Animation each : animationList) {
+      if (type.equals(each.getType())) {
+        if (startingTime >= each.getStartingTime() && endingTime <= each.getEndingTime()) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
 //  public void sortAnimationList() {
 //    //idk how to do this yet
 //    animationList.stream().sorted(a -> a.getStartingTime());
 //  }
+
+  //function to check that the starting time doesn't overlap with ending time of previous one. with like a temp or something
 
 }

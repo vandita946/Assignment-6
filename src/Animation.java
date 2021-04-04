@@ -1,4 +1,3 @@
-
 /**
  * This class is an interface that outlines the methods available to a shape such that it can be
  * animated.
@@ -16,4 +15,6 @@ public interface Animation {
    * @return String representation of the animation.
    */
   String toString();
+
+  TypeOfAnimation getType();
 }

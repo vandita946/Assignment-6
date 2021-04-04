@@ -8,15 +8,25 @@ public abstract class AbstractShape implements Shape {
   protected Point2D reference;
   private String name;
   private Color color;
+  private double canvasWidth;
+  private double canvasHeight;
 
-  public AbstractShape(Point2D reference, String name, String colorName)
-      throws IllegalArgumentException {
+  public AbstractShape(Point2D reference, String name, Color color, double canvasWidth,
+      double canvasHeight) throws IllegalArgumentException {
+
+
+
+    if (canvasHeight < 0 || canvasWidth < 0) {
+      throw new IllegalArgumentException("Canvas dimensions cannot be negative.");
+    } else if (reference.getX() > canvasWidth || reference.getY() > canvasHeight) {
+      throw new IllegalArgumentException("Object cannot be placed outside the canvas.");
+    }
+
+    this.canvasHeight = canvasHeight;
+    this.canvasWidth = canvasWidth;
     this.reference = reference;
     this.name = name;
-    if (Color.getColor(colorName) == null) {
-      throw new IllegalArgumentException("Color is invalid.");
-    }
-    this.color = Color.getColor(colorName);
+    this.color = color;
   }
 
   @Override
@@ -63,4 +73,5 @@ public abstract class AbstractShape implements Shape {
   public Color getColor() {
     return this.color;
   }
+
 }

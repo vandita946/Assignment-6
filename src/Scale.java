@@ -9,47 +9,59 @@ public class Scale extends AbstractAnimation {
   private Shape shape;
   private int startingTime;
   private int endingTime;
-  private double factor;
-  private boolean isResize;
+  private TypeOfShape shapeType;
 
-  public Scale(Shape shape, int startingTime, int endingTime, double newWidth, double newHeight) {
-    super(shape, startingTime, endingTime);
+
+  public Scale(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime,
+      double newWidth, double newHeight, double canvasWidth, double canvasHeight)
+      throws IllegalArgumentException {
+    super(shape, startingTime, endingTime, TypeOfAnimation.SCALE);
+
+    if (newWidth == shape.getWidth() && newHeight == shape.getHeight()) {
+      throw new IllegalArgumentException("The shape is already at the given dimensions.");
+    }
+
+    this.shapeType = shapeType;
     this.newWidth = newWidth;
     this.newHeight = newHeight;
-    this.isResize = false;
   }
 
-  public Scale(Shape shape, int startingTime, int endingTime, double factor) {
-    super(shape, startingTime, endingTime);
-    this.factor = factor;
-    this.isResize = true;
-  }
-
-  //are we supposed to override?
+  @Override
   public void actionStep() {
-    if (this.isResize) {
-      this.shape.resize(this.factor);
-    } else {
-      this.shape.changeDimensions(this.newWidth, this.newHeight);
-    }
+    this.shape.changeDimensions(this.newWidth, this.newHeight);
   }
 
-  //how to get the original height and width of the shape?
   @Override
   public String toString() {
-    if (this.isResize) {
-      return this.shape.getName() + " scales by a factor of " + this.factor + " from time t="
-          + startingTime + " to t=" + endingTime;
-    } else if (this.newWidth == 0) {
-      return this.shape.getName() + " changes height from something to " + this.newHeight
-          + " from time t=" + startingTime + " to t=" + endingTime;
-    } else if (this.newHeight == 0) {
-      return this.shape.getName() + " changes width from something to " + this.newWidth
-          + " from time t=" + startingTime + " to t=" + endingTime;
+
+    if (shapeType.equals(TypeOfShape.RECTANGLE)) {
+      if (this.newWidth == shape.getWidth()) {
+        return this.shape.getName() + " changes height from " + shape.getHeight() + " to " + this.newHeight
+            + " from time t=" + startingTime + " to t=" + endingTime;
+      } else if (this.newHeight == shape.getHeight()) {
+        return this.shape.getName() + " changes width from " + shape.getWidth() + " to " + this.newWidth
+            + " from time t=" + startingTime + " to t=" + endingTime;
+      } else {
+        return this.shape.getName() + " changes width from " + shape.getWidth() + " to " + this.newWidth
+            + " and height from " + shape.getHeight() + " to " + this.newHeight + " from time t=" + startingTime
+            + " to t=" + endingTime;
+      }
     } else {
-      return this.shape.getName() + " changes width from something to " + this.newWidth
-          + " and height from something to " + this.newHeight + " from time t=" + startingTime
-          + " to t=" + endingTime;
+      if(this.newWidth == this.newHeight) {
+        return this.shape.getName() + " changes radius from " + shape.getWidth() + " and " + shape.getHeight() + " to " + this.newWidth
+            + " and " + this.newHeight + " from time t=" + startingTime + " to t=" + endingTime;
+      } else if (this.newWidth == shape.getWidth()) {
+        return this.shape.getName() + " changes radius from " + shape.getHeight() + " to " + this.newHeight
+            + " from time t=" + startingTime + " to t=" + endingTime;
+      } else if (this.newHeight == shape.getHeight()) {
+        return this.shape.getName() + " changes radius from " + shape.getWidth() + " to " + this.newWidth
+            + " from time t=" + startingTime + " to t=" + endingTime;
+      } else {
+        return this.shape.getName() + " changes radius from " + shape.getWidth() + " to " + this.newWidth
+            + " and other radius from " + shape.getHeight() + " to " + this.newHeight + " from time t=" + startingTime
+            + " to t=" + endingTime;
+      }
     }
+
   }
 }

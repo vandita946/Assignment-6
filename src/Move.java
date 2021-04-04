@@ -10,8 +10,17 @@ public class Move extends AbstractAnimation {
   private double toX;
   private double toY;
 
-  public Move(Shape shape, int startingTime, int endingTime, double toX, double toY) {
-    super(shape, startingTime, endingTime);
+  public Move(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime, double toX,
+      double toY, double canvasWidth, double canvasHeight) throws IllegalArgumentException {
+    super(shape, startingTime, endingTime, TypeOfAnimation.MOVE);
+
+    if (toX < 0 || toX > canvasWidth || toX + shape.getWidth() > canvasWidth || (
+        shapeType.equals(TypeOfShape.OVAL) && (toX - shape.getWidth() < 0))) {
+      throw new IllegalArgumentException("The new x coordinate pushes the shape out of bounds.");
+    } else if (toY < 0 || toY > canvasHeight || toY + shape.getHeight() > canvasHeight || (
+        shapeType.equals(TypeOfShape.OVAL) && (toY - shape.getHeight() < 0))) {
+      throw new IllegalArgumentException("The new y coordinate pushes the shape out of bounds.");
+    }
 
     this.toX = toX;
     this.toY = toY;

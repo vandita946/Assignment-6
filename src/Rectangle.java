@@ -5,9 +5,12 @@ import java.awt.Color;
  * the Shape interface
  */
 public class Rectangle extends AbstractShape {
+  private double x, y;
   private double width, height;
   private String name;
   private Color color;
+  private double canvasWidth;
+  private double canvasHeight;
 
   /**
    * Constructs a rectangle object with the given location of its lower-left
@@ -18,8 +21,15 @@ public class Rectangle extends AbstractShape {
    * @param width  width of this rectangle
    * @param height height of this rectangle
    */
-  public Rectangle(double x, double y, double width, double height, String name, String colorName) {
-    super(new Point2D(x, y), name, colorName);
+  public Rectangle(double x, double y, double width, double height, String name, Color color, double canvasWidth, double canvasHeight) {
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight);
+
+    if (x + width > canvasWidth || y + height > canvasHeight) {
+      throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
+    } else if (width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
+    }
+
     this.width = width;
     this.height = height;
   }
@@ -35,33 +45,34 @@ public class Rectangle extends AbstractShape {
   }
 
   @Override
-  public Shape resize(double factor) {
-    double sqrtFactor = Math.sqrt(factor);
-    return new Rectangle(
-            this.reference.getX(),
-            this.reference.getY(), sqrtFactor *
-            this.width,
-            sqrtFactor * this.height,
-            name,
-            color.toString());
-  }
-
-  @Override
   public Shape changeDimensions(double newWidth, double newHeight) {
+//    if (x + newWidth > canvasWidth) {
+//      throw new IllegalArgumentException("New width causes shape to be out of bounds.");
+//    } else if (y + newHeight > canvasHeight) {
+//      throw new IllegalArgumentException("New height causes shape to be out of bounds.");
+//    } else if (newWidth < 0 || newHeight < 0) {
+//      throw new IllegalArgumentException("Height and width values have to be positive.");
+//    }
+
     return new Rectangle(
         this.reference.getX(),
         this.reference.getY(),
         newWidth,
         newHeight,
         name,
-        color.toString()
+        color,
+        canvasWidth,
+        canvasHeight
     );
   }
 
+
+  @Override
   public double getWidth() {
     return this.width;
   }
 
+  @Override
   public double getHeight() {
     return this.height;
   }

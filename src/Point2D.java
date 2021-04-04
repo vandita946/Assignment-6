@@ -13,6 +13,11 @@ public class Point2D {
    * @param y the y-coordinate of this point
    */
   public Point2D(double x, double y) {
+
+    if (x < 0 || y < 0) {
+      throw new IllegalArgumentException("Coordinates cannot be negative.");
+    }
+
     this.x = x;
     this.y = y;
   }
