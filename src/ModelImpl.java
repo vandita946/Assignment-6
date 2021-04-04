@@ -1,6 +1,7 @@
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class implements the Model interface. It stores the shapes and animations in an animator and
@@ -8,30 +9,40 @@ import java.util.Map;
  */
 public class ModelImpl implements Model {
 
-  //check that canvas width and height do not conflict when doing move and scale animations
   private double canvasWidth;
   private double canvasHeight;
-  private Map<String, Shape> shapeList;
+  private List<Shape> shapeList;
   private List<Animation> animationList;
 
-  public enum TypeOfAnimation {
-    MOVE, SCALE, COLOR;
-  }
 
   public ModelImpl(double canvasWidth, double canvasHeight) {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
     animationList = new ArrayList<Animation>();
+    shapeList = new ArrayList<Shape>();
+  }
+
+  public void addShape(Shape shape) {
+    if (shape == null) {
+      throw new IllegalArgumentException("Shape cannot be null.");
+    }
+    if (!shapeList.contains(shape)) {
+      shapeList.add(shape);
+    } else {
+      throw new IllegalArgumentException("Shape already exists in the model.");
+    }
   }
 
   public void addChangeColorAnimation(Shape shape, int startingTime, int endingTime,
-      String newColorName) {
-    Animation colorChange = new ChangeColor(shape, startingTime, endingTime, newColorName);
+      Color newColor) {
+    this.addShape(shape);
+    Animation colorChange = new ChangeColor(shape, startingTime, endingTime, newColor);
     animationList.add(colorChange);
   }
 
   public void addScaleAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, double newWidth,
       double newHeight) {
+    this.addShape(shape);
     Animation scale = new Scale(shape, type, startingTime, endingTime, newWidth, newHeight, canvasWidth,
         canvasHeight);
     animationList.add(scale);
@@ -39,6 +50,7 @@ public class ModelImpl implements Model {
 
   public void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, double toX,
       double toY) {
+    this.addShape(shape);
     Animation move = new Move(shape, type, startingTime, endingTime, toX, toY, canvasWidth, canvasHeight);
     animationList.add(move);
   }
@@ -54,11 +66,51 @@ public class ModelImpl implements Model {
     return true;
   }
 
-//  public void sortAnimationList() {
-//    //idk how to do this yet
-//    animationList.stream().sorted(a -> a.getStartingTime());
-//  }
+  public void sortAnimationList() {
+    Comparator<Animation> comp = new Comparator<Animation>() {
+      @Override
+      public int compare(Animation o1, Animation o2) {
+        return o1.getStartingTime() - o2.getStartingTime();
+      }
+    };
+    animationList.sort(comp);
+  }
 
-  //function to check that the starting time doesn't overlap with ending time of previous one. with like a temp or something
+  public List<Shape> getShapesAtTick(int tick) {
+    List<Shape> tickShapes = new ArrayList<>();
+    for (Shape s : shapeList) {
+      if (s.getAppearTime() <= tick && s.getDisappearTime() >= tick) {
+        tickShapes.add(s);
+      }
+    }
+    return tickShapes;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder returnString = new StringBuilder();
+    // create (shape.toString) for loop through the shape list
+    for (Shape s : shapeList) {
+      returnString.append("Create ").append(s.toString()).append("\n");
+    }
+
+    returnString.append("\n");
+
+    // appear and disappear times for loop through the shape list
+    for (Shape s : shapeList) {
+      returnString.append(s.getName()).append(" appears at time t=").append(s.getAppearTime())
+          .append(" and disappears at time t=").append(s.getDisappearTime()).append("\n");
+    }
+
+    returnString.append("\n");
+
+    // for loop through animation list
+    sortAnimationList();
+    for (Animation a : animationList) {
+      returnString.append(a.toString()).append("\n");
+    }
+
+    return returnString.toString();
+  }
 
 }

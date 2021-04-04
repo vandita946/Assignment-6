@@ -11,6 +11,7 @@ public class Rectangle extends AbstractShape {
   private Color color;
   private double canvasWidth;
   private double canvasHeight;
+  private int appearTime, disappearTime;
 
   /**
    * Constructs a rectangle object with the given location of its lower-left
@@ -21,8 +22,9 @@ public class Rectangle extends AbstractShape {
    * @param width  width of this rectangle
    * @param height height of this rectangle
    */
-  public Rectangle(double x, double y, double width, double height, String name, Color color, double canvasWidth, double canvasHeight) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight);
+  public Rectangle(double x, double y, double width, double height, String name, Color color,
+      double canvasWidth, double canvasHeight, int appearTime, int disappearTime) {
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime);
 
     if (x + width > canvasWidth || y + height > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
@@ -55,14 +57,11 @@ public class Rectangle extends AbstractShape {
 //    }
 
     return new Rectangle(
-        this.reference.getX(),
-        this.reference.getY(),
-        newWidth,
-        newHeight,
-        name,
-        color,
-        canvasWidth,
-        canvasHeight
+        this.reference.getX(), this.reference.getY(),
+        newWidth, newHeight,
+        name, color,
+        canvasWidth, canvasHeight,
+        appearTime,disappearTime
     );
   }
 

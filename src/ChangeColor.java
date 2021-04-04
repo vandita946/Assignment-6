@@ -11,14 +11,10 @@ public class ChangeColor extends AbstractAnimation {
   private int endingTime;
   private Color newColor;
 
-  public ChangeColor(Shape shape, int startingTime, int endingTime, String newColorName)
+  public ChangeColor(Shape shape, int startingTime, int endingTime, Color newColor)
       throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.COLOR);
-    if (Color.getColor(newColorName) != null) {
-      this.newColor = Color.getColor(newColorName);
-    } else {
-      throw new IllegalArgumentException("Color is invalid.");
-    }
+    this.newColor = newColor;
   }
 
   public void actionStep() {

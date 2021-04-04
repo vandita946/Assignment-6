@@ -8,7 +8,10 @@ public class AbstractAnimation implements Animation {
   private int endingTime;
   private TypeOfAnimation type;
 
-  public AbstractAnimation(Shape shape, int startingTime, int endingTime, TypeOfAnimation type) {
+  public AbstractAnimation(Shape shape, int startingTime, int endingTime, TypeOfAnimation type) throws IllegalArgumentException{
+    if(startingTime < shape.getAppearTime() || endingTime > shape.getDisappearTime() ) {
+      throw new IllegalArgumentException("Starting and ending time must be within shape's appear and disappear time.");
+    }
     this.shape = shape;
     this.startingTime = startingTime;
     this.endingTime = endingTime;

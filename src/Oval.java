@@ -11,6 +11,8 @@ public class Oval extends AbstractShape {
   private Color color;
   private double canvasWidth;
   private double canvasHeight;
+  private int appearTime;
+  private int disappearTime;
 
   /**
    * Construct a circle object using the given center and radius
@@ -19,8 +21,9 @@ public class Oval extends AbstractShape {
    * @param y      y coordinate of the center of this circle
    * @param radius the radius of this circle
    */
-  public Oval(double x, double y, double radius, String name, Color color, double canvasWidth, double canvasHeight) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight);
+  public Oval(double x, double y, double radius, String name, Color color, double canvasWidth,
+      double canvasHeight, int appearTime, int disappearTime) {
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime);
 
     if ((x - radius) < 0 || (y - radius) < 0 || (x + radius) > canvasWidth || (y + radius) > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
@@ -31,8 +34,9 @@ public class Oval extends AbstractShape {
     this.xRadius = this.yRadius = radius;
   }
 
-  public Oval(double x, double y, double xRadius, double yRadius, String name, Color color, double canvasWidth, double canvasHeight) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight);
+  public Oval(double x, double y, double xRadius, double yRadius, String name, Color color,
+      double canvasWidth, double canvasHeight, int appearTime, int disappearTime) {
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime);
 
     if ((x - xRadius) < 0 || (y - yRadius) < 0 || (x + xRadius) > canvasWidth || (y + yRadius) > canvasHeight) {
       throw new IllegalArgumentException("The dimensions of this shape are out of bounds of the canvas.");
@@ -73,7 +77,7 @@ public class Oval extends AbstractShape {
 //    }
 
     return new Oval(reference.getX(), reference.getY(), newXRadius, newYRadius, name,
-        color, canvasWidth, canvasHeight);
+        color, canvasWidth, canvasHeight, appearTime, disappearTime);
   }
 
   @Override

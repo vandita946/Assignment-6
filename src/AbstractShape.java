@@ -10,9 +10,11 @@ public abstract class AbstractShape implements Shape {
   private Color color;
   private double canvasWidth;
   private double canvasHeight;
+  private int appearTime;
+  private int disappearTime;
 
   public AbstractShape(Point2D reference, String name, Color color, double canvasWidth,
-      double canvasHeight) throws IllegalArgumentException {
+      double canvasHeight, int appearTime, int disappearTime) throws IllegalArgumentException {
 
 
 
@@ -22,11 +24,17 @@ public abstract class AbstractShape implements Shape {
       throw new IllegalArgumentException("Object cannot be placed outside the canvas.");
     }
 
+    if (disappearTime < appearTime || appearTime < 0 || disappearTime < 0) {
+      throw new IllegalArgumentException("Appear or disappear time is invalid.");
+    }
+
     this.canvasHeight = canvasHeight;
     this.canvasWidth = canvasWidth;
     this.reference = reference;
     this.name = name;
     this.color = color;
+    this.disappearTime = disappearTime;
+    this.appearTime = appearTime;
   }
 
   @Override
@@ -72,6 +80,16 @@ public abstract class AbstractShape implements Shape {
   @Override
   public Color getColor() {
     return this.color;
+  }
+
+  @Override
+  public int getAppearTime() {
+    return this.appearTime;
+  }
+
+  @Override
+  public int getDisappearTime() {
+    return this.disappearTime;
   }
 
 }
