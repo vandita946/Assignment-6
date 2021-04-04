@@ -84,6 +84,34 @@ public class ShapeTest {
       assertEquals("The dimensions of this shape are out of bounds of the canvas.",e.getMessage());
     }
 
+    try {
+      new Rectangle(10, 20, 100, 200, "R1", Color.green, 500, 500, -2, 100);
+      fail("IllegalArgumentException was not called");
+    } catch (IllegalArgumentException e) {
+      assertEquals("Appear or disappear time is invalid.", e.getMessage());
+    }
+
+    try {
+      new Rectangle(10, 20, 100, 200, "R1", Color.green, 500, 500, 10, 2);
+      fail("IllegalArgumentException was not called");
+    } catch (IllegalArgumentException e) {
+      assertEquals("Appear or disappear time is invalid.", e.getMessage());
+    }
+
+    try {
+      new Rectangle(10, 20, 100, 200, "R1", Color.green, 500, 500, 10, -100);
+      fail("IllegalArgumentException was not called");
+    } catch (IllegalArgumentException e) {
+      assertEquals("Appear or disappear time is invalid.", e.getMessage());
+    }
+
+    try {
+      new Rectangle(10, 20, 100, 200, "R1", Color.green, 500, 500, 10, 2);
+      fail("IllegalArgumentException was not called");
+    } catch (IllegalArgumentException e) {
+      assertEquals("Appear or disappear time is invalid.", e.getMessage());
+    }
+
   }
 
   @Test
@@ -104,7 +132,7 @@ public class ShapeTest {
   }
 
   @Test
-  public void testBadNewDimensions() {
+  public void testBadChangeDimensions() {
     try {
       Shape newCircle = circle.changeDimensions(4000,200);
       fail("IllegalArgumentException was not called");
@@ -218,16 +246,6 @@ public class ShapeTest {
   }
 
   @Test
-  public void testBadWidth() {
-    try {
-      Shape newRectangle= rectangle.changeDimensions(-2,20);
-      fail("IllegalArgumentException was not called");
-    } catch (IllegalArgumentException e) {
-      assertEquals("Shape dimensions cannot be negative or zero.",e.getMessage());
-    }
-  }
-
-  @Test
   public void testGetHeight() {
     assertEquals(10,rectangle.getHeight(),0.01);
     assertEquals(10,oval.getHeight(),0.01);
@@ -235,22 +253,6 @@ public class ShapeTest {
 
   }
 
-  @Test
-  public void testBadHeight() {
-    try {
-      Shape newRectangle = rectangle.changeDimensions(20,-3);
-      fail("IllegalArgumentException was not called");
-    } catch (IllegalArgumentException e) {
-      assertEquals("Shape dimensions cannot be negative or zero.",e.getMessage());
-    }
-
-    try {
-      Shape newCircle = circle.changeDimensions(20,-3);
-      fail("IllegalArgumentException was not called");
-    } catch (IllegalArgumentException e) {
-      assertEquals("Shape dimensions cannot be negative or zero.",e.getMessage());
-    }
-  }
 
   @Test
   public void testGetAppearTime() {
@@ -259,45 +261,12 @@ public class ShapeTest {
     assertEquals(3,oval.getAppearTime(),0.01);
   }
 
-  @Test
-  public void testBadAppearTime() {
-    try {
-      new Rectangle(10, 20, 100, 200, "R1", Color.green, 500, 500, -2, 100);
-      fail("IllegalArgumentException was not called");
-    } catch (IllegalArgumentException e) {
-      assertEquals("Appear or disappear time is invalid.", e.getMessage());
-    }
-
-    try {
-      new Rectangle(10, 20, 100, 200, "R1", Color.green, 500, 500, 10, 2);
-      fail("IllegalArgumentException was not called");
-    } catch (IllegalArgumentException e) {
-      assertEquals("Appear or disappear time is invalid.", e.getMessage());
-    }
-  }
 
   @Test
   public void testGetDisappearTime() {
     assertEquals(100,rectangle.getDisappearTime(),0.01);
     assertEquals(200,square.getDisappearTime(),0.01);
     assertEquals(300,oval.getDisappearTime(),0.01);
-  }
-
-  @Test
-  public void testBadDisappearTime() {
-    try {
-      new Rectangle(10, 20, 100, 200, "R1", Color.green, 500, 500, 10, -100);
-      fail("IllegalArgumentException was not called");
-    } catch (IllegalArgumentException e) {
-      assertEquals("Appear or disappear time is invalid.", e.getMessage());
-    }
-
-    try {
-      new Rectangle(10, 20, 100, 200, "R1", Color.green, 500, 500, 10, 2);
-      fail("IllegalArgumentException was not called");
-    } catch (IllegalArgumentException e) {
-      assertEquals("Appear or disappear time is invalid.", e.getMessage());
-    }
   }
 
 
@@ -317,5 +286,9 @@ public class ShapeTest {
 
   }
 
+  @Test
+  public void testToString() {
+    //insert test cases
+  }
 
 }
