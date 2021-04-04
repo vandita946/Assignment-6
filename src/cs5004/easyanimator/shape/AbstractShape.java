@@ -28,7 +28,14 @@ public abstract class AbstractShape implements Shape {
       throw new IllegalArgumentException("Appear or disappear time is invalid.");
     }
 
-    changeColor(color);
+    for (ColorNames c : ColorNames.values()) {
+      if (c.getValue().equals(color)) {
+        this.color = c;
+      }
+    }
+    if (this.color == null) {
+      throw new IllegalArgumentException("Invalid color entered.");
+    }
     this.reference = reference;
     this.name = name;
     this.disappearTime = disappearTime;

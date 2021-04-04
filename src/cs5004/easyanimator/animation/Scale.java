@@ -13,14 +13,10 @@ public class Scale extends AbstractAnimation {
 
   private double newWidth;
   private double newHeight;
-  private Shape shape;
-  private int startingTime;
-  private int endingTime;
   private TypeOfShape shapeType;
 
 
-  public Scale(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime,
-      double newWidth, double newHeight, double canvasWidth, double canvasHeight)
+  public Scale(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime, double newWidth, double newHeight)
       throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.SCALE);
 

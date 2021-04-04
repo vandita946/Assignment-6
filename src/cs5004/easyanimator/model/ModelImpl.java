@@ -52,8 +52,7 @@ public class ModelImpl implements Model {
   public void addScaleAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, double newWidth,
       double newHeight) {
     this.addShape(shape);
-    Animation scale = new Scale(shape, type, startingTime, endingTime, newWidth, newHeight, canvasWidth,
-        canvasHeight);
+    Animation scale = new Scale(shape, type, startingTime, endingTime, newWidth, newHeight);
     animationList.add(scale);
   }
 
