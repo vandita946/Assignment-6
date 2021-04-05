@@ -35,7 +35,7 @@ public enum ColorNames {
    *
    * @return an int value.
    */
-  Color getValue() {
+  public Color getValue() {
     return val;
   }
 
@@ -44,7 +44,7 @@ public enum ColorNames {
    *
    * @return a string.
    */
-  String getText() {
+  public String getText() {
     return txt;
   }
 

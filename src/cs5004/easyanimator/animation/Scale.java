@@ -6,8 +6,8 @@ import cs5004.easyanimator.shape.Shape;
 import cs5004.easyanimator.shape.TypeOfShape;
 
 /**
- * This class extends the cs5004.easyanimator.animation.AbstractAnimation class and represents the methods needed to scale a shape
- * as part of an animation.
+ * This class extends the cs5004.easyanimator.animation.AbstractAnimation class and represents the
+ * methods needed to scale a shape as part of an animation.
  */
 public class Scale extends AbstractAnimation {
 
@@ -16,7 +16,8 @@ public class Scale extends AbstractAnimation {
   private TypeOfShape shapeType;
 
 
-  public Scale(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime, double newWidth, double newHeight)
+  public Scale(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime,
+      double newWidth, double newHeight)
       throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.SCALE);
 
@@ -39,30 +40,38 @@ public class Scale extends AbstractAnimation {
 
     if (shapeType.equals(TypeOfShape.RECTANGLE)) {
       if (this.newWidth == shape.getWidth()) {
-        return this.shape.getName() + " changes height from " + shape.getHeight() + " to " + this.newHeight
-            + " from time t=" + startingTime + " to t=" + endingTime;
+        return String
+            .format("%s changes height from %.0f to %.0f from time t=%d to t=%d", shape.getName(),
+                shape.getHeight(), newHeight, startingTime, endingTime);
       } else if (this.newHeight == shape.getHeight()) {
-        return this.shape.getName() + " changes width from " + shape.getWidth() + " to " + this.newWidth
-            + " from time t=" + startingTime + " to t=" + endingTime;
+        return String
+            .format("%s changes width from %.0f to %.0f from time t=%d to t=%d", shape.getName(),
+                shape.getWidth(), newWidth, startingTime, endingTime);
       } else {
-        return this.shape.getName() + " changes width from " + shape.getWidth() + " to " + this.newWidth
-            + " and height from " + shape.getHeight() + " to " + this.newHeight + " from time t=" + startingTime
-            + " to t=" + endingTime;
+        return String.format(
+            "%s changes width from %.0f to %.0f and height from %.0f to %.0f from time t=%d to t=%d",
+            shape.getName(), shape.getWidth(), newWidth, shape.getHeight(), newHeight, startingTime,
+            endingTime);
       }
     } else {
-      if(this.newWidth == this.newHeight) {
-        return this.shape.getName() + " changes radius from " + shape.getWidth() + " and " + shape.getHeight() + " to " + this.newWidth
-            + " and " + this.newHeight + " from time t=" + startingTime + " to t=" + endingTime;
+      if (this.newWidth == this.newHeight) {
+        return String.format(
+            "%s changes radius from %.0f and %.0f to %.0f from time t=%d to t=%d",
+            shape.getName(), shape.getWidth(), shape.getHeight(), newHeight, startingTime,
+            endingTime);
       } else if (this.newWidth == shape.getWidth()) {
-        return this.shape.getName() + " changes radius from " + shape.getHeight() + " to " + this.newHeight
-            + " from time t=" + startingTime + " to t=" + endingTime;
+        return String
+            .format("%s changes radius from %.0f to %.0f from time t=%d to t=%d", shape.getName(),
+                shape.getHeight(), newHeight, startingTime, endingTime);
       } else if (this.newHeight == shape.getHeight()) {
-        return this.shape.getName() + " changes radius from " + shape.getWidth() + " to " + this.newWidth
-            + " from time t=" + startingTime + " to t=" + endingTime;
+        return String
+            .format("%s changes radius from %.0f to %.0f from time t=%d to t=%d", shape.getName(),
+                shape.getWidth(), newWidth, startingTime, endingTime);
       } else {
-        return this.shape.getName() + " changes radius from " + shape.getWidth() + " to " + this.newWidth
-            + " and other radius from " + shape.getHeight() + " to " + this.newHeight + " from time t=" + startingTime
-            + " to t=" + endingTime;
+        return String.format(
+            "%s changes radius from %.0f to %.0f and other radius from %.0f to %.0f from time t=%d to t=%d",
+            shape.getName(), shape.getWidth(), newWidth, shape.getHeight(), newHeight, startingTime,
+            endingTime);
       }
     }
 

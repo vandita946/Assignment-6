@@ -81,6 +81,7 @@ public class Rectangle extends AbstractShape {
   }
 
   public String toString() {
+
     return String.format("%s rectangle %s with corner at (%.0f,%.0f), width %.0f and height %.0f",
         this.color.getText(), this.name, this.reference.getX(), this.reference.getY(),
         this.width, this.height);
