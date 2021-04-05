@@ -1,4 +1,9 @@
-import static org.junit.Assert.*;
+/* CS 5004 - Easy Animator - Model
+ * Vandita Attal & Swapnil Mittal
+ */
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import cs5004.easyanimator.animation.Animation;
 import cs5004.easyanimator.animation.ChangeColor;
@@ -13,6 +18,9 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This is a test class for testing animation.
+ */
 public class AnimationTest {
 
   private Shape rectangle;
@@ -175,13 +183,17 @@ public class AnimationTest {
         new Scale(rectangle, TypeOfShape.RECTANGLE, 1, 50, 10, 50).toString());
 
     //oval: change both radii to the same radius
-    assertEquals("oval changes radius from 10 and 5 to 50 from time t=5 to t=50", new Scale(oval, TypeOfShape.OVAL, 5, 50, 50, 50).toString());
+    assertEquals("oval changes radius from 10 and 5 to 50 from time t=5 to t=50",
+        new Scale(oval, TypeOfShape.OVAL, 5, 50, 50, 50).toString());
 
     //circle: change one radius
-    assertEquals("oval changes radius from 10 to 15 and other radius from 5 to 20 from time t=5 to t=50", new Scale(oval, TypeOfShape.OVAL, 5, 50, 15, 20).toString());
+    assertEquals(
+        "oval changes radius from 10 to 15 and other radius from 5 to 20 from time t=5 to t=50",
+        new Scale(oval, TypeOfShape.OVAL, 5, 50, 15, 20).toString());
 
     //oval: change both radii
-    assertEquals("oval changes radius from 10 and 5 to 5 from time t=5 to t=50", new Scale(oval, TypeOfShape.OVAL, 5, 50, 5, 5).toString());
+    assertEquals("oval changes radius from 10 and 5 to 5 from time t=5 to t=50",
+        new Scale(oval, TypeOfShape.OVAL, 5, 50, 5, 5).toString());
   }
 
   @Test

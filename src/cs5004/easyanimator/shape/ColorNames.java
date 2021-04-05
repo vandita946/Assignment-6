@@ -1,19 +1,24 @@
+/* CS 5004 - Easy Animator - Model
+ * Vandita Attal & Swapnil Mittal
+ */
+
 package cs5004.easyanimator.shape;
+
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * This is an enum for the different colors.
+ */
 public enum ColorNames {
-  RED (Color.RED,"red"),
-  BLUE (Color.BLUE,"blue"),
-  GREEN (Color.GREEN, "green"),
-  BLACK (Color.BLACK, "black"),
-  WHITE (Color.WHITE, "white"),
-  PINK (Color.PINK, "pink"),
-  ORANGE (Color.ORANGE, "orange"),
-  CYAN (Color.CYAN, "cyan"),
-  YELLOW (Color.YELLOW, "yellow");
-
+  RED(Color.RED, "red"),
+  BLUE(Color.BLUE, "blue"),
+  GREEN(Color.GREEN, "green"),
+  BLACK(Color.BLACK, "black"),
+  WHITE(Color.WHITE, "white"),
+  PINK(Color.PINK, "pink"),
+  ORANGE(Color.ORANGE, "orange"),
+  CYAN(Color.CYAN, "cyan"),
+  YELLOW(Color.YELLOW, "yellow");
 
 
   private final Color val;

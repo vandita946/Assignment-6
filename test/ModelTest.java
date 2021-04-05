@@ -1,6 +1,10 @@
-import static org.junit.Assert.*;
+/* CS 5004 - Easy Animator - Model
+ * Vandita Attal & Swapnil Mittal
+ */
 
-import cs5004.easyanimator.animation.TypeOfAnimation;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import cs5004.easyanimator.model.Model;
 import cs5004.easyanimator.model.ModelImpl;
 import cs5004.easyanimator.shape.Oval;
@@ -11,6 +15,9 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This is a class to test the model.
+ */
 public class ModelTest {
 
   private Model easyAnimator;
@@ -61,33 +68,38 @@ public class ModelTest {
       easyAnimator.addChangeColorAnimation(rectangle, 17, 22, Color.BLUE);
       fail("IllegalArgumentException was not thrown.");
     } catch (IllegalArgumentException e) {
-      assertEquals("There is an illegal time overlap with another color change animation.", e.getMessage());
+      assertEquals("There is an illegal time overlap with another color change animation.",
+          e.getMessage());
     }
 
     try {
       easyAnimator.addChangeColorAnimation(rectangle, 17, 20, Color.BLUE);
       fail("IllegalArgumentException was not thrown.");
     } catch (IllegalArgumentException e) {
-      assertEquals("There is an illegal time overlap with another color change animation.", e.getMessage());
+      assertEquals("There is an illegal time overlap with another color change animation.",
+          e.getMessage());
     }
 
     try {
       easyAnimator.addChangeColorAnimation(rectangle, 14, 20, Color.BLUE);
       fail("IllegalArgumentException was not thrown.");
     } catch (IllegalArgumentException e) {
-      assertEquals("There is an illegal time overlap with another color change animation.", e.getMessage());
+      assertEquals("There is an illegal time overlap with another color change animation.",
+          e.getMessage());
     }
     try {
       easyAnimator.addChangeColorAnimation(rectangle, 14, 22, Color.BLUE);
       fail("IllegalArgumentException was not thrown.");
     } catch (IllegalArgumentException e) {
-      assertEquals("There is an illegal time overlap with another color change animation.", e.getMessage());
+      assertEquals("There is an illegal time overlap with another color change animation.",
+          e.getMessage());
     }
     try {
       easyAnimator.addChangeColorAnimation(rectangle, 17, 19, Color.BLUE);
       fail("IllegalArgumentException was not thrown.");
     } catch (IllegalArgumentException e) {
-      assertEquals("There is an illegal time overlap with another color change animation.", e.getMessage());
+      assertEquals("There is an illegal time overlap with another color change animation.",
+          e.getMessage());
     }
   }
 
@@ -108,22 +120,29 @@ public class ModelTest {
     easyAnimator.addMoveAnimation(rectangle, TypeOfShape.RECTANGLE, 15, 20, 1, 1);
     easyAnimator.addChangeColorAnimation(oval, 15, 25, Color.RED);
 
-    assertEquals("R moves from (0,0) to (1,1) from time t=15 to t=20", easyAnimator.toString().split("\n")[6]);
-    assertEquals("O changes from pink to red from time t=15 to t=25", easyAnimator.toString().split("\n")[7]);
-    assertEquals("O changes radius from 10 and 5 to 100 from time t=20 to t=25", easyAnimator.toString().split("\n")[8]);
+    assertEquals("R moves from (0,0) to (1,1) from time t=15 to t=20",
+        easyAnimator.toString().split("\n")[6]);
+    assertEquals("O changes from pink to red from time t=15 to t=25",
+        easyAnimator.toString().split("\n")[7]);
+    assertEquals("O changes radius from 10 and 5 to 100 from time t=20 to t=25",
+        easyAnimator.toString().split("\n")[8]);
   }
 
   @Test
-  public void testGetShapesAtTick(){
+  public void testGetShapesAtTick() {
     //adding animations so it adds to the internal shapeList
     easyAnimator.addScaleAnimation(oval, TypeOfShape.OVAL, 20, 25, 100, 100);
     easyAnimator.addMoveAnimation(rectangle, TypeOfShape.RECTANGLE, 15, 20, 1, 1);
     easyAnimator.addChangeColorAnimation(circle, 15, 25, Color.RED);
 
     assertEquals("[]", easyAnimator.getShapesAtTick(1).toString());
-    assertEquals("[red rectangle R with corner at (0,0), width 10 and height 5]", easyAnimator.getShapesAtTick(13).toString());
-    assertEquals("[pink oval O with center at (50,50), radius 10 and 5, red rectangle R with corner at (0,0), width 10 and height 5, pink oval C with center at (50,50), radius 10 and 10]", easyAnimator.getShapesAtTick(50).toString());
-    assertEquals("[pink oval O with center at (50,50), radius 10 and 5]", easyAnimator.getShapesAtTick(100).toString());
+    assertEquals("[red rectangle R with corner at (0,0), width 10 and height 5]",
+        easyAnimator.getShapesAtTick(13).toString());
+    assertEquals(
+        "[pink oval O with center at (50,50), radius 10 and 5, red rectangle R with corner at (0,0), width 10 and height 5, pink oval C with center at (50,50), radius 10 and 10]",
+        easyAnimator.getShapesAtTick(50).toString());
+    assertEquals("[pink oval O with center at (50,50), radius 10 and 5]",
+        easyAnimator.getShapesAtTick(100).toString());
   }
 
   @Test
@@ -133,15 +152,16 @@ public class ModelTest {
     easyAnimator.addChangeColorAnimation(circle, 15, 25, Color.RED);
 
     assertEquals("Create pink oval O with center at (50,50), radius 10 and 5\n"
-        + "Create red rectangle R with corner at (0,0), width 10 and height 5\n"
-        + "Create pink oval C with center at (50,50), radius 10 and 10\n"
-        + "\n"
-        + "R appears at time t=12 and disappears at time t=90\n"
-        + "O appears at time t=15 and disappears at time t=100\n"
-        + "C appears at time t=15 and disappears at time t=90\n"
-        + "\n"
-        + "R moves from (0,0) to (1,1) from time t=15 to t=20\n"
-        + "C changes from pink to red from time t=15 to t=25\n"
-        + "O changes radius from 10 and 5 to 100 from time t=20 to t=25\n", easyAnimator.toString());
+                 + "Create red rectangle R with corner at (0,0), width 10 and height 5\n"
+                 + "Create pink oval C with center at (50,50), radius 10 and 10\n"
+                 + "\n"
+                 + "R appears at time t=12 and disappears at time t=90\n"
+                 + "O appears at time t=15 and disappears at time t=100\n"
+                 + "C appears at time t=15 and disappears at time t=90\n"
+                 + "\n"
+                 + "R moves from (0,0) to (1,1) from time t=15 to t=20\n"
+                 + "C changes from pink to red from time t=15 to t=25\n"
+                 + "O changes radius from 10 and 5 to 100 from time t=20 to t=25\n",
+        easyAnimator.toString());
   }
 }
