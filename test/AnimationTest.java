@@ -4,6 +4,7 @@ import cs5004.easyanimator.animation.Animation;
 import cs5004.easyanimator.animation.ChangeColor;
 import cs5004.easyanimator.animation.Move;
 import cs5004.easyanimator.animation.Scale;
+import cs5004.easyanimator.animation.TypeOfAnimation;
 import cs5004.easyanimator.shape.Oval;
 import cs5004.easyanimator.shape.Rectangle;
 import cs5004.easyanimator.shape.Shape;
@@ -134,21 +135,21 @@ public class AnimationTest {
   }
 
   @Test
-  public void moveActionStep() {
+  public void testMoveActionStep() {
     assertEquals("red", rectangle.getColor());
     colorChange.actionStep();
     assertEquals("green", rectangle.getColor());
   }
 
   @Test
-  public void getStartingTime() {
+  public void testGetStartingTime() {
     assertEquals(10, move.getStartingTime());
     assertEquals(50, scale.getStartingTime());
     assertEquals(5, colorChange.getStartingTime());
   }
 
   @Test
-  public void getEndingTime() {
+  public void testGetEndingTime() {
     assertEquals(20, move.getEndingTime());
     assertEquals(75, scale.getEndingTime());
     assertEquals(10, colorChange.getEndingTime());
@@ -157,10 +158,43 @@ public class AnimationTest {
   @Test
   public void testToString() {
     assertEquals("oval moves from (50,50) to (70,70) from time t=10 to t=20", move.toString());
-    assertEquals("rectangle changes from red to green from time t=5 to t=10", colorChange.toString());
+    assertEquals("rectangle changes from red to green from time t=5 to t=10",
+        colorChange.toString());
+
+    //rectangle: change both width and height
+    assertEquals(
+        "rectangle changes width from 10 to 20 and height from 5 to 20 from time t=50 to t=75",
+        scale.toString());
+
+    //rectangle: change just width
+    assertEquals("rectangle changes width from 10 to 50 from time t=1 to t=50",
+        new Scale(rectangle, TypeOfShape.RECTANGLE, 1, 50, 50, 5).toString());
+
+    //rectangle: change just height
+    assertEquals("rectangle changes height from 5 to 50 from time t=1 to t=50",
+        new Scale(rectangle, TypeOfShape.RECTANGLE, 1, 50, 10, 50).toString());
+
+    //oval: change both radii to the same radius
+    assertEquals("oval changes radius from 10 and 5 to 50 from time t=5 to t=50", new Scale(oval, TypeOfShape.OVAL, 5, 50, 50, 50).toString());
+
+    //circle: change one radius
+    assertEquals("oval changes radius from 10 to 15 and other radius from 5 to 20 from time t=5 to t=50", new Scale(oval, TypeOfShape.OVAL, 5, 50, 15, 20).toString());
+
+    //oval: change both radii
+    assertEquals("oval changes radius from 10 and 5 to 5 from time t=5 to t=50", new Scale(oval, TypeOfShape.OVAL, 5, 50, 5, 5).toString());
+  }
+
+  @Test
+  public void testGetShape() {
+    assertEquals(rectangle, scale.getShape());
+    assertEquals(oval, move.getShape());
+    assertEquals(rectangle, colorChange.getShape());
   }
 
   @Test
   public void getType() {
+    assertEquals(TypeOfAnimation.MOVE, move.getType());
+    assertEquals(TypeOfAnimation.SCALE, scale.getType());
+    assertEquals(TypeOfAnimation.COLOR, colorChange.getType());
   }
 }

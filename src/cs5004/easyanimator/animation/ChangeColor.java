@@ -2,6 +2,7 @@ package cs5004.easyanimator.animation;
 
 import cs5004.easyanimator.animation.AbstractAnimation;
 import cs5004.easyanimator.animation.TypeOfAnimation;
+import cs5004.easyanimator.shape.ColorNames;
 import cs5004.easyanimator.shape.Shape;
 import java.awt.Color;
 
@@ -24,7 +25,15 @@ public class ChangeColor extends AbstractAnimation {
 
   @Override
   public String toString() {
+    String newColorString = "";
+
+    for (ColorNames c : ColorNames.values()) {
+      if (c.getValue() == newColor) {
+        newColorString = c.getText();
+      }
+    }
+
     return this.shape.getName() + " changes from " + this.shape.getColor() + " to "
-        + this.newColor.toString() + " from time t=" + startingTime + " to t=" + endingTime;
+        + newColorString + " from time t=" + startingTime + " to t=" + endingTime;
   }
 }
