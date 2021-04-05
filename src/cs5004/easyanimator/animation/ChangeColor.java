@@ -1,7 +1,9 @@
+/* CS 5004 - Easy Animator - Model
+ * Vandita Attal & Swapnil Mittal
+ */
+
 package cs5004.easyanimator.animation;
 
-import cs5004.easyanimator.animation.AbstractAnimation;
-import cs5004.easyanimator.animation.TypeOfAnimation;
 import cs5004.easyanimator.shape.ColorNames;
 import cs5004.easyanimator.shape.Shape;
 import java.awt.Color;
@@ -12,9 +14,19 @@ import java.awt.Color;
  */
 public class ChangeColor extends AbstractAnimation {
 
-  private Color newColor;
+  private final Color newColor;
 
-  public ChangeColor(Shape shape, int startingTime, int endingTime, Color newColor) throws IllegalArgumentException{
+  /**
+   * This method is used to change the color of the object.
+   *
+   * @param shape        is the shape of the object.
+   * @param startingTime is the starting time for the color change.
+   * @param endingTime   is the ending time for the color change.
+   * @param newColor     is the new color to change to.
+   * @throws IllegalArgumentException if the entered color is invalid.
+   */
+  public ChangeColor(Shape shape, int startingTime, int endingTime, Color newColor)
+      throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.COLOR);
     if (newColor == null) {
       throw new IllegalArgumentException("New color is null.");
@@ -22,6 +34,9 @@ public class ChangeColor extends AbstractAnimation {
     this.newColor = newColor;
   }
 
+  /**
+   * This step will be used by controller to perform the color change.
+   */
   public void actionStep() {
     shape.changeColor(this.newColor);
   }
@@ -29,14 +44,12 @@ public class ChangeColor extends AbstractAnimation {
   @Override
   public String toString() {
     String newColorString = "";
-
     for (ColorNames c : ColorNames.values()) {
       if (c.getValue() == newColor) {
         newColorString = c.getText();
       }
     }
-
     return this.shape.getName() + " changes from " + this.shape.getColor() + " to "
-        + newColorString + " from time t=" + startingTime + " to t=" + endingTime;
+           + newColorString + " from time t=" + startingTime + " to t=" + endingTime;
   }
 }

@@ -1,10 +1,14 @@
+/* CS 5004 - Easy Animator - Model
+ * Vandita Attal & Swapnil Mittal
+ */
+
 package cs5004.easyanimator.shape;
 
 /**
- * This class represents a 2D point. This point is denoted in Cartesian
- * coordinates as (x,y).
+ * This class represents a 2D point. This point is denoted in Cartesian coordinates as (x,y).
  */
 public class Point2D {
+
   private double x;
   private double y;
 

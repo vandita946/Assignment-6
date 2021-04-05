@@ -1,20 +1,36 @@
+/* CS 5004 - Easy Animator - Model
+ * Vandita Attal & Swapnil Mittal
+ */
+
 package cs5004.easyanimator.shape;
 
 import java.awt.Color;
 
 /**
- * Created by ashesh on 1/26/2017.
+ * This is an abstract class which implements the Shape class.
  */
 public abstract class AbstractShape implements Shape {
 
   protected Point2D reference;
   protected String name;
-  private ColorNames color;
   protected int appearTime;
   protected int disappearTime;
   protected double canvasWidth;
   protected double canvasHeight;
+  private ColorNames color;
 
+  /**
+   * This is the constructor to initialize the given parameters.
+   *
+   * @param reference     is the position reference of the shape.
+   * @param name          is the name of the shape.
+   * @param color         is the color of the shape.
+   * @param canvasWidth   is the canvas width.
+   * @param canvasHeight  is the canvas height.
+   * @param appearTime    is the appear time of the shape.
+   * @param disappearTime is the disappear time of the shape.
+   * @throws IllegalArgumentException is thrown if any input is invalid.
+   */
   public AbstractShape(Point2D reference, String name, Color color, double canvasWidth,
       double canvasHeight, int appearTime, int disappearTime) throws IllegalArgumentException {
 

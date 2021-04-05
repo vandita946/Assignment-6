@@ -1,21 +1,33 @@
+/* CS 5004 - Easy Animator - Model
+ * Vandita Attal & Swapnil Mittal
+ */
+
 package cs5004.easyanimator.animation;
 
-import cs5004.easyanimator.animation.AbstractAnimation;
-import cs5004.easyanimator.animation.TypeOfAnimation;
 import cs5004.easyanimator.shape.Shape;
 import cs5004.easyanimator.shape.TypeOfShape;
 
 /**
- * This class extends the cs5004.easyanimator.animation.AbstractAnimation class and represents the
- * methods needed to scale a shape as part of an animation.
+ * This class extends the AbstractAnimation class and represents the methods needed to scale a shape
+ * as part of an animation.
  */
 public class Scale extends AbstractAnimation {
 
-  private double newWidth;
-  private double newHeight;
-  private TypeOfShape shapeType;
+  private final double newWidth;
+  private final double newHeight;
+  private final TypeOfShape shapeType;
 
-
+  /**
+   * This is the constructor for the scale class.
+   *
+   * @param shape        is the shape to scale.
+   * @param shapeType    is the type of shape.
+   * @param startingTime is the starting time for the scaling.
+   * @param endingTime   is the ending time for the scaling.
+   * @param newWidth     is the new width to scale to.
+   * @param newHeight    is the new height to scale to.
+   * @throws IllegalArgumentException is the exception thrown if given parameters are invalid.
+   */
   public Scale(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime,
       double newWidth, double newHeight)
       throws IllegalArgumentException {
