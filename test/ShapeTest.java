@@ -288,7 +288,9 @@ public class ShapeTest {
 
   @Test
   public void testToString() {
-    //insert test cases
+    assertEquals("black rectangle rectangle with corner at (0,0), width 5 and height 10",rectangle.toString());
+    assertEquals("blue oval oval with center at (250,250), radius 5 and 10",oval.toString());
+    assertEquals("green oval circle with center at (300,300), radius 5 and 5",circle.toString());
   }
 
 }

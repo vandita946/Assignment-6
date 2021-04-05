@@ -103,7 +103,7 @@ public class Oval extends AbstractShape {
 
 
   public String toString() {
-    return String.format("%s oval %s with center at (%.2f,%.2f), radius %.2f %.2f",
+    return String.format("%s oval %s with center at (%.0f,%.0f), radius %.0f and %.0f",
         color.getText(), this.name, this.reference.getX(), this.reference.getY(),
         this.xRadius, this.yRadius);
   }
