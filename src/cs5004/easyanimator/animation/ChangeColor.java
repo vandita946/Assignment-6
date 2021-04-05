@@ -14,8 +14,11 @@ public class ChangeColor extends AbstractAnimation {
 
   private Color newColor;
 
-  public ChangeColor(Shape shape, int startingTime, int endingTime, Color newColor) {
+  public ChangeColor(Shape shape, int startingTime, int endingTime, Color newColor) throws IllegalArgumentException{
     super(shape, startingTime, endingTime, TypeOfAnimation.COLOR);
+    if (newColor == null) {
+      throw new IllegalArgumentException("New color is null.");
+    }
     this.newColor = newColor;
   }
 

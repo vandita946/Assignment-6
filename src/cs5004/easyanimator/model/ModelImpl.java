@@ -27,37 +27,49 @@ public class ModelImpl implements Model {
   public ModelImpl(double canvasWidth, double canvasHeight) {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
-    animationList = new ArrayList<Animation>();
-    shapeList = new ArrayList<Shape>();
+    animationList = new ArrayList<>();
+    shapeList = new ArrayList<>();
   }
 
-  public void addShape(Shape shape) {
+  /**
+   * This function is used to add shape to the canvas.
+   * @param shape is the shape to be added.
+   */
+  private void addShape(Shape shape) {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
     if (!shapeList.contains(shape)) {
       shapeList.add(shape);
-    } else {
-      throw new IllegalArgumentException("Shape already exists in the model.");
     }
   }
 
   public void addChangeColorAnimation(Shape shape, int startingTime, int endingTime,
-      Color newColor) {
+      Color newColor) throws IllegalArgumentException {
+    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.COLOR)) {
+      throw new IllegalArgumentException("There is an illegal time overlap with another color change animation.");
+    }
+
     this.addShape(shape);
     Animation colorChange = new ChangeColor(shape, startingTime, endingTime, newColor);
     animationList.add(colorChange);
   }
 
   public void addScaleAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, double newWidth,
-      double newHeight) {
+      double newHeight) throws IllegalArgumentException {
+    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.SCALE)) {
+      throw new IllegalArgumentException("There is an illegal time overlap with another scale animation.");
+    }
     this.addShape(shape);
     Animation scale = new Scale(shape, type, startingTime, endingTime, newWidth, newHeight);
     animationList.add(scale);
   }
 
   public void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, double toX,
-      double toY) {
+      double toY) throws IllegalArgumentException {
+    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.MOVE)) {
+      throw new IllegalArgumentException("There is an illegal time overlap with another move animation.");
+    }
     this.addShape(shape);
     Animation move = new Move(shape, type, startingTime, endingTime, toX, toY, canvasWidth, canvasHeight);
     animationList.add(move);
@@ -66,21 +78,27 @@ public class ModelImpl implements Model {
   private boolean checkLegalTime(int startingTime, int endingTime, TypeOfAnimation type) {
     for (Animation each : animationList) {
       if (type.equals(each.getType())) {
-        if (startingTime >= each.getStartingTime() && endingTime <= each.getEndingTime()) {
-          return false;
+        if (startingTime <= each.getStartingTime() && endingTime >= each.getEndingTime()) {
+          return true;
+        } else if (startingTime > each.getStartingTime() && endingTime < each.getEndingTime()) {
+          return true;
+        } else if (startingTime > each.getStartingTime() && startingTime < each.getEndingTime()) {
+          return true;
+        } else if (endingTime > each.getStartingTime() && endingTime < each.getEndingTime()) {
+          return true;
         }
       }
     }
-    return true;
+    return false;
+  }
+
+  private void sortShapeList() {
+    Comparator<Shape> comp = Comparator.comparingInt(Shape::getAppearTime);
+    shapeList.sort(comp);
   }
 
   public void sortAnimationList() {
-    Comparator<Animation> comp = new Comparator<Animation>() {
-      @Override
-      public int compare(Animation o1, Animation o2) {
-        return o1.getStartingTime() - o2.getStartingTime();
-      }
-    };
+    Comparator<Animation> comp = Comparator.comparingInt(Animation::getStartingTime);
     animationList.sort(comp);
   }
 
@@ -105,6 +123,7 @@ public class ModelImpl implements Model {
     returnString.append("\n");
 
     // appear and disappear times for loop through the shape list
+    sortShapeList();
     for (Shape s : shapeList) {
       returnString.append(s.getName()).append(" appears at time t=").append(s.getAppearTime())
           .append(" and disappears at time t=").append(s.getDisappearTime()).append("\n");

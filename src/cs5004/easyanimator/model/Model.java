@@ -11,11 +11,6 @@ import java.util.List;
  */
 public interface Model {
 
-  /**
-   * This function is used to add shape to the canvas.
-   * @param shape is the shape to be added.
-   */
-  void addShape(Shape shape);
 
   /**
    * This function is used to change color of an existing shape.
