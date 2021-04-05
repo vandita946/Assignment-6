@@ -140,21 +140,21 @@ public class ShapeTest {
   @Test
   public void testBadChangeDimensions() {
     try {
-      Shape newCircle = circle.changeDimensions(4000, 200);
+      circle.changeDimensions(4000, 200);
       fail("IllegalArgumentException was not called");
     } catch (IllegalArgumentException e) {
       assertEquals("The dimensions of this shape are out of bounds of the canvas.", e.getMessage());
     }
 
     try {
-      Shape newRectangle = rectangle.changeDimensions(-2, 20);
+      rectangle.changeDimensions(-2, 20);
       fail("IllegalArgumentException was not called");
     } catch (IllegalArgumentException e) {
       assertEquals("Shape dimensions cannot be negative or zero.", e.getMessage());
     }
 
     try {
-      Shape newRectangle = rectangle.changeDimensions(20, -3);
+      rectangle.changeDimensions(20, -3);
       fail("IllegalArgumentException was not called");
     } catch (IllegalArgumentException e) {
       assertEquals("Shape dimensions cannot be negative or zero.", e.getMessage());

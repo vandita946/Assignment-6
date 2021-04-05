@@ -11,7 +11,9 @@ import cs5004.easyanimator.shape.Oval;
 import cs5004.easyanimator.shape.Rectangle;
 import cs5004.easyanimator.shape.Shape;
 import cs5004.easyanimator.shape.TypeOfShape;
+
 import java.awt.Color;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -107,11 +109,16 @@ public class ModelTest {
   @Test
   public void testAddScaleAnimation() {
     easyAnimator.addScaleAnimation(rectangle, TypeOfShape.RECTANGLE, 15, 20, 100, 100);
+    String scaleString = easyAnimator.toString().split("\n")[4];
+    assertEquals("R changes width from 10 to 100 and height from 5 to 100 from time t=15 to t=20",
+        scaleString);
   }
 
   @Test
   public void testAddMoveAnimation() {
     easyAnimator.addMoveAnimation(rectangle, TypeOfShape.RECTANGLE, 15, 20, 1, 1);
+    String moveString = easyAnimator.toString().split("\n")[4];
+    assertEquals("R moves from (0,0) to (1,1) from time t=15 to t=20", moveString);
   }
 
   @Test
@@ -152,16 +159,16 @@ public class ModelTest {
     easyAnimator.addChangeColorAnimation(circle, 15, 25, Color.RED);
 
     assertEquals("Create pink oval O with center at (50,50), radius 10 and 5\n"
-                 + "Create red rectangle R with corner at (0,0), width 10 and height 5\n"
-                 + "Create pink oval C with center at (50,50), radius 10 and 10\n"
-                 + "\n"
-                 + "R appears at time t=12 and disappears at time t=90\n"
-                 + "O appears at time t=15 and disappears at time t=100\n"
-                 + "C appears at time t=15 and disappears at time t=90\n"
-                 + "\n"
-                 + "R moves from (0,0) to (1,1) from time t=15 to t=20\n"
-                 + "C changes from pink to red from time t=15 to t=25\n"
-                 + "O changes radius from 10 and 5 to 100 from time t=20 to t=25\n",
+            + "Create red rectangle R with corner at (0,0), width 10 and height 5\n"
+            + "Create pink oval C with center at (50,50), radius 10 and 10\n"
+            + "\n"
+            + "R appears at time t=12 and disappears at time t=90\n"
+            + "O appears at time t=15 and disappears at time t=100\n"
+            + "C appears at time t=15 and disappears at time t=90\n"
+            + "\n"
+            + "R moves from (0,0) to (1,1) from time t=15 to t=20\n"
+            + "C changes from pink to red from time t=15 to t=25\n"
+            + "O changes radius from 10 and 5 to 100 from time t=20 to t=25\n",
         easyAnimator.toString());
   }
 }

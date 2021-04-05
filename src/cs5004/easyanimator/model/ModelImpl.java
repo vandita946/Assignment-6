@@ -22,8 +22,8 @@ import java.util.List;
  */
 public class ModelImpl implements Model {
 
-  private double canvasWidth;
-  private double canvasHeight;
+  private final double canvasWidth;
+  private final double canvasHeight;
   private List<Shape> shapeList;
   private List<Animation> animationList;
 
