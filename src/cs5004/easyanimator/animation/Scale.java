@@ -62,7 +62,7 @@ public class Scale extends AbstractAnimation {
       } else {
         return String.format(
             "%s changes width from %.0f to %.0f and height from %.0f to %.0f from time t=%d to "
-            + "t=%d", shape.getName(), shape.getWidth(), newWidth, shape.getHeight(), newHeight,
+                + "t=%d", shape.getName(), shape.getWidth(), newWidth, shape.getHeight(), newHeight,
             startingTime, endingTime);
       }
     } else {
@@ -81,7 +81,8 @@ public class Scale extends AbstractAnimation {
                 shape.getWidth(), newWidth, startingTime, endingTime);
       } else {
         return String.format(
-            "%s changes radius from %.0f to %.0f and other radius from %.0f to %.0f from time t=%d to t=%d",
+            "%s changes radius from %.0f to %.0f and other radius from %.0f to %.0f from time t=%d "
+                + "to t=%d",
             shape.getName(), shape.getWidth(), newWidth, shape.getHeight(), newHeight, startingTime,
             endingTime);
       }

@@ -146,7 +146,8 @@ public class ModelTest {
     assertEquals("[red rectangle R with corner at (0,0), width 10 and height 5]",
         easyAnimator.getShapesAtTick(13).toString());
     assertEquals(
-        "[pink oval O with center at (50,50), radius 10 and 5, red rectangle R with corner at (0,0), width 10 and height 5, pink oval C with center at (50,50), radius 10 and 10]",
+        "[pink oval O with center at (50,50), radius 10 and 5, red rectangle R with corner at "
+            + "(0,0), width 10 and height 5, pink oval C with center at (50,50), radius 10 and 10]",
         easyAnimator.getShapesAtTick(50).toString());
     assertEquals("[pink oval O with center at (50,50), radius 10 and 5]",
         easyAnimator.getShapesAtTick(100).toString());
