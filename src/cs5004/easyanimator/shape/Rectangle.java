@@ -12,16 +12,17 @@ import java.awt.Color;
  */
 public class Rectangle extends AbstractShape {
 
-  private double width, height;
+  private final double width;
+  private final double height;
   private ColorNames color;
 
   /**
-   * Constructs a rectangle object with the given location of its lower-left corner and dimensions
+   * Constructs a rectangle object with the given location of its lower-left corner and dimensions.
    *
-   * @param x      x coordinate of the lower-left corner of this rectangle
-   * @param y      y coordinate of the lower-left corner of this rectangle
-   * @param width  width of this rectangle
-   * @param height height of this rectangle
+   * @param x      x coordinate of the lower-left corner of this rectangle.
+   * @param y      y coordinate of the lower-left corner of this rectangle.
+   * @param width  width of this rectangle.
+   * @param height height of this rectangle.
    */
   public Rectangle(double x, double y, double width, double height, String name, Color color,
       double canvasWidth, double canvasHeight, int appearTime, int disappearTime) {

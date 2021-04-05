@@ -48,6 +48,7 @@ public class AbstractAnimation implements Animation {
    */
   @Override
   public void actionStep() {
+    //Will be used later.
   }
 
   public int getStartingTime() {

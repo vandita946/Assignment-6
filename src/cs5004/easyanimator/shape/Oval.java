@@ -11,7 +11,8 @@ import java.awt.Color;
  */
 public class Oval extends AbstractShape {
 
-  private double xRadius, yRadius;
+  private final double xRadius;
+  private final double yRadius;
   private ColorNames color;
 
   /**
@@ -45,7 +46,7 @@ public class Oval extends AbstractShape {
   }
 
   /**
-   * This is a class representing an Oval
+   * This is a class representing an Oval.
    *
    * @param x             is the x coordinate of the centre of oval.
    * @param y             is the y coordinate of the centre of oval.
