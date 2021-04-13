@@ -5,12 +5,12 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import cs5004.easyanimator.model.Model;
-import cs5004.easyanimator.model.ModelImpl;
-import cs5004.easyanimator.shape.Oval;
-import cs5004.easyanimator.shape.Rectangle;
-import cs5004.easyanimator.shape.Shape;
-import cs5004.easyanimator.shape.TypeOfShape;
+import cs5004.animator.model.Model;
+import cs5004.animator.model.ModelImpl;
+import cs5004.animator.shape.Oval;
+import cs5004.animator.shape.Rectangle;
+import cs5004.animator.shape.Shape;
+import cs5004.animator.shape.TypeOfShape;
 
 import java.awt.Color;
 

@@ -2,9 +2,9 @@
  * Vandita Attal & Swapnil Mittal
  */
 
-package cs5004.easyanimator.animation;
+package cs5004.animator.animation;
 
-import cs5004.easyanimator.shape.Shape;
+import cs5004.animator.shape.Shape;
 
 /**
  * This class implements the Animation interface and represents a shape and the methods available to

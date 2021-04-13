@@ -5,9 +5,9 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import cs5004.easyanimator.shape.Oval;
-import cs5004.easyanimator.shape.Rectangle;
-import cs5004.easyanimator.shape.Shape;
+import cs5004.animator.shape.Oval;
+import cs5004.animator.shape.Rectangle;
+import cs5004.animator.shape.Shape;
 import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;

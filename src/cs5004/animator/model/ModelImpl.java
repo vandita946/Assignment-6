@@ -2,15 +2,15 @@
  * Vandita Attal & Swapnil Mittal
  */
 
-package cs5004.easyanimator.model;
+package cs5004.animator.model;
 
-import cs5004.easyanimator.animation.Animation;
-import cs5004.easyanimator.animation.ChangeColor;
-import cs5004.easyanimator.animation.Move;
-import cs5004.easyanimator.animation.Scale;
-import cs5004.easyanimator.animation.TypeOfAnimation;
-import cs5004.easyanimator.shape.Shape;
-import cs5004.easyanimator.shape.TypeOfShape;
+import cs5004.animator.animation.Animation;
+import cs5004.animator.animation.ChangeColor;
+import cs5004.animator.animation.Move;
+import cs5004.animator.animation.Scale;
+import cs5004.animator.animation.TypeOfAnimation;
+import cs5004.animator.shape.Shape;
+import cs5004.animator.shape.TypeOfShape;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Comparator;

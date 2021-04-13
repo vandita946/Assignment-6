@@ -2,7 +2,7 @@
  * Vandita Attal & Swapnil Mittal
  */
 
-package cs5004.easyanimator.shape;
+package cs5004.animator.shape;
 
 /**
  * This is an enum class of different types of shapes.

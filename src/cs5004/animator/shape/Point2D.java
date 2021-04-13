@@ -2,7 +2,7 @@
  * Vandita Attal & Swapnil Mittal
  */
 
-package cs5004.easyanimator.shape;
+package cs5004.animator.shape;
 
 /**
  * This class represents a 2D point. This point is denoted in Cartesian coordinates as (x,y).

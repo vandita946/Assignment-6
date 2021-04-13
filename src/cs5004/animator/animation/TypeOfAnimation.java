@@ -2,7 +2,7 @@
  * Vandita Attal & Swapnil Mittal
  */
 
-package cs5004.easyanimator.animation;
+package cs5004.animator.animation;
 
 /**
  * This is an enum class representing types of animations.

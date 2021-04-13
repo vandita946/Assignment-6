@@ -1,4 +1,4 @@
-package cs5004.easyanimator.util;
+package cs5004.animator.util;
 
 import java.util.Objects;
 import java.util.Scanner;

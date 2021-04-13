@@ -2,10 +2,10 @@
  * Vandita Attal & Swapnil Mittal
  */
 
-package cs5004.easyanimator.model;
+package cs5004.animator.model;
 
-import cs5004.easyanimator.shape.Shape;
-import cs5004.easyanimator.shape.TypeOfShape;
+import cs5004.animator.shape.Shape;
+import cs5004.animator.shape.TypeOfShape;
 import java.awt.Color;
 import java.util.List;
 
