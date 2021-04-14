@@ -4,6 +4,7 @@
 
 package cs5004.animator.model;
 
+import cs5004.animator.animation.Animation;
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
 import java.awt.Color;
@@ -66,5 +67,15 @@ public interface Model {
    */
   List<Shape> getShapesAtTick(int tick);
 
+  List<Shape> getShapeList();
 
+  List<Animation> getAnimationList();
+
+  void setCanvasWidth(int newWidth);
+
+  void setCanvasHeight(int newHeight);
+
+  void addShape(Shape shape);
+
+  void updateShapeLedger(String shapeName, String shapeType);
 }

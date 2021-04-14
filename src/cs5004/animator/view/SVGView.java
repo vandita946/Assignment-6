@@ -7,4 +7,9 @@ public class SVGView implements View {
   public void publish() {
 
   }
+
+  @Override
+  public String getDescription() {
+    return null;
+  }
 }

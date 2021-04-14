@@ -6,4 +6,9 @@ public class VisualView implements View {
   public void publish() {
 
   }
+
+  @Override
+  public String getDescription() {
+    return null;
+  }
 }
