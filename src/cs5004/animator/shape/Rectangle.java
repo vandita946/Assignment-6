@@ -26,7 +26,7 @@ public class Rectangle extends AbstractShape {
    */
   public Rectangle(double x, double y, double width, double height, String name, Color color,
       double canvasWidth, double canvasHeight, int appearTime, int disappearTime) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime);
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime, TypeOfShape.RECTANGLE);
 
     if (x + width > canvasWidth || y + height > canvasHeight) {
       throw new IllegalArgumentException(

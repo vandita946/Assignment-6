@@ -24,7 +24,7 @@ public class Oval extends AbstractShape {
    */
   public Oval(double x, double y, double radius, String name, Color color, double canvasWidth,
       double canvasHeight, int appearTime, int disappearTime) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime);
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime, TypeOfShape.OVAL);
 
     if ((x - radius) < 0 || (y - radius) < 0 || (x + radius) > canvasWidth
         || (y + radius) > canvasHeight) {
@@ -61,7 +61,7 @@ public class Oval extends AbstractShape {
    */
   public Oval(double x, double y, double xRadius, double yRadius, String name, Color color,
       double canvasWidth, double canvasHeight, int appearTime, int disappearTime) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime);
+    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime, TypeOfShape.OVAL);
 
     if ((x - xRadius) < 0 || (y - yRadius) < 0 || (x + xRadius) > canvasWidth
         || (y + yRadius) > canvasHeight) {

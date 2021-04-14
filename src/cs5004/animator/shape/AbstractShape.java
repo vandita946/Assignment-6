@@ -18,6 +18,7 @@ public abstract class AbstractShape implements Shape {
   protected double canvasWidth;
   protected double canvasHeight;
   private ColorNames color;
+  protected TypeOfShape type;
 
   /**
    * This is the constructor to initialize the given parameters.
@@ -32,7 +33,7 @@ public abstract class AbstractShape implements Shape {
    * @throws IllegalArgumentException is thrown if any input is invalid.
    */
   public AbstractShape(Point2D reference, String name, Color color, double canvasWidth,
-      double canvasHeight, int appearTime, int disappearTime) throws IllegalArgumentException {
+      double canvasHeight, int appearTime, int disappearTime, TypeOfShape type) throws IllegalArgumentException {
 
     if (canvasHeight < 0 || canvasWidth < 0) {
       throw new IllegalArgumentException("Canvas dimensions cannot be negative.");
@@ -58,6 +59,7 @@ public abstract class AbstractShape implements Shape {
     this.appearTime = appearTime;
     this.canvasHeight = canvasHeight;
     this.canvasWidth = canvasWidth;
+    this.type = type;
   }
 
   @Override
@@ -119,6 +121,11 @@ public abstract class AbstractShape implements Shape {
   @Override
   public int getDisappearTime() {
     return this.disappearTime;
+  }
+
+  @Override
+  public TypeOfShape getTypeOfShape() {
+    return this.type;
   }
 
 }

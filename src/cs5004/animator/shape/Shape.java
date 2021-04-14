@@ -107,4 +107,6 @@ public interface Shape extends Comparable<Shape> {
    * @return an integer.
    */
   int getDisappearTime();
+
+  TypeOfShape getTypeOfShape();
 }

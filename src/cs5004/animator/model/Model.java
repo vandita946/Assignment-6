@@ -78,4 +78,8 @@ public interface Model {
   void addShape(Shape shape);
 
   void updateShapeLedger(String shapeName, String shapeType);
+
+  Shape findShape(String shapeName);
+
+  String getTypeByName(String shapeName);
 }

@@ -16,6 +16,7 @@ import cs5004.animator.util.AnimationBuilder;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +43,15 @@ public final class ModelImpl implements Model {
     this.canvasHeight = canvasHeight;
     animationList = new ArrayList<>();
     shapeList = new ArrayList<>();
+    shapeLedger = new HashMap<>();
+  }
+
+  public void createShape(String shapeName, int x, int y, double width, double height, int startingTime, int endingTime, Color color, TypeOfShape type) {
+    try {
+      updateShapeLedger(shapeName, type.toString());
+    } catch (IllegalArgumentException e) {
+      return;
+    }
   }
 
   /**
@@ -55,6 +65,7 @@ public final class ModelImpl implements Model {
     }
     if (!shapeList.contains(shape)) {
       shapeList.add(shape);
+      updateShapeLedger(shape.getName(), shape.getTypeOfShape().toString());
     }
   }
 
@@ -224,6 +235,19 @@ public final class ModelImpl implements Model {
     return this.shapeList;
   }
 
+  public Shape findShape(String shapeName) {
+    for (Shape s : shapeList) {
+      if (s.getName().equals(shapeName)) {
+        return s;
+      }
+    }
+    throw new IllegalArgumentException("There is no shape with that name.");
+  }
+
+  public String getTypeByName(String shapeName) {
+    return shapeLedger.get(shapeName);
+  }
+
   public List<Animation> getAnimationList() {
     sortAnimationList();
     return this.animationList;
@@ -310,7 +334,19 @@ public final class ModelImpl implements Model {
     @Override
     public AnimationBuilder<Model> addMotion(String name, int t1, int x1, int y1, int w1, int h1,
         int r1, int g1, int b1, int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
-      return null;
+      String shapeType = model.getTypeByName(name);
+      if (x1 != x2 || y1 != y2) {
+        model.addMoveAnimation(shape, shape.getTypeOfShape(), t1, t2, x2, y2);
+      }
+      if (r1 != r2 || g1 != g2 || b1 != b2) {
+        Color newColor = new Color(r2, g2, b2);
+        model.addChangeColorAnimation(shape, t1, t2, newColor);
+      }
+      if (w1 != w2 || h1 != h2) {
+        model.addScaleAnimation(shape, shape.getTypeOfShape(), t1, t2, w2, h2);
+      }
+
+      return this;
     }
   }
 }
