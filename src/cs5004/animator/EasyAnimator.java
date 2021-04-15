@@ -13,7 +13,7 @@ import java.io.IOException;
 public final class EasyAnimator {
 
   public static void main(String[] args) {
-    Model model = new ModelImpl(500, 500);
+    Model model = new ModelImpl();
     AnimationBuilder<Model> builder = new Builder(model);
 
     try {

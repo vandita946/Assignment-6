@@ -71,7 +71,7 @@ public interface Shape extends Comparable<Shape> {
    *
    * @return a string of the color name.
    */
-  String getColor();
+  Color getColor();
 
   /**
    * This is a getter function to get the name of the object.
@@ -109,4 +109,6 @@ public interface Shape extends Comparable<Shape> {
   int getDisappearTime();
 
   TypeOfShape getTypeOfShape();
+
+  void setDisappearTime(int disappearTime);
 }

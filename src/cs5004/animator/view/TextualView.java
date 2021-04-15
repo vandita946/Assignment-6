@@ -68,16 +68,16 @@ public class TextualView implements View {
     return returnString.toString();
   }
 
-  public static void main(String[] args) {
-    Model model = new ModelImpl(500, 500);
-    Shape rectangle = new Rectangle(5, 5, 50, 40, "recty", Color.BLUE, 500, 500, 30, 60);
-    Shape circle = new Oval(20, 20, 5, 5, "cricle", Color.BLUE, 500, 500, 20, 50);
-    model.addMoveAnimation(rectangle, TypeOfShape.RECTANGLE, 30, 37, 10, 12);
-    model.addChangeColorAnimation(circle, 29, 35, Color.GREEN);
-
-    View textual = new TextualView(model, "test1.txt");
-    textual.publish();
-  }
+//  public static void main(String[] args) {
+//    Model model = new ModelImpl(500, 500);
+//    Shape rectangle = new Rectangle(5, 5, 50, 40, "recty", , 500, 500, 30, 60);
+//    Shape circle = new Oval(20, 20, 5, 5, "cricle", Color.BLUE, 500, 500, 20, 50);
+//    model.addMoveAnimation(rectangle, TypeOfShape.RECTANGLE, 30, 37, 10, 12);
+//    model.addChangeColorAnimation(circle, 29, 35, Color.GREEN);
+//
+//    View textual = new TextualView(model, "test1.txt");
+//    textual.publish();
+//  }
 }
 
 

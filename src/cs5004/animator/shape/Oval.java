@@ -13,7 +13,6 @@ public class Oval extends AbstractShape {
 
   private final double xRadius;
   private final double yRadius;
-  private ColorNames color;
 
   /**
    * Construct a circle object using the given parameters.
@@ -22,26 +21,19 @@ public class Oval extends AbstractShape {
    * @param y      y coordinate of the center of this circle
    * @param radius the radius of this circle
    */
-  public Oval(double x, double y, double radius, String name, Color color, double canvasWidth,
-      double canvasHeight, int appearTime, int disappearTime) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime, TypeOfShape.OVAL);
+  public Oval(double x, double y, double radius, String name, int red, int green, int blue, double canvasWidth,
+      double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime) {
+    super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.OVAL);
 
-    if ((x - radius) < 0 || (y - radius) < 0 || (x + radius) > canvasWidth
-        || (y + radius) > canvasHeight) {
+    if ((x - radius) < cornerX || (y - radius) < cornerY || (x + radius) > (cornerX + canvasWidth)
+        || (y + radius) > (cornerY + canvasHeight)) {
       throw new IllegalArgumentException(
           "The dimensions of this shape are out of bounds of the canvas.");
     } else if (radius <= 0) {
       throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
 
-    for (ColorNames c : ColorNames.values()) {
-      if (c.getValue().equals(color)) {
-        this.color = c;
-      }
-    }
-    if (this.color == null) {
-      throw new IllegalArgumentException("Invalid color entered.");
-    }
+//    this.color = new Color(red, green, blue);
     this.xRadius = this.yRadius = radius;
   }
 
@@ -59,25 +51,18 @@ public class Oval extends AbstractShape {
    * @param appearTime    is the appear time for oval.
    * @param disappearTime is the disappear time for oval.
    */
-  public Oval(double x, double y, double xRadius, double yRadius, String name, Color color,
-      double canvasWidth, double canvasHeight, int appearTime, int disappearTime) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime, TypeOfShape.OVAL);
+  public Oval(double x, double y, double xRadius, double yRadius, String name, int red, int green, int blue,
+      double canvasWidth, double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime) {
+    super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.OVAL);
 
-    if ((x - xRadius) < 0 || (y - yRadius) < 0 || (x + xRadius) > canvasWidth
-        || (y + yRadius) > canvasHeight) {
+    if ((x - xRadius) < cornerX || (y - yRadius) < cornerY || (x + xRadius) > (cornerX + canvasWidth)
+        || (y + yRadius) > (cornerY + canvasHeight)) {
       throw new IllegalArgumentException(
           "The dimensions of this shape are out of bounds of the canvas.");
     } else if (xRadius <= 0 || yRadius <= 0) {
       throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
-    for (ColorNames c : ColorNames.values()) {
-      if (c.getValue().equals(color)) {
-        this.color = c;
-      }
-    }
-    if (this.color == null) {
-      throw new IllegalArgumentException("Invalid color entered.");
-    }
+
     this.xRadius = xRadius;
     this.yRadius = yRadius;
   }
@@ -104,7 +89,7 @@ public class Oval extends AbstractShape {
   public Shape changeDimensions(double newXRadius, double newYRadius) {
 
     return new Oval(reference.getX(), reference.getY(), newXRadius, newYRadius, name,
-        color.getValue(), canvasWidth, canvasHeight, appearTime, disappearTime);
+        this.getColor().getRed(), this.getColor().getGreen(), this.getColor().getBlue(), canvasWidth, canvasHeight, cornerX, cornerY,appearTime, disappearTime);
   }
 
   @Override
@@ -119,8 +104,8 @@ public class Oval extends AbstractShape {
 
   @Override
   public String toString() {
-    return String.format("%s oval %s with center at (%.0f,%.0f), radius %.0f and %.0f",
-        color.getText(), this.name, this.reference.getX(), this.reference.getY(),
+    return String.format("RGB(%d,%d,%d) oval %s with center at (%.0f,%.0f), radius %.0f and %.0f",
+        this.getColor().getRed(), this.getColor().getGreen(), this.getColor().getBlue(), this.name, this.reference.getX(), this.reference.getY(),
         this.xRadius, this.yRadius);
   }
 }

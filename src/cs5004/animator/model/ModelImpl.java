@@ -9,6 +9,7 @@ import cs5004.animator.animation.ChangeColor;
 import cs5004.animator.animation.Move;
 import cs5004.animator.animation.Scale;
 import cs5004.animator.animation.TypeOfAnimation;
+import cs5004.animator.shape.Oval;
 import cs5004.animator.shape.Rectangle;
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
@@ -28,6 +29,8 @@ public final class ModelImpl implements Model {
 
   private double canvasWidth;
   private double canvasHeight;
+  private int cornerX;
+  private int cornerY;
   private List<Shape> shapeList;
   private Map<String, String> shapeLedger;
   private List<Animation> animationList;
@@ -38,20 +41,36 @@ public final class ModelImpl implements Model {
    * @param canvasWidth  is the canvas width.
    * @param canvasHeight is the canvas height.
    */
-  public ModelImpl(double canvasWidth, double canvasHeight) {
-    this.canvasWidth = canvasWidth;
-    this.canvasHeight = canvasHeight;
+  public ModelImpl() {
     animationList = new ArrayList<>();
     shapeList = new ArrayList<>();
     shapeLedger = new HashMap<>();
   }
 
-  public void createShape(String shapeName, int x, int y, double width, double height, int startingTime, int endingTime, Color color, TypeOfShape type) {
-    try {
-      updateShapeLedger(shapeName, type.toString());
-    } catch (IllegalArgumentException e) {
-      return;
+  public Shape createShape(String shapeName, String type, int x, int y, double width, double height, int startingTime, int endingTime, int r, int g, int b) {
+    Shape shape = findShape(shapeName);
+    if (shape != null) {
+      if (shape.getDisappearTime() < endingTime) {
+        shape.setDisappearTime(endingTime);
+      }
+      return shape;
     }
+    if (type.equalsIgnoreCase("oval")) {
+      shape = new Oval(x, y, width, height, shapeName, r, g, b, canvasWidth, canvasHeight, cornerX, cornerY, startingTime, endingTime);
+    } else if (type.equalsIgnoreCase("rectangle")) {
+      shape = new Rectangle(x, y, width, height, shapeName, r,g, b, canvasWidth, canvasHeight, cornerX, cornerY, startingTime, endingTime);
+    }
+    this.addShape(shape);
+    return shape;
+  }
+
+  public Shape findShape(String shapeName) {
+    for (Shape s : shapeList) {
+      if (s.getName().equals(shapeName)) {
+        return s;
+      }
+    }
+    return null;
   }
 
   /**
@@ -60,20 +79,18 @@ public final class ModelImpl implements Model {
    * @param shape is the shape to be added.
    */
   public void addShape(Shape shape) {
-    if (shape == null) {
-      throw new IllegalArgumentException("Shape cannot be null.");
-    }
+//    if (shape == null) {
+//      throw new IllegalArgumentException("Shape cannot be null.");
+//    }
     if (!shapeList.contains(shape)) {
       shapeList.add(shape);
-      updateShapeLedger(shape.getName(), shape.getTypeOfShape().toString());
+//      updateShapeLedger(shape.getName(), shape.getTypeOfShape().toString());
     }
   }
 
   public void updateShapeLedger(String shapeName, String shapeType) {
     if (!shapeLedger.containsKey(shapeName)) {
       shapeLedger.put(shapeName, shapeType);
-    } else {
-      throw new IllegalArgumentException("Shape already exists.");
     }
   }
 
@@ -86,15 +103,12 @@ public final class ModelImpl implements Model {
    * @param newColor     is the new color that the color changes to.
    * @throws IllegalArgumentException if given parameters are invalid.
    */
-  public void addChangeColorAnimation(Shape shape, int startingTime, int endingTime,
-      Color newColor) throws IllegalArgumentException {
+  public void addChangeColorAnimation(Shape shape, int startingTime, int endingTime, int red, int green, int blue) throws IllegalArgumentException {
     if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.COLOR)) {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another color change animation.");
     }
-
-    this.addShape(shape);
-    Animation colorChange = new ChangeColor(shape, startingTime, endingTime, newColor);
+    Animation colorChange = new ChangeColor(shape, startingTime, endingTime, red, green, blue);
     animationList.add(colorChange);
   }
 
@@ -116,7 +130,6 @@ public final class ModelImpl implements Model {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another scale animation.");
     }
-    this.addShape(shape);
     Animation scale = new Scale(shape, type, startingTime, endingTime, newWidth, newHeight);
     animationList.add(scale);
   }
@@ -139,9 +152,8 @@ public final class ModelImpl implements Model {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another move animation.");
     }
-    this.addShape(shape);
     Animation move = new Move(shape, type, startingTime, endingTime, toX, toY, canvasWidth,
-        canvasHeight);
+        canvasHeight, cornerX, cornerY);
     animationList.add(move);
   }
 
@@ -235,14 +247,6 @@ public final class ModelImpl implements Model {
     return this.shapeList;
   }
 
-  public Shape findShape(String shapeName) {
-    for (Shape s : shapeList) {
-      if (s.getName().equals(shapeName)) {
-        return s;
-      }
-    }
-    throw new IllegalArgumentException("There is no shape with that name.");
-  }
 
   public String getTypeByName(String shapeName) {
     return shapeLedger.get(shapeName);
@@ -259,6 +263,11 @@ public final class ModelImpl implements Model {
 
   public void setCanvasHeight(int newHeight) {
     this.canvasHeight = newHeight;
+  }
+
+  public void setCornerValues(int x, int y) {
+    this.cornerX = x;
+    this.cornerY = y;
   }
 
   public static final class Builder implements AnimationBuilder<Model> {
@@ -290,6 +299,7 @@ public final class ModelImpl implements Model {
     public AnimationBuilder<Model> setBounds(int x, int y, int width, int height) {
       model.setCanvasWidth(width);
       model.setCanvasHeight(height);
+      model.setCornerValues(x, y);
       return this;
     }
 
@@ -334,13 +344,25 @@ public final class ModelImpl implements Model {
     @Override
     public AnimationBuilder<Model> addMotion(String name, int t1, int x1, int y1, int w1, int h1,
         int r1, int g1, int b1, int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
+
+      //inside the add animation method of each type of animation, we have create shape
+      // that is only IF the shape doesn't exist in the model already
+
+      //createShape method : checks if the shape exists in our shapeList/shapeLedger and then creates the shape if it doesn't exist
+      //model.createShape() then model.addMove
+
+
+      //1. get the shape type by searching in the shapeLedger (getTypeByName method)
+      //2. createShape call and pass shape object into add___Animation method as per before.
+
       String shapeType = model.getTypeByName(name);
+      Shape shape = model.createShape(name, shapeType, x1, y1, w1, h1, t1, t2, r1, g1, b1);
       if (x1 != x2 || y1 != y2) {
         model.addMoveAnimation(shape, shape.getTypeOfShape(), t1, t2, x2, y2);
       }
       if (r1 != r2 || g1 != g2 || b1 != b2) {
         Color newColor = new Color(r2, g2, b2);
-        model.addChangeColorAnimation(shape, t1, t2, newColor);
+        model.addChangeColorAnimation(shape, t1, t2, r2, g2, b2);
       }
       if (w1 != w2 || h1 != h2) {
         model.addScaleAnimation(shape, shape.getTypeOfShape(), t1, t2, w2, h2);
