@@ -17,26 +17,31 @@ public abstract class AbstractShape implements Shape {
   protected int disappearTime;
   protected double canvasWidth;
   protected double canvasHeight;
-  private ColorNames color;
+  protected double cornerX;
+  protected double cornerY;
+  private Color color;
+  protected TypeOfShape type;
 
   /**
    * This is the constructor to initialize the given parameters.
    *
    * @param reference     is the position reference of the shape.
    * @param name          is the name of the shape.
-   * @param color         is the color of the shape.
+   * @param red           is the red color value of the shape.
+   * @param green         is the green color value of the shape.
+   * @param blue          is the blue color value of the shape.
    * @param canvasWidth   is the canvas width.
    * @param canvasHeight  is the canvas height.
    * @param appearTime    is the appear time of the shape.
    * @param disappearTime is the disappear time of the shape.
    * @throws IllegalArgumentException is thrown if any input is invalid.
    */
-  public AbstractShape(Point2D reference, String name, Color color, double canvasWidth,
-      double canvasHeight, int appearTime, int disappearTime) throws IllegalArgumentException {
+  public AbstractShape(Point2D reference, String name, int red, int green, int blue,
+      double canvasWidth,
+      double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime, TypeOfShape type)
+      throws IllegalArgumentException {
 
-    if (canvasHeight < 0 || canvasWidth < 0) {
-      throw new IllegalArgumentException("Canvas dimensions cannot be negative.");
-    } else if (reference.getX() > canvasWidth || reference.getY() > canvasHeight) {
+    if (reference.getX() > (canvasWidth + cornerX) || reference.getY() < cornerY || reference.getX() < cornerX || reference.getY() > (cornerY + canvasHeight)) {
       throw new IllegalArgumentException("Object cannot be placed outside the canvas.");
     }
 
@@ -44,20 +49,17 @@ public abstract class AbstractShape implements Shape {
       throw new IllegalArgumentException("Appear or disappear time is invalid.");
     }
 
-    for (ColorNames c : ColorNames.values()) {
-      if (c.getValue().equals(color)) {
-        this.color = c;
-      }
-    }
-    if (this.color == null) {
-      throw new IllegalArgumentException("Invalid color entered.");
-    }
+
+    this.color = new Color(red, green, blue);
     this.reference = reference;
     this.name = name;
     this.disappearTime = disappearTime;
     this.appearTime = appearTime;
     this.canvasHeight = canvasHeight;
     this.canvasWidth = canvasWidth;
+    this.cornerX = cornerX;
+    this.cornerY = cornerY;
+    this.type = type;
   }
 
   @Override
@@ -94,21 +96,12 @@ public abstract class AbstractShape implements Shape {
 
   @Override
   public void changeColor(Color newColor) {
-    ColorNames temp = null;
-    for (ColorNames c : ColorNames.values()) {
-      if (c.getValue().equals(newColor)) {
-        temp = c;
-      }
-    }
-    if (temp == null) {
-      throw new IllegalArgumentException("Invalid color entered.");
-    }
-    this.color = temp;
+    this.color = newColor;
   }
 
   @Override
-  public String getColor() {
-    return this.color.getText();
+  public Color getColor() {
+    return this.color;
   }
 
   @Override
@@ -119,6 +112,16 @@ public abstract class AbstractShape implements Shape {
   @Override
   public int getDisappearTime() {
     return this.disappearTime;
+  }
+
+  @Override
+  public TypeOfShape getTypeOfShape() {
+    return this.type;
+  }
+
+  @Override
+  public void setDisappearTime(int disappearTime) {
+    this.disappearTime = disappearTime;
   }
 
 }

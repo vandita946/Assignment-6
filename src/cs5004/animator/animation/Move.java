@@ -31,16 +31,16 @@ public class Move extends AbstractAnimation {
    *                                  given criteria.
    */
   public Move(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime, double toX,
-      double toY, double canvasWidth, double canvasHeight) throws IllegalArgumentException {
+      double toY, double canvasWidth, double canvasHeight, double cornerX, double cornerY) throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.MOVE);
 
     if (canvasHeight < 0 || canvasWidth < 0) {
       throw new IllegalArgumentException("Canvas dimensions cannot be negative.");
-    } else if (toX < 0 || toX > canvasWidth || toX + shape.getWidth() > canvasWidth || (
-        shapeType.equals(TypeOfShape.OVAL) && (toX - shape.getWidth() < 0))) {
+    } else if (toX < cornerX || toX > (cornerX + canvasWidth) || toX + shape.getWidth() > (cornerX + canvasWidth) || (
+        shapeType.equals(TypeOfShape.OVAL) && (toX - shape.getWidth() < cornerX))) {
       throw new IllegalArgumentException("The new x coordinate pushes the shape out of bounds.");
-    } else if (toY < 0 || toY > canvasHeight || toY + shape.getHeight() > canvasHeight || (
-        shapeType.equals(TypeOfShape.OVAL) && (toY - shape.getHeight() < 0))) {
+    } else if (toY < cornerY || toY > (cornerY + canvasHeight) || toY + shape.getHeight() > (cornerY + canvasHeight) || (
+        shapeType.equals(TypeOfShape.OVAL) && (toY - shape.getHeight() < cornerY))) {
       throw new IllegalArgumentException("The new y coordinate pushes the shape out of bounds.");
     }
 

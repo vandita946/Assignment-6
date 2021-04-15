@@ -4,6 +4,7 @@
 
 package cs5004.animator.model;
 
+import cs5004.animator.animation.Animation;
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
 import java.awt.Color;
@@ -24,7 +25,7 @@ public interface Model {
    * @param newColor     is the new color that the color changes to.
    */
   void addChangeColorAnimation(Shape shape, int startingTime, int endingTime,
-      Color newColor);
+      int red, int green, int blue);
 
   /**
    * This function is used to scale the object(i.e. change it's width and height).
@@ -66,5 +67,23 @@ public interface Model {
    */
   List<Shape> getShapesAtTick(int tick);
 
+  List<Shape> getShapeList();
 
+  List<Animation> getAnimationList();
+
+  void setCanvasWidth(int newWidth);
+
+  void setCanvasHeight(int newHeight);
+
+  void addShape(Shape shape);
+
+  void updateShapeLedger(String shapeName, String shapeType);
+
+  Shape findShape(String shapeName);
+
+  String getTypeByName(String shapeName);
+
+  Shape createShape(String shapeName, String type, int x, int y, double width, double height, int startingTime, int endingTime, int r, int g, int b);
+
+  void setCornerValues(int x, int y);
 }

@@ -14,7 +14,7 @@ import java.awt.Color;
  */
 public class ChangeColor extends AbstractAnimation {
 
-  private final Color newColor;
+  private Color newColor;
 
   /**
    * This method is used to change the color of the object.
@@ -25,13 +25,10 @@ public class ChangeColor extends AbstractAnimation {
    * @param newColor     is the new color to change to.
    * @throws IllegalArgumentException if the entered color is invalid.
    */
-  public ChangeColor(Shape shape, int startingTime, int endingTime, Color newColor)
+  public ChangeColor(Shape shape, int startingTime, int endingTime, int red, int green, int blue)
       throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.COLOR);
-    if (newColor == null) {
-      throw new IllegalArgumentException("New color is null.");
-    }
-    this.newColor = newColor;
+    this.newColor = new Color(red, green, blue);
   }
 
   /**
@@ -43,13 +40,8 @@ public class ChangeColor extends AbstractAnimation {
 
   @Override
   public String toString() {
-    String newColorString = "";
-    for (ColorNames c : ColorNames.values()) {
-      if (c.getValue() == newColor) {
-        newColorString = c.getText();
-      }
-    }
-    return this.shape.getName() + " changes from " + this.shape.getColor() + " to "
-           + newColorString + " from time t=" + startingTime + " to t=" + endingTime;
+    return String.format("%s changes from RGB(%d,%d,%d) to RGB(%d,%d,%d) from time t=%d to t=%d", this.shape.getName(), this.shape.getColor().getRed(),
+        this.shape.getColor().getGreen(), this.shape.getColor().getBlue(),
+           newColor.getRed(), newColor.getGreen(), newColor.getBlue(), startingTime, endingTime);
   }
 }

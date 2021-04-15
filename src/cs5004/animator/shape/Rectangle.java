@@ -14,34 +14,26 @@ public class Rectangle extends AbstractShape {
 
   private final double width;
   private final double height;
-  private ColorNames color;
 
   /**
    * Constructs a rectangle object with the given location of its lower-left corner and dimensions.
    *
-   * @param x      x coordinate of the lower-left corner of this rectangle.
-   * @param y      y coordinate of the lower-left corner of this rectangle.
+   * @param x      x coordinate of the top-left corner of this rectangle.
+   * @param y      y coordinate of the top-left corner of this rectangle.
    * @param width  width of this rectangle.
    * @param height height of this rectangle.
    */
-  public Rectangle(double x, double y, double width, double height, String name, Color color,
-      double canvasWidth, double canvasHeight, int appearTime, int disappearTime) {
-    super(new Point2D(x, y), name, color, canvasWidth, canvasHeight, appearTime, disappearTime);
+  public Rectangle(double x, double y, double width, double height, String name, int red, int green, int blue,
+      double canvasWidth, double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime) {
+    super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.RECTANGLE);
 
-    if (x + width > canvasWidth || y + height > canvasHeight) {
+    if (x + width > (cornerX + canvasWidth) || y + height > (canvasHeight + cornerY)) {
       throw new IllegalArgumentException(
           "The dimensions of this shape are out of bounds of the canvas.");
     } else if (width <= 0 || height <= 0) {
       throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
-    for (ColorNames c : ColorNames.values()) {
-      if (c.getValue().equals(color)) {
-        this.color = c;
-      }
-    }
-    if (this.color == null) {
-      throw new IllegalArgumentException("Invalid color entered.");
-    }
+
     this.width = width;
     this.height = height;
   }
@@ -61,8 +53,10 @@ public class Rectangle extends AbstractShape {
     return new Rectangle(
         this.reference.getX(), this.reference.getY(),
         newWidth, newHeight,
-        name, color.getValue(),
+        name, this.getColor().getRed(),
+        this.getColor().getGreen(), this.getColor().getBlue(),
         canvasWidth, canvasHeight,
+        cornerX, cornerY,
         appearTime, disappearTime
     );
   }
@@ -81,8 +75,8 @@ public class Rectangle extends AbstractShape {
   @Override
   public String toString() {
 
-    return String.format("%s rectangle %s with corner at (%.0f,%.0f), width %.0f and height %.0f",
-        this.color.getText(), this.name, this.reference.getX(), this.reference.getY(),
+    return String.format("RGB(%d,%d,%d) rectangle %s with corner at (%.0f,%.0f), width %.0f and height %.0f",
+        this.getColor().getRed(), this.getColor().getGreen(), this.getColor().getBlue(), this.name, this.reference.getX(), this.reference.getY(),
         this.width, this.height);
   }
 }
