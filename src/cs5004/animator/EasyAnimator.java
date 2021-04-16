@@ -18,12 +18,11 @@ public final class EasyAnimator {
 
     try {
       model = AnimationReader.parseFile(new FileReader("EasyAnimatorViewStarter_v1/code/toh-3.txt"), builder);
-      System.out.println(model);
     } catch (IOException e) {
       System.out.println(e.getMessage());
     }
 
-    View view = ViewFactory.createView("text", model, "output-toh3.txt");
+    View view = ViewFactory.createView("svg", model, "output-toh3.svg",2);
     view.publish();
   }
 }

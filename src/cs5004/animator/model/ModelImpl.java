@@ -9,7 +9,7 @@ import cs5004.animator.animation.ChangeColor;
 import cs5004.animator.animation.Move;
 import cs5004.animator.animation.Scale;
 import cs5004.animator.animation.TypeOfAnimation;
-import cs5004.animator.shape.Oval;
+import cs5004.animator.shape.Ellipse;
 import cs5004.animator.shape.Rectangle;
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
@@ -20,6 +20,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * This class implements the Model interface. It stores the shapes and animations in an animator and
@@ -56,7 +57,7 @@ public final class ModelImpl implements Model {
       return shape;
     }
     if (type.equalsIgnoreCase("oval")) {
-      shape = new Oval(x, y, width, height, shapeName, r, g, b, canvasWidth, canvasHeight, cornerX, cornerY, startingTime, endingTime);
+      shape = new Ellipse(x, y, width, height, shapeName, r, g, b, canvasWidth, canvasHeight, cornerX, cornerY, startingTime, endingTime);
     } else if (type.equalsIgnoreCase("rectangle")) {
       shape = new Rectangle(x, y, width, height, shapeName, r,g, b, canvasWidth, canvasHeight, cornerX, cornerY, startingTime, endingTime);
     }
@@ -255,6 +256,20 @@ public final class ModelImpl implements Model {
   public List<Animation> getAnimationList() {
     sortAnimationList();
     return this.animationList;
+  }
+
+  public double getCanvasWidth() {
+    return this.canvasWidth;
+  }
+
+  public double getCanvasHeight() {
+    return this.canvasHeight;
+  }
+
+  @Override
+  public List<Animation> getAnimationsByShape(Shape shape) {
+    return animationList.stream().filter(a-> a.getShape().equals(shape)).collect(
+        Collectors.toList());
   }
 
   public void setCanvasWidth(int newWidth) {

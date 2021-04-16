@@ -7,7 +7,7 @@
 //
 //import cs5004.animator.model.Model;
 //import cs5004.animator.model.ModelImpl;
-//import cs5004.animator.shape.Oval;
+//import cs5004.animator.shape.Ellipse;
 //import cs5004.animator.shape.Rectangle;
 //import cs5004.animator.shape.Shape;
 //import cs5004.animator.shape.TypeOfShape;
@@ -29,8 +29,8 @@
 //
 //  @Before
 //  public void setUp() {
-//    circle = new Oval(50, 50, 10, 10, "C", Color.PINK, 500, 500, 15, 90);
-//    oval = new Oval(50, 50, 10, 5, "O", Color.PINK, 1000, 1000, 15, 100);
+//    circle = new Ellipse(50, 50, 10, 10, "C", Color.PINK, 500, 500, 15, 90);
+//    oval = new Ellipse(50, 50, 10, 5, "O", Color.PINK, 1000, 1000, 15, 100);
 //    rectangle = new Rectangle(0, 0, 10, 5, "R", Color.RED, 1000, 1000, 12, 90);
 //    easyAnimator = new ModelImpl(1000, 1000);
 //  }

@@ -6,7 +6,10 @@ package cs5004.animator.animation;
 
 import cs5004.animator.shape.ColorNames;
 import cs5004.animator.shape.Shape;
+import cs5004.animator.shape.TypeOfShape;
 import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class extends the AbstractAnimation class and represents the methods needed to change the
@@ -38,10 +41,21 @@ public class ChangeColor extends AbstractAnimation {
     shape.changeColor(this.newColor);
   }
 
+
+
   @Override
   public String toString() {
     return String.format("%s changes from RGB(%d,%d,%d) to RGB(%d,%d,%d) from time t=%d to t=%d", this.shape.getName(), this.shape.getColor().getRed(),
         this.shape.getColor().getGreen(), this.shape.getColor().getBlue(),
            newColor.getRed(), newColor.getGreen(), newColor.getBlue(), startingTime, endingTime);
+  }
+
+  @Override
+  public Map<String, String[]> getChanges() {
+    Map<String, String[]> changes = new HashMap<>();
+    changes.put("fill", new String[]{String.format("rgb(%d,%d,%d)", shape.getColor().getRed(), shape.getColor().getGreen(), shape.getColor().getBlue()),
+    String.format("rgb(%d,%d,%d)", newColor.getRed(), newColor.getGreen(), newColor.getBlue())});
+
+    return changes;
   }
 }

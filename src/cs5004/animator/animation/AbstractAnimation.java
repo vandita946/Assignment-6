@@ -5,12 +5,15 @@
 package cs5004.animator.animation;
 
 import cs5004.animator.shape.Shape;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class implements the Animation interface and represents a shape and the methods available to
  * it to make it an animation.
  */
-public class AbstractAnimation implements Animation {
+public abstract class AbstractAnimation implements Animation {
 
   protected Shape shape;
   protected int startingTime;
@@ -66,4 +69,8 @@ public class AbstractAnimation implements Animation {
   public TypeOfAnimation getType() {
     return this.type;
   }
+
+
+
+
 }

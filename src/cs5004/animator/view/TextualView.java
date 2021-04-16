@@ -2,12 +2,7 @@ package cs5004.animator.view;
 
 import cs5004.animator.animation.Animation;
 import cs5004.animator.model.Model;
-import cs5004.animator.model.ModelImpl;
-import cs5004.animator.shape.Oval;
-import cs5004.animator.shape.Rectangle;
 import cs5004.animator.shape.Shape;
-import cs5004.animator.shape.TypeOfShape;
-import java.awt.Color;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -71,7 +66,7 @@ public class TextualView implements View {
 //  public static void main(String[] args) {
 //    Model model = new ModelImpl(500, 500);
 //    Shape rectangle = new Rectangle(5, 5, 50, 40, "recty", , 500, 500, 30, 60);
-//    Shape circle = new Oval(20, 20, 5, 5, "cricle", Color.BLUE, 500, 500, 20, 50);
+//    Shape circle = new Ellipse(20, 20, 5, 5, "cricle", Color.BLUE, 500, 500, 20, 50);
 //    model.addMoveAnimation(rectangle, TypeOfShape.RECTANGLE, 30, 37, 10, 12);
 //    model.addChangeColorAnimation(circle, 29, 35, Color.GREEN);
 //
