@@ -35,6 +35,7 @@ public final class ModelImpl implements Model {
   private List<Shape> shapeList;
   private Map<String, String> shapeLedger;
   private List<Animation> animationList;
+  private int ticksPerSecond;
 
   /**
    * This is the constructor to initialize the given parameters.
@@ -48,18 +49,35 @@ public final class ModelImpl implements Model {
     shapeLedger = new HashMap<>();
   }
 
+  private double getMilliseconds(double t) {
+    if (t != 1) {
+      return ((double)t/ticksPerSecond) * 1000;
+    }
+    return t*1000;
+  }
+
+  private int getOffsetX(int x){
+    return x - cornerX;
+  }
+
+  private int getOffsetY(int y) {
+    return y - cornerY;
+  }
+
   public Shape createShape(String shapeName, String type, int x, int y, double width, double height, int startingTime, int endingTime, int r, int g, int b) {
     Shape shape = findShape(shapeName);
+
     if (shape != null) {
-      if (shape.getDisappearTime() < endingTime) {
-        shape.setDisappearTime(endingTime);
+      if (shape.getDisappearTime() < getMilliseconds(endingTime)) {
+        shape.setDisappearTime(getMilliseconds(endingTime));
       }
       return shape;
     }
-    if (type.equalsIgnoreCase("oval")) {
-      shape = new Ellipse(x, y, width, height, shapeName, r, g, b, canvasWidth, canvasHeight, cornerX, cornerY, startingTime, endingTime);
+
+    if (type.equalsIgnoreCase("ellipse")) {
+      shape = new Ellipse(getOffsetX(x), getOffsetY(y), width, height, shapeName, r, g, b, canvasWidth, canvasHeight, cornerX, cornerY, getMilliseconds(startingTime), getMilliseconds(endingTime));
     } else if (type.equalsIgnoreCase("rectangle")) {
-      shape = new Rectangle(x, y, width, height, shapeName, r,g, b, canvasWidth, canvasHeight, cornerX, cornerY, startingTime, endingTime);
+      shape = new Rectangle(getOffsetX(x), getOffsetY(y), width, height, shapeName, r,g, b, canvasWidth, canvasHeight, cornerX, cornerY, getMilliseconds(startingTime), getMilliseconds(endingTime));
     }
     this.addShape(shape);
     return shape;
@@ -105,11 +123,11 @@ public final class ModelImpl implements Model {
    * @throws IllegalArgumentException if given parameters are invalid.
    */
   public void addChangeColorAnimation(Shape shape, int startingTime, int endingTime, int red, int green, int blue) throws IllegalArgumentException {
-    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.COLOR)) {
+    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.COLOR, shape)) {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another color change animation.");
     }
-    Animation colorChange = new ChangeColor(shape, startingTime, endingTime, red, green, blue);
+    Animation colorChange = new ChangeColor(shape, getMilliseconds(startingTime), getMilliseconds(endingTime), red, green, blue);
     animationList.add(colorChange);
   }
 
@@ -127,11 +145,11 @@ public final class ModelImpl implements Model {
   public void addScaleAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime,
       double newWidth,
       double newHeight) throws IllegalArgumentException {
-    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.SCALE)) {
+    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.SCALE, shape)) {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another scale animation.");
     }
-    Animation scale = new Scale(shape, type, startingTime, endingTime, newWidth, newHeight);
+    Animation scale = new Scale(shape, type, getMilliseconds(startingTime), getMilliseconds(endingTime), newWidth, newHeight);
     animationList.add(scale);
   }
 
@@ -147,13 +165,14 @@ public final class ModelImpl implements Model {
    * @throws IllegalArgumentException if given parameters are invalid.
    */
   public void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime,
-      double toX,
-      double toY) throws IllegalArgumentException {
-    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.MOVE)) {
+      int toX,
+      int toY) throws IllegalArgumentException {
+    if (checkLegalTime(getMilliseconds(startingTime), getMilliseconds(endingTime), TypeOfAnimation.MOVE, shape)) {
+      System.out.println(getMilliseconds(startingTime) + " " + getMilliseconds(endingTime));
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another move animation.");
     }
-    Animation move = new Move(shape, type, startingTime, endingTime, toX, toY, canvasWidth,
+    Animation move = new Move(shape, type, getMilliseconds(startingTime), getMilliseconds(endingTime), getOffsetX(toX), getOffsetY(toY), canvasWidth,
         canvasHeight, cornerX, cornerY);
     animationList.add(move);
   }
@@ -166,16 +185,16 @@ public final class ModelImpl implements Model {
    * @param type         is the type of animation.
    * @return a boolean.
    */
-  private boolean checkLegalTime(int startingTime, int endingTime, TypeOfAnimation type) {
+  private boolean checkLegalTime(double startingTime, double endingTime, TypeOfAnimation type, Shape shape) {
     for (Animation each : animationList) {
-      if (type.equals(each.getType())) {
-        if (startingTime <= each.getStartingTime() && endingTime >= each.getEndingTime()) {
+      if (type.equals(each.getType()) && shape.equals(each.getShape())) {
+        if (getMilliseconds(startingTime) <= each.getStartingTime() && getMilliseconds(endingTime) >= each.getEndingTime()) {
           return true;
-        } else if (startingTime > each.getStartingTime() && endingTime < each.getEndingTime()) {
+        } else if (getMilliseconds(startingTime) > each.getStartingTime() && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
-        } else if (startingTime > each.getStartingTime() && startingTime < each.getEndingTime()) {
+        } else if (getMilliseconds(startingTime) > each.getStartingTime() && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
-        } else if (endingTime > each.getStartingTime() && endingTime < each.getEndingTime()) {
+        } else if (getMilliseconds(endingTime) > each.getStartingTime() && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         }
       }
@@ -187,7 +206,18 @@ public final class ModelImpl implements Model {
    * This is a helper function to sort our list according to appear time.
    */
   private void sortShapeList() {
-    Comparator<Shape> comp = Comparator.comparingInt(Shape::getAppearTime);
+    Comparator<Shape> comp = new Comparator<Shape>() {
+      @Override
+      public int compare(Shape o1, Shape o2) {
+        if (o1.getAppearTime() > o2.getAppearTime()) {
+          return 1;
+        } else if (o2.getAppearTime() > o1.getAppearTime()) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    };
     shapeList.sort(comp);
   }
 
@@ -195,7 +225,18 @@ public final class ModelImpl implements Model {
    * This is a helper function to sort our list according to starting time.
    */
   public void sortAnimationList() {
-    Comparator<Animation> comp = Comparator.comparingInt(Animation::getStartingTime);
+    Comparator<Animation> comp = new Comparator<Animation>() {
+      @Override
+      public int compare(Animation o1, Animation o2) {
+        if (o1.getStartingTime() > o2.getStartingTime()) {
+          return 1;
+        } else if (o2.getStartingTime() > o1.getStartingTime()) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    };
     animationList.sort(comp);
   }
 
@@ -270,6 +311,21 @@ public final class ModelImpl implements Model {
   public List<Animation> getAnimationsByShape(Shape shape) {
     return animationList.stream().filter(a-> a.getShape().equals(shape)).collect(
         Collectors.toList());
+  }
+
+  @Override
+  public void setTicksPerSecond(int ticksPerSecond) {
+    this.ticksPerSecond = ticksPerSecond;
+  }
+
+  @Override
+  public double getCornerX() {
+    return this.cornerX;
+  }
+
+  @Override
+  public double getCornerY() {
+    return this.cornerY;
   }
 
   public void setCanvasWidth(int newWidth) {

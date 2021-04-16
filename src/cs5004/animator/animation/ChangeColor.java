@@ -4,11 +4,11 @@
 
 package cs5004.animator.animation;
 
-import cs5004.animator.shape.ColorNames;
 import cs5004.animator.shape.Shape;
-import cs5004.animator.shape.TypeOfShape;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,13 +22,13 @@ public class ChangeColor extends AbstractAnimation {
   /**
    * This method is used to change the color of the object.
    *
+   * @param newColor     is the new color to change to.
    * @param shape        is the shape of the object.
    * @param startingTime is the starting time for the color change.
    * @param endingTime   is the ending time for the color change.
-   * @param newColor     is the new color to change to.
    * @throws IllegalArgumentException if the entered color is invalid.
    */
-  public ChangeColor(Shape shape, int startingTime, int endingTime, int red, int green, int blue)
+  public ChangeColor(Shape shape, double startingTime, double endingTime, int red, int green, int blue)
       throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.COLOR);
     this.newColor = new Color(red, green, blue);
@@ -51,9 +51,9 @@ public class ChangeColor extends AbstractAnimation {
   }
 
   @Override
-  public Map<String, String[]> getChanges() {
-    Map<String, String[]> changes = new HashMap<>();
-    changes.put("fill", new String[]{String.format("rgb(%d,%d,%d)", shape.getColor().getRed(), shape.getColor().getGreen(), shape.getColor().getBlue()),
+  public List<String[]> getChanges() {
+    List<String[]> changes = new ArrayList<>();
+    changes.add(new String[]{"fill", String.format("rgb(%d,%d,%d)", shape.getColor().getRed(), shape.getColor().getGreen(), shape.getColor().getBlue()),
     String.format("rgb(%d,%d,%d)", newColor.getRed(), newColor.getGreen(), newColor.getBlue())});
 
     return changes;

@@ -32,7 +32,7 @@ public class Scale extends AbstractAnimation {
    * @param newHeight    is the new height to scale to.
    * @throws IllegalArgumentException is the exception thrown if given parameters are invalid.
    */
-  public Scale(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime,
+  public Scale(Shape shape, TypeOfShape shapeType, double startingTime, double endingTime,
       double newWidth, double newHeight)
       throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.SCALE);
@@ -52,20 +52,20 @@ public class Scale extends AbstractAnimation {
   }
 
   @Override
-  public Map<String, String[]> getChanges() {
-    Map<String, String[]> changes = new HashMap<>();
+  public List<String[]> getChanges() {
+    List<String[]> changes = new ArrayList<>();
     if (shape.getWidth() != newWidth) {
       if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
-        changes.put("width", new String[]{String.valueOf(shape.getWidth()), String.valueOf(newWidth)});
+        changes.add(new String[]{"width", String.valueOf(shape.getWidth()), String.valueOf(newWidth)});
       } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
-        changes.put("cx", new String[]{String.valueOf(shape.getWidth()), String.valueOf(newWidth)});
+        changes.add(new String[]{"cx", String.valueOf(shape.getWidth()), String.valueOf(newWidth)});
       }
     }
     if (shape.getHeight() != newHeight) {
       if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
-        changes.put("y", new String[]{String.valueOf(shape.getHeight()), String.valueOf(newHeight)});
+        changes.add(new String[]{"height", String.valueOf(shape.getHeight()), String.valueOf(newHeight)});
       } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
-        changes.put("cy", new String[]{String.valueOf(shape.getHeight()), String.valueOf(newHeight)});
+        changes.add(new String[]{"cy", String.valueOf(shape.getHeight()), String.valueOf(newHeight)});
       }
     }
     return changes;

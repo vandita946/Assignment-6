@@ -34,19 +34,24 @@ public class Move extends AbstractAnimation {
    * @throws IllegalArgumentException if any of the given arguments is invalid or does not meet the
    *                                  given criteria.
    */
-  public Move(Shape shape, TypeOfShape shapeType, int startingTime, int endingTime, double toX,
+  public Move(Shape shape, TypeOfShape shapeType, double startingTime, double endingTime, double toX,
       double toY, double canvasWidth, double canvasHeight, double cornerX, double cornerY) throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.MOVE);
 
     if (canvasHeight < 0 || canvasWidth < 0) {
       throw new IllegalArgumentException("Canvas dimensions cannot be negative.");
-    } else if (toX < cornerX || toX > (cornerX + canvasWidth) || toX + shape.getWidth() > (cornerX + canvasWidth) || (
-        shapeType.equals(TypeOfShape.ELLIPSE) && (toX - shape.getWidth() < cornerX))) {
-      throw new IllegalArgumentException("The new x coordinate pushes the shape out of bounds.");
-    } else if (toY < cornerY || toY > (cornerY + canvasHeight) || toY + shape.getHeight() > (cornerY + canvasHeight) || (
-        shapeType.equals(TypeOfShape.ELLIPSE) && (toY - shape.getHeight() < cornerY))) {
-      throw new IllegalArgumentException("The new y coordinate pushes the shape out of bounds.");
     }
+//    } else if (toX < cornerX || toX > (cornerX + canvasWidth) || toX + shape.getWidth() > (cornerX + canvasWidth) || (
+//        shapeType.equals(TypeOfShape.ELLIPSE) && (toX - shape.getWidth() < cornerX))) {
+//      throw new IllegalArgumentException("The new x coordinate pushes the shape out of bounds.");
+//    } else if (toY < cornerY || toY > (cornerY + canvasHeight) || toY + shape.getHeight() > (cornerY + canvasHeight) || (
+//        shapeType.equals(TypeOfShape.ELLIPSE) && (toY - shape.getHeight() < cornerY))) {
+//      System.out.println(toX + " " + toY);
+//      System.out.println(cornerX + " " + cornerY);
+//      System.out.println(shape.getHeight());
+//      System.out.println(canvasHeight);
+//      throw new IllegalArgumentException("The new y coordinate pushes the shape out of bounds.");
+//    }
 
     this.toX = toX;
     this.toY = toY;
@@ -69,20 +74,20 @@ public class Move extends AbstractAnimation {
   }
 
   @Override
-  public Map<String, String[]> getChanges() {
-    Map<String, String[]> changes = new HashMap<>();
+  public List<String[]> getChanges() {
+    List<String[]> changes = new ArrayList<>();
     if (shape.getPosition().getX() != toX) {
       if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
-        changes.put("x", new String[]{String.valueOf(shape.getPosition().getX()), String.valueOf(toX)});
+        changes.add(new String[]{"x", String.valueOf(shape.getPosition().getX()), String.valueOf(toX)});
       } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
-        changes.put("cx", new String[]{String.valueOf(shape.getPosition().getX()), String.valueOf(toX)});
+        changes.add(new String[]{"cx", String.valueOf(shape.getPosition().getX()), String.valueOf(toX)});
       }
     }
     if (shape.getPosition().getY() != toY) {
       if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
-        changes.put("y", new String[]{String.valueOf(shape.getPosition().getY()), String.valueOf(toY)});
+        changes.add(new String[]{"y", String.valueOf(shape.getPosition().getY()), String.valueOf(toY)});
       } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
-        changes.put("cy", new String[]{String.valueOf(shape.getPosition().getY()), String.valueOf(toY)});
+        changes.add(new String[]{"cy", String.valueOf(shape.getPosition().getY()), String.valueOf(toY)});
       }
     }
     return changes;

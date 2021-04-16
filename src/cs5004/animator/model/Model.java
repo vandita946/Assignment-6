@@ -51,8 +51,8 @@ public interface Model {
    * @param toX          is the new x coordinate for the shape to move to.
    * @param toY          is the new y coordinate for the shape to move to.
    */
-  void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, double toX,
-      double toY);
+  void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, int toX,
+      int toY);
 
   /**
    * This is a sort function which sorts our list by the increasing order of their time.
@@ -92,4 +92,10 @@ public interface Model {
   double getCanvasHeight();
 
   List<Animation> getAnimationsByShape(Shape shape);
+
+  void setTicksPerSecond(int ticksPerSecond);
+
+  double getCornerX();
+
+  double getCornerY();
 }

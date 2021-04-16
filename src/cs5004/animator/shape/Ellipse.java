@@ -37,27 +37,27 @@ public class Ellipse extends AbstractShape {
 
   /**
    * This is a class representing an Ellipse.
-   *
+   *  @param color         is the color of the oval.
    * @param x             is the x coordinate of the centre of oval.
    * @param y             is the y coordinate of the centre of oval.
    * @param xRadius       is the x radius or the width of the oval.
    * @param yRadius       is the y radius or the height of the oval.
    * @param name          is the name of the oval.
-   * @param color         is the color of the oval.
    * @param canvasWidth   is the canvas width.
    * @param canvasHeight  is the canvas height.
    * @param appearTime    is the appear time for oval.
    * @param disappearTime is the disappear time for oval.
    */
   public Ellipse(double x, double y, double xRadius, double yRadius, String name, int red, int green, int blue,
-      double canvasWidth, double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime) {
+      double canvasWidth, double canvasHeight, double cornerX, double cornerY, double appearTime, double disappearTime) {
     super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.ELLIPSE);
 
-    if ((x - xRadius) < cornerX || (y - yRadius) < cornerY || (x + xRadius) > (cornerX + canvasWidth)
-        || (y + yRadius) > (cornerY + canvasHeight)) {
-      throw new IllegalArgumentException(
-          "The dimensions of this shape are out of bounds of the canvas.");
-    } else if (xRadius <= 0 || yRadius <= 0) {
+//    if ((x - xRadius) < cornerX || (y - yRadius) < cornerY || (x + xRadius) > (cornerX + canvasWidth)
+//        || (y + yRadius) > (cornerY + canvasHeight)) {
+//      throw new IllegalArgumentException(
+//          "The dimensions of this shape are out of bounds of the canvas.");
+//    } else
+      if (xRadius <= 0 || yRadius <= 0) {
       throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
 

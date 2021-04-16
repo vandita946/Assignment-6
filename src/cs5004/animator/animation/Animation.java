@@ -24,14 +24,14 @@ public interface Animation {
    *
    * @return an integer representing the starting time.
    */
-  int getStartingTime();
+  double getStartingTime();
 
   /**
    * This is a function for the ending time of an animation.
    *
    * @return an integer representing the ending time.
    */
-  int getEndingTime();
+  double getEndingTime();
 
   /**
    * Returns a string representation of the animation.
@@ -54,6 +54,6 @@ public interface Animation {
    */
   TypeOfAnimation getType();
 
-  Map<String, String[]> getChanges();
+  List<String[]> getChanges();
 
 }
