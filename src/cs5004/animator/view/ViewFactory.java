@@ -9,7 +9,7 @@ public class ViewFactory {
     if (viewType.equals("text")) {
       view = new TextualView(model, outfile);
     } else if (viewType.equals("svg")) {
-      view = new SVGView();
+      view = new SVGView(model, outfile);
     } else if (viewType.equals("visual")) {
       view = new VisualView();
     } else {
