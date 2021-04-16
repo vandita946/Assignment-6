@@ -8,7 +8,7 @@ drawn between (0,0) and (width,height) will be visible -->
     <!-- starting at time=1s, move the rectangle horizontally from x=200 to x=300 in 4 seconds -->
     <!-- fill=freeze keeps it there after the animation ends -->
     <animate attributeType="xml" begin="1000ms" dur="4000ms" attributeName="x" from="200" to="300" fill="freeze" />
-    
+
     <!--add more animations here for this rectangle using animate tags -->
 </rect>
 

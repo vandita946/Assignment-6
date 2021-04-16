@@ -57,12 +57,13 @@ public class SVGView implements View {
 
   private String getAnimateBlock(Animation animation) {
     String output = "";
-
+    //int st = animation.getStartingTime()*1000/ticksPerSecond;
     for (String change : animation.getChanges().keySet()) {
       output += String.format("\t<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" attributeName=",
           animation.getStartingTime()*1000/ticksPerSecond,(animation.getEndingTime()- animation.getStartingTime())*1000/ticksPerSecond);
       output += String.format("\"%s\" from=\"%s\" to=\"%s\" fill=\"freeze\" />\n",
           change, animation.getChanges().get(change)[0], animation.getChanges().get(change)[1]);
+      //st = st + (animation.getEndingTime()- animation.getStartingTime())*1000/ticksPerSecond;
     }
     return output;
   }
