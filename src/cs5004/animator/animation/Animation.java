@@ -5,6 +5,8 @@
 package cs5004.animator.animation;
 
 import cs5004.animator.shape.Shape;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class is an interface that outlines the methods available to a shape such that it can be
@@ -51,4 +53,7 @@ public interface Animation {
    * @return the type of animation.
    */
   TypeOfAnimation getType();
+
+  Map<String, String[]> getChanges();
+
 }

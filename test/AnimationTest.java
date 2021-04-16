@@ -10,7 +10,7 @@
 //import cs5004.animator.animation.Move;
 //import cs5004.animator.animation.Scale;
 //import cs5004.animator.animation.TypeOfAnimation;
-//import cs5004.animator.shape.Oval;
+//import cs5004.animator.shape.Ellipse;
 //import cs5004.animator.shape.Rectangle;
 //import cs5004.animator.shape.Shape;
 //import cs5004.animator.shape.TypeOfShape;
@@ -32,7 +32,7 @@
 //  @Before
 //  public void setUp() {
 //    rectangle = new Rectangle(0, 0, 10, 5, "rectangle", Color.RED, 500, 500, 1, 100);
-//    oval = new Oval(50, 50, 10, 5, "oval", Color.PINK, 500, 500, 5, 100);
+//    oval = new Ellipse(50, 50, 10, 5, "oval", Color.PINK, 500, 500, 5, 100);
 //    colorChange = new ChangeColor(rectangle, 5, 10, Color.GREEN);
 //    move = new Move(oval, TypeOfShape.OVAL, 10, 20, 70, 70, 500, 500);
 //    scale = new Scale(rectangle, TypeOfShape.RECTANGLE, 50, 75, 20, 20);

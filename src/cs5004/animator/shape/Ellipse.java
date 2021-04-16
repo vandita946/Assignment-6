@@ -4,12 +4,10 @@
 
 package cs5004.animator.shape;
 
-import java.awt.Color;
-
 /**
  * This class represents a circle. It implements the AbstractShape.
  */
-public class Oval extends AbstractShape {
+public class Ellipse extends AbstractShape {
 
   private final double xRadius;
   private final double yRadius;
@@ -21,9 +19,9 @@ public class Oval extends AbstractShape {
    * @param y      y coordinate of the center of this circle
    * @param radius the radius of this circle
    */
-  public Oval(double x, double y, double radius, String name, int red, int green, int blue, double canvasWidth,
+  public Ellipse(double x, double y, double radius, String name, int red, int green, int blue, double canvasWidth,
       double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime) {
-    super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.OVAL);
+    super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.ELLIPSE);
 
     if ((x - radius) < cornerX || (y - radius) < cornerY || (x + radius) > (cornerX + canvasWidth)
         || (y + radius) > (cornerY + canvasHeight)) {
@@ -38,7 +36,7 @@ public class Oval extends AbstractShape {
   }
 
   /**
-   * This is a class representing an Oval.
+   * This is a class representing an Ellipse.
    *
    * @param x             is the x coordinate of the centre of oval.
    * @param y             is the y coordinate of the centre of oval.
@@ -51,9 +49,9 @@ public class Oval extends AbstractShape {
    * @param appearTime    is the appear time for oval.
    * @param disappearTime is the disappear time for oval.
    */
-  public Oval(double x, double y, double xRadius, double yRadius, String name, int red, int green, int blue,
+  public Ellipse(double x, double y, double xRadius, double yRadius, String name, int red, int green, int blue,
       double canvasWidth, double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime) {
-    super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.OVAL);
+    super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.ELLIPSE);
 
     if ((x - xRadius) < cornerX || (y - yRadius) < cornerY || (x + xRadius) > (cornerX + canvasWidth)
         || (y + yRadius) > (cornerY + canvasHeight)) {
@@ -88,7 +86,7 @@ public class Oval extends AbstractShape {
   @Override
   public Shape changeDimensions(double newXRadius, double newYRadius) {
 
-    return new Oval(reference.getX(), reference.getY(), newXRadius, newYRadius, name,
+    return new Ellipse(reference.getX(), reference.getY(), newXRadius, newYRadius, name,
         this.getColor().getRed(), this.getColor().getGreen(), this.getColor().getBlue(), canvasWidth, canvasHeight, cornerX, cornerY,appearTime, disappearTime);
   }
 

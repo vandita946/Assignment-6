@@ -8,5 +8,5 @@ package cs5004.animator.shape;
  * This is an enum class of different types of shapes.
  */
 public enum TypeOfShape {
-  OVAL, RECTANGLE
+  ELLIPSE, RECTANGLE
 }

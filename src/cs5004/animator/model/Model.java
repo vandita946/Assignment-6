@@ -86,4 +86,10 @@ public interface Model {
   Shape createShape(String shapeName, String type, int x, int y, double width, double height, int startingTime, int endingTime, int r, int g, int b);
 
   void setCornerValues(int x, int y);
+
+  double getCanvasWidth();
+
+  double getCanvasHeight();
+
+  List<Animation> getAnimationsByShape(Shape shape);
 }

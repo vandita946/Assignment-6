@@ -6,6 +6,10 @@ package cs5004.animator.animation;
 
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class extends the AbstractAnimation class and represents the methods needed to scale a shape
@@ -45,6 +49,26 @@ public class Scale extends AbstractAnimation {
   @Override
   public void actionStep() {
     this.shape.changeDimensions(this.newWidth, this.newHeight);
+  }
+
+  @Override
+  public Map<String, String[]> getChanges() {
+    Map<String, String[]> changes = new HashMap<>();
+    if (shape.getWidth() != newWidth) {
+      if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
+        changes.put("width", new String[]{String.valueOf(shape.getWidth()), String.valueOf(newWidth)});
+      } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
+        changes.put("cx", new String[]{String.valueOf(shape.getWidth()), String.valueOf(newWidth)});
+      }
+    }
+    if (shape.getHeight() != newHeight) {
+      if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
+        changes.put("y", new String[]{String.valueOf(shape.getHeight()), String.valueOf(newHeight)});
+      } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
+        changes.put("cy", new String[]{String.valueOf(shape.getHeight()), String.valueOf(newHeight)});
+      }
+    }
+    return changes;
   }
 
   @Override

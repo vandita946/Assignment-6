@@ -5,7 +5,7 @@
 //import static org.junit.Assert.assertEquals;
 //import static org.junit.Assert.fail;
 //
-//import cs5004.animator.shape.Oval;
+//import cs5004.animator.shape.Ellipse;
 //import cs5004.animator.shape.Rectangle;
 //import cs5004.animator.shape.Shape;
 //import java.awt.Color;
@@ -28,9 +28,9 @@
 //        500, 500, 1, 100);
 //    square = new Rectangle(15, 25, 5, 5, "square", Color.WHITE,
 //        500, 500, 2, 200);
-//    oval = new Oval(250, 250, 5, 10, "oval", Color.BLUE,
+//    oval = new Ellipse(250, 250, 5, 10, "oval", Color.BLUE,
 //        500, 500, 3, 300);
-//    circle = new Oval(300, 300, 5, "circle", Color.GREEN,
+//    circle = new Ellipse(300, 300, 5, "circle", Color.GREEN,
 //        500, 500, 10, 400);
 //  }
 //
@@ -77,14 +77,14 @@
 //    }
 //
 //    try {
-//      new Oval(499, 499, 10, 20, "R1", Color.black, 500, 500, 10, 40);
+//      new Ellipse(499, 499, 10, 20, "R1", Color.black, 500, 500, 10, 40);
 //      fail("IllegalArgumentException was not called");
 //    } catch (IllegalArgumentException e) {
 //      assertEquals("The dimensions of this shape are out of bounds of the canvas.", e.getMessage());
 //    }
 //
 //    try {
-//      new Oval(499, 499, 10, "R1", Color.black, 500, 500, 10, 40);
+//      new Ellipse(499, 499, 10, "R1", Color.black, 500, 500, 10, 40);
 //      fail("IllegalArgumentException was not called");
 //    } catch (IllegalArgumentException e) {
 //      assertEquals("The dimensions of this shape are out of bounds of the canvas.", e.getMessage());

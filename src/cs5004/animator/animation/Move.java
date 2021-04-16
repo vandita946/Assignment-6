@@ -6,6 +6,10 @@ package cs5004.animator.animation;
 
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class extends the AbstractAnimation class and represents the methods needed to move a shape
@@ -37,10 +41,10 @@ public class Move extends AbstractAnimation {
     if (canvasHeight < 0 || canvasWidth < 0) {
       throw new IllegalArgumentException("Canvas dimensions cannot be negative.");
     } else if (toX < cornerX || toX > (cornerX + canvasWidth) || toX + shape.getWidth() > (cornerX + canvasWidth) || (
-        shapeType.equals(TypeOfShape.OVAL) && (toX - shape.getWidth() < cornerX))) {
+        shapeType.equals(TypeOfShape.ELLIPSE) && (toX - shape.getWidth() < cornerX))) {
       throw new IllegalArgumentException("The new x coordinate pushes the shape out of bounds.");
     } else if (toY < cornerY || toY > (cornerY + canvasHeight) || toY + shape.getHeight() > (cornerY + canvasHeight) || (
-        shapeType.equals(TypeOfShape.OVAL) && (toY - shape.getHeight() < cornerY))) {
+        shapeType.equals(TypeOfShape.ELLIPSE) && (toY - shape.getHeight() < cornerY))) {
       throw new IllegalArgumentException("The new y coordinate pushes the shape out of bounds.");
     }
 
@@ -62,5 +66,25 @@ public class Move extends AbstractAnimation {
             this.shape.getName(),
             this.shape.getPosition().getX(), this.shape.getPosition().getY(), toX, toY,
             startingTime, endingTime);
+  }
+
+  @Override
+  public Map<String, String[]> getChanges() {
+    Map<String, String[]> changes = new HashMap<>();
+    if (shape.getPosition().getX() != toX) {
+      if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
+        changes.put("x", new String[]{String.valueOf(shape.getPosition().getX()), String.valueOf(toX)});
+      } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
+        changes.put("cx", new String[]{String.valueOf(shape.getPosition().getX()), String.valueOf(toX)});
+      }
+    }
+    if (shape.getPosition().getY() != toY) {
+      if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
+        changes.put("y", new String[]{String.valueOf(shape.getPosition().getY()), String.valueOf(toY)});
+      } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
+        changes.put("cy", new String[]{String.valueOf(shape.getPosition().getY()), String.valueOf(toY)});
+      }
+    }
+    return changes;
   }
 }
