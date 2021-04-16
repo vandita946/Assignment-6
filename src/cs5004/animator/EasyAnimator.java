@@ -18,6 +18,7 @@ public final class EasyAnimator {
 
     try {
       model = AnimationReader.parseFile(new FileReader("EasyAnimatorViewStarter_v1/code/toh-3.txt"), builder);
+      System.out.println(model);
     } catch (IOException e) {
       System.out.println(e.getMessage());
     }
