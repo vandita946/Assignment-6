@@ -9,9 +9,9 @@ public class ViewFactory {
     if (viewType.equals("text")) {
       view = new TextualView(model, outfile);
     } else if (viewType.equals("svg")) {
-      view = new SVGView(model, outfile,ticksPerSecond);
+      view = new SVGView(model, outfile);
     } else if (viewType.equals("visual")) {
-      view = new VisualView();
+      view = new VisualView(model);
     } else {
       throw new IllegalArgumentException("Invalid view type.");
     }

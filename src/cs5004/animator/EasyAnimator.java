@@ -15,15 +15,15 @@ public final class EasyAnimator {
   public static void main(String[] args) {
     Model model = new ModelImpl();
     AnimationBuilder<Model> builder = new Builder(model);
-    model.setTicksPerSecond(2);
+    model.setTicksPerSecond(200);
 
     try {
-      model = AnimationReader.parseFile(new FileReader("EasyAnimatorViewStarter_v1/code/buildings.txt"), builder);
+      model = AnimationReader.parseFile(new FileReader("EasyAnimatorViewStarter_v1/code/toh-3.txt"), builder);
     } catch (IOException e) {
       System.out.println(e.getMessage());
     }
 
-    View view = ViewFactory.createView("svg", model, "output-buildings.svg",500);
+    View view = ViewFactory.createView("visual", model, "", 200);
     view.publish();
   }
 }

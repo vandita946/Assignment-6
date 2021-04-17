@@ -12,12 +12,10 @@ import java.io.IOException;
 public class SVGView implements View {
   private Model model;
   private String outfile;
-  private int ticksPerSecond;
 
-  public SVGView (Model model, String outfile,int ticksPerSecond) {
+  public SVGView (Model model, String outfile) {
     this.model = model;
     this.outfile = outfile;
-    this.ticksPerSecond = ticksPerSecond;
   }
 
   @Override

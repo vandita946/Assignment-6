@@ -50,10 +50,7 @@ public final class ModelImpl implements Model {
   }
 
   private double getMilliseconds(double t) {
-    if (t != 1) {
-      return ((double)t/ticksPerSecond) * 1000;
-    }
-    return t*1000;
+    return ((double)t/ticksPerSecond) * 1000;
   }
 
   private int getOffsetX(int x){
