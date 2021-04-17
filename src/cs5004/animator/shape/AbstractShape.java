@@ -13,8 +13,8 @@ public abstract class AbstractShape implements Shape {
 
   protected Point2D reference;
   protected String name;
-  protected int appearTime;
-  protected int disappearTime;
+  protected double appearTime;
+  protected double disappearTime;
   protected double canvasWidth;
   protected double canvasHeight;
   protected double cornerX;
@@ -38,12 +38,12 @@ public abstract class AbstractShape implements Shape {
    */
   public AbstractShape(Point2D reference, String name, int red, int green, int blue,
       double canvasWidth,
-      double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime, TypeOfShape type)
+      double canvasHeight, double cornerX, double cornerY, double appearTime, double disappearTime, TypeOfShape type)
       throws IllegalArgumentException {
 
-    if (reference.getX() > (canvasWidth + cornerX) || reference.getY() < cornerY || reference.getX() < cornerX || reference.getY() > (cornerY + canvasHeight)) {
-      throw new IllegalArgumentException("Object cannot be placed outside the canvas.");
-    }
+//    if (reference.getX() > (canvasWidth + cornerX) || reference.getY() < cornerY || reference.getX() < cornerX || reference.getY() > (cornerY + canvasHeight)) {
+//      throw new IllegalArgumentException("Object cannot be placed outside the canvas.");
+//    }
 
     if (appearTime < 0 || disappearTime < 0 || disappearTime < appearTime) {
       throw new IllegalArgumentException("Appear or disappear time is invalid.");
@@ -105,12 +105,12 @@ public abstract class AbstractShape implements Shape {
   }
 
   @Override
-  public int getAppearTime() {
+  public double getAppearTime() {
     return this.appearTime;
   }
 
   @Override
-  public int getDisappearTime() {
+  public double getDisappearTime() {
     return this.disappearTime;
   }
 
@@ -120,7 +120,7 @@ public abstract class AbstractShape implements Shape {
   }
 
   @Override
-  public void setDisappearTime(int disappearTime) {
+  public void setDisappearTime(double disappearTime) {
     this.disappearTime = disappearTime;
   }
 

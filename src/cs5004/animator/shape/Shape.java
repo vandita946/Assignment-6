@@ -99,16 +99,16 @@ public interface Shape extends Comparable<Shape> {
    *
    * @return an integer.
    */
-  int getAppearTime();
+  double getAppearTime();
 
   /**
    * This is a getter to get the disappear time of the object.
    *
    * @return an integer.
    */
-  int getDisappearTime();
+  double getDisappearTime();
 
   TypeOfShape getTypeOfShape();
 
-  void setDisappearTime(int disappearTime);
+  void setDisappearTime(double disappearTime);
 }

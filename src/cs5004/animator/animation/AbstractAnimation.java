@@ -5,9 +5,6 @@
 package cs5004.animator.animation;
 
 import cs5004.animator.shape.Shape;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * This class implements the Animation interface and represents a shape and the methods available to
@@ -16,8 +13,8 @@ import java.util.Map;
 public abstract class AbstractAnimation implements Animation {
 
   protected Shape shape;
-  protected int startingTime;
-  protected int endingTime;
+  protected double startingTime;
+  protected double endingTime;
   protected TypeOfAnimation type;
 
   /**
@@ -29,12 +26,15 @@ public abstract class AbstractAnimation implements Animation {
    * @param type         is the type of animation.
    * @throws IllegalArgumentException if shape is null or the time entered is invalid.
    */
-  public AbstractAnimation(Shape shape, int startingTime, int endingTime, TypeOfAnimation type)
+  public AbstractAnimation(Shape shape, double startingTime, double endingTime, TypeOfAnimation type)
       throws IllegalArgumentException {
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
     if (startingTime < shape.getAppearTime() || endingTime > shape.getDisappearTime()) {
+      System.out.println(shape.getName());
+      System.out.println(shape.getAppearTime() + " " + shape.getDisappearTime());
+      System.out.println(startingTime + " " + endingTime);
       throw new IllegalArgumentException(
           "Starting and ending time must be within shape's appear and disappear time.");
     }
@@ -54,11 +54,11 @@ public abstract class AbstractAnimation implements Animation {
     //Will be used later.
   }
 
-  public int getStartingTime() {
+  public double getStartingTime() {
     return this.startingTime;
   }
 
-  public int getEndingTime() {
+  public double getEndingTime() {
     return this.endingTime;
   }
 

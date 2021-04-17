@@ -51,18 +51,21 @@ public class SVGView implements View {
   }
 
   private String getHeader() {
-    return String.format("<svg width=\"%.0f\" height=\"%.0f\" version=\"1.1\"\n\txmlns=\"http://www.w3.org/2000/svg\">\n",
-        model.getCanvasWidth(),model.getCanvasHeight());
+    double boxWidth = model.getCanvasWidth() + model.getCornerX();
+    double boxHeight = model.getCanvasHeight() + model.getCornerY();
+    return String.format("<svg width=\"%.0f\" height=\"%.0f\" viewBox=\"%.0f %.0f %.0f %.0f\" version=\"1.1\"\n\txmlns=\"http://www.w3.org/2000/svg\">\n",
+        model.getCanvasHeight(), model.getCanvasHeight(), model.getCornerX(), model.getCornerY(), boxWidth, boxHeight);
   }
 
   private String getAnimateBlock(Animation animation) {
     String output = "";
-
-    for (String change : animation.getChanges().keySet()) {
-      output += String.format("\t<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" attributeName=",
-          animation.getStartingTime()*1000/ticksPerSecond,(animation.getEndingTime()- animation.getStartingTime())*1000/ticksPerSecond);
-      output += String.format("\"%s\" from=\"%s\" to=\"%s\" fill=\"freeze\" />\n",
-          change, animation.getChanges().get(change)[0], animation.getChanges().get(change)[1]);
+    //int st = animation.getStartingTime()*1000/ticksPerSecond;
+    for (String[] change : animation.getChanges()) {
+      output += String.format("\t<animate attributeType=\"xml\" begin=\"%.0fms\" dur=\"%.0fms\" attributeName=",
+          animation.getStartingTime(),(animation.getEndingTime()- animation.getStartingTime()));
+        output += String.format("\"%s\" from=\"%s\" to=\"%s\" fill=\"freeze\" />\n",
+            change[0], change[1], change[2]);
+      animation.actionStep();
     }
     return output;
   }

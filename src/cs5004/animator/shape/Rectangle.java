@@ -4,8 +4,6 @@
 
 package cs5004.animator.shape;
 
-import java.awt.Color;
-
 /**
  * This class represents a rectangle.  It defines all the operations mandated by the Shape
  * interface
@@ -17,20 +15,21 @@ public class Rectangle extends AbstractShape {
 
   /**
    * Constructs a rectangle object with the given location of its lower-left corner and dimensions.
-   *
-   * @param x      x coordinate of the top-left corner of this rectangle.
+   *  @param x      x coordinate of the top-left corner of this rectangle.
    * @param y      y coordinate of the top-left corner of this rectangle.
    * @param width  width of this rectangle.
    * @param height height of this rectangle.
+   * @param appearTime
+   * @param disappearTime
    */
   public Rectangle(double x, double y, double width, double height, String name, int red, int green, int blue,
-      double canvasWidth, double canvasHeight, double cornerX, double cornerY, int appearTime, int disappearTime) {
+      double canvasWidth, double canvasHeight, double cornerX, double cornerY, double appearTime, double disappearTime) {
     super(new Point2D(x, y), name, red, green, blue, canvasWidth, canvasHeight, cornerX, cornerY, appearTime, disappearTime, TypeOfShape.RECTANGLE);
 
-    if (x + width > (cornerX + canvasWidth) || y + height > (canvasHeight + cornerY)) {
-      throw new IllegalArgumentException(
-          "The dimensions of this shape are out of bounds of the canvas.");
-    } else if (width <= 0 || height <= 0) {
+//    if (x + width > (cornerX + canvasWidth) || y + height > (canvasHeight + cornerY)) {
+//      throw new IllegalArgumentException(
+//          "The dimensions of this shape are out of bounds of the canvas.");
+    if (width <= 0 || height <= 0) {
       throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
 
