@@ -49,11 +49,8 @@ public final class ModelImpl implements Model {
     shapeLedger = new HashMap<>();
   }
 
-  private double getMilliseconds(double t) {
-    if (t != 1) {
-      return ((double)t/ticksPerSecond) * 1000;
-    }
-    return t*1000;
+  public double getMilliseconds(double t) {
+    return ((double)t/ticksPerSecond) * 1000;
   }
 
   private int getOffsetX(int x){
@@ -240,13 +237,23 @@ public final class ModelImpl implements Model {
     animationList.sort(comp);
   }
 
+  public void animateAtTick(double tick) {
+    for (Animation a : animationList) {
+      if (a.getStartingTime() <= tick && tick <= a.getEndingTime()) {
+        a.actionStep(tick);
+      }
+    }
+  }
+
   /**
    * This is a function to get the shapes at a given time on canvas.
    *
    * @param tick is the time at which we need to get the shapes.
    * @return the list of the shapes.
    */
-  public List<Shape> getShapesAtTick(int tick) {
+  public List<Shape> getShapesAtTick(double tick) {
+    tick = getMilliseconds(tick);
+    animateAtTick(tick);
     List<Shape> tickShapes = new ArrayList<>();
     for (Shape s : shapeList) {
       if (s.getAppearTime() <= tick && s.getDisappearTime() >= tick) {
@@ -316,6 +323,11 @@ public final class ModelImpl implements Model {
   @Override
   public void setTicksPerSecond(int ticksPerSecond) {
     this.ticksPerSecond = ticksPerSecond;
+  }
+
+  @Override
+  public int getTicksPerSecond() {
+    return this.ticksPerSecond;
   }
 
   @Override

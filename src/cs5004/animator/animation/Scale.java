@@ -47,8 +47,12 @@ public class Scale extends AbstractAnimation {
   }
 
   @Override
-  public void actionStep() {
-    this.shape.changeDimensions(this.newWidth, this.newHeight);
+  public void actionStep(double tick) {
+    double tweenWidth = (shape.getWidth() * (endingTime - tick) / (endingTime - startingTime)) + (
+        newWidth * (tick - startingTime) / (endingTime - startingTime));
+    double tweenHeight = (shape.getHeight() * (endingTime - tick) / (endingTime - startingTime)) + (
+        newHeight * (tick - startingTime) / (endingTime - startingTime));
+    this.shape.changeDimensions(tweenWidth, tweenHeight);
   }
 
   @Override
@@ -85,8 +89,8 @@ public class Scale extends AbstractAnimation {
                 shape.getWidth(), newWidth, startingTime, endingTime);
       } else {
         return String.format(
-            "%s changes width from %.0f to %.0f and height from %.0f to %.0f from time t=%d to "
-                + "t=%d", shape.getName(), shape.getWidth(), newWidth, shape.getHeight(), newHeight,
+            "%s changes width from %.0f to %.0f and height from %.0f to %.0f from time t=%.0f to "
+                + "t=%.0f", shape.getName(), shape.getWidth(), newWidth, shape.getHeight(), newHeight,
             startingTime, endingTime);
       }
     } else {

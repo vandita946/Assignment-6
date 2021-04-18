@@ -60,14 +60,21 @@ public class Move extends AbstractAnimation {
   /**
    * This method will be used by controller to perform the animation.
    */
-  public void actionStep() {
-    this.shape.setPosition(toX, toY);
+  public void actionStep(double tick) {
+    //the toX and toY will be determined by the tween helper.
+//    double tweenX = shape.getPosition().getX() * (endingTime - tick) + (toX * tick);
+//    double tweenY = shape.getPosition().getY() * (endingTime - tick) + (toY * tick);
+    double tweenX = (shape.getPosition().getX() * (endingTime - tick) / (endingTime - startingTime)) + (toX * (tick - startingTime) / (endingTime - startingTime));
+    double tweenY = (shape.getPosition().getY() * (endingTime - tick) / (endingTime - startingTime)) + (toY * (tick - startingTime) / (endingTime - startingTime));
+
+    this.shape.setPosition(tweenX, tweenY);
   }
+
 
   @Override
   public String toString() {
     return String
-        .format("%s moves from (%.0f,%.0f) to (%.0f,%.0f) from time t=%d to t=%d",
+        .format("%s moves from (%.0f,%.0f) to (%.0f,%.0f) from time t=%.0f to t=%.0f",
             this.shape.getName(),
             this.shape.getPosition().getX(), this.shape.getPosition().getY(), toX, toY,
             startingTime, endingTime);

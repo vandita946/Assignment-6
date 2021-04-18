@@ -9,8 +9,8 @@ package cs5004.animator.shape;
  */
 public class Ellipse extends AbstractShape {
 
-  private final double xRadius;
-  private final double yRadius;
+  private double xRadius;
+  private double yRadius;
 
   /**
    * Construct a circle object using the given parameters.
@@ -84,10 +84,9 @@ public class Ellipse extends AbstractShape {
    * @return the new Shape with changed dimensions
    */
   @Override
-  public Shape changeDimensions(double newXRadius, double newYRadius) {
-
-    return new Ellipse(reference.getX(), reference.getY(), newXRadius, newYRadius, name,
-        this.getColor().getRed(), this.getColor().getGreen(), this.getColor().getBlue(), canvasWidth, canvasHeight, cornerX, cornerY,appearTime, disappearTime);
+  public void changeDimensions(double newXRadius, double newYRadius) {
+    this.xRadius = newXRadius;
+    this.yRadius = newYRadius;
   }
 
   @Override

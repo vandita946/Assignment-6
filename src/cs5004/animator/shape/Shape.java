@@ -42,7 +42,7 @@ public interface Shape extends Comparable<Shape> {
    * @param newHeight new height
    * @return Shape with changed dimensions
    */
-  Shape changeDimensions(double newWidth, double newHeight);
+  void changeDimensions(double newWidth, double newHeight);
 
   /**
    * This is a setter function to set the position of object.

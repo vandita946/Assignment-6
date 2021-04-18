@@ -1,7 +1,7 @@
 <svg width="800" height="800" viewBox="0 0 800 800" version="1.1"
 	xmlns="http://www.w3.org/2000/svg">
 <rect id="background" x="0" y="0" width="800" height="800" fill="rgb(33,94,248)" visibility="visible" >
-	<animate attributeType="xml" begin="25000ms" dur="20000ms" attributeName="fill" from="rgb(33,94,248)" to="rgb(16,45,248)" fill="freeze" />
+	<animate attributeType="xml" begin="2500ms" dur="2000ms" attributeName="fill" from="rgb(33,94,248)" to="rgb(16,45,248)" fill="freeze" />
 </rect>
 <rect id="B0" x="80" y="424" width="100" height="326" fill="rgb(0,0,0)" visibility="visible" >
 </rect>
@@ -12,217 +12,217 @@
 <rect id="B3" x="620" y="445" width="100" height="305" fill="rgb(0,0,0)" visibility="visible" >
 </rect>
 <rect id="window000" x="100" y="850" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="850.0" to="710.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="850.0" to="710.0" fill="freeze" />
 </rect>
 <rect id="window001" x="140" y="850" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="850.0" to="710.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="850.0" to="710.0" fill="freeze" />
 </rect>
 <rect id="window010" x="100" y="890" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
 </rect>
 <rect id="window011" x="140" y="890" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
 </rect>
 <rect id="window020" x="100" y="930" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="930.0" to="630.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="930.0" to="630.0" fill="freeze" />
 </rect>
 <rect id="window021" x="140" y="930" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="930.0" to="630.0" fill="freeze" />
-	<animate attributeType="xml" begin="41000ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="930.0" to="630.0" fill="freeze" />
+	<animate attributeType="xml" begin="4100ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window030" x="100" y="970" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="970.0" to="590.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="970.0" to="590.0" fill="freeze" />
 </rect>
 <rect id="window031" x="140" y="970" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="970.0" to="590.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="970.0" to="590.0" fill="freeze" />
 </rect>
 <rect id="window040" x="100" y="1010" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1010.0" to="550.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1010.0" to="550.0" fill="freeze" />
 </rect>
 <rect id="window041" x="140" y="1010" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1010.0" to="550.0" fill="freeze" />
-	<animate attributeType="xml" begin="73500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1010.0" to="550.0" fill="freeze" />
+	<animate attributeType="xml" begin="7350ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window050" x="100" y="1050" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1050.0" to="510.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1050.0" to="510.0" fill="freeze" />
 </rect>
 <rect id="window051" x="140" y="1050" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1050.0" to="510.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1050.0" to="510.0" fill="freeze" />
 </rect>
 <rect id="window060" x="100" y="1090" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1090.0" to="470.0" fill="freeze" />
-	<animate attributeType="xml" begin="73500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1090.0" to="470.0" fill="freeze" />
+	<animate attributeType="xml" begin="7350ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window061" x="140" y="1090" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1090.0" to="470.0" fill="freeze" />
-	<animate attributeType="xml" begin="46500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1090.0" to="470.0" fill="freeze" />
+	<animate attributeType="xml" begin="4650ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window100" x="280" y="-750" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-750.0" to="710.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-750.0" to="710.0" fill="freeze" />
 </rect>
 <rect id="window101" x="320" y="-750" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-750.0" to="710.0" fill="freeze" />
-	<animate attributeType="xml" begin="54000ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-750.0" to="710.0" fill="freeze" />
+	<animate attributeType="xml" begin="5400ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window110" x="280" y="-710" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-710.0" to="670.0" fill="freeze" />
-	<animate attributeType="xml" begin="47500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-710.0" to="670.0" fill="freeze" />
+	<animate attributeType="xml" begin="4750ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window111" x="320" y="-710" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-710.0" to="670.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-710.0" to="670.0" fill="freeze" />
 </rect>
 <rect id="window120" x="280" y="-670" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-670.0" to="630.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-670.0" to="630.0" fill="freeze" />
 </rect>
 <rect id="window121" x="320" y="-670" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-670.0" to="630.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-670.0" to="630.0" fill="freeze" />
 </rect>
 <rect id="window130" x="280" y="-630" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-630.0" to="590.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-630.0" to="590.0" fill="freeze" />
 </rect>
 <rect id="window131" x="320" y="-630" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-630.0" to="590.0" fill="freeze" />
-	<animate attributeType="xml" begin="74000ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-630.0" to="590.0" fill="freeze" />
+	<animate attributeType="xml" begin="7400ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window140" x="280" y="-590" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-590.0" to="550.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-590.0" to="550.0" fill="freeze" />
 </rect>
 <rect id="window141" x="320" y="-590" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-590.0" to="550.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-590.0" to="550.0" fill="freeze" />
 </rect>
 <rect id="window150" x="280" y="-550" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-550.0" to="510.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-550.0" to="510.0" fill="freeze" />
 </rect>
 <rect id="window151" x="320" y="-550" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-550.0" to="510.0" fill="freeze" />
-	<animate attributeType="xml" begin="49500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-550.0" to="510.0" fill="freeze" />
+	<animate attributeType="xml" begin="4950ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window160" x="280" y="-510" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-510.0" to="470.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-510.0" to="470.0" fill="freeze" />
 </rect>
 <rect id="window161" x="320" y="-510" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-510.0" to="470.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-510.0" to="470.0" fill="freeze" />
 </rect>
 <rect id="window170" x="280" y="-470" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-470.0" to="430.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-470.0" to="430.0" fill="freeze" />
 </rect>
 <rect id="window171" x="320" y="-470" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-470.0" to="430.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-470.0" to="430.0" fill="freeze" />
 </rect>
 <rect id="window180" x="280" y="-430" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-430.0" to="390.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-430.0" to="390.0" fill="freeze" />
 </rect>
 <rect id="window181" x="320" y="-430" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-430.0" to="390.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-430.0" to="390.0" fill="freeze" />
 </rect>
 <rect id="window200" x="460" y="850" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="850.0" to="710.0" fill="freeze" />
-	<animate attributeType="xml" begin="63500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="850.0" to="710.0" fill="freeze" />
+	<animate attributeType="xml" begin="6350ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window201" x="500" y="850" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="850.0" to="710.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="850.0" to="710.0" fill="freeze" />
 </rect>
 <rect id="window210" x="460" y="890" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
-	<animate attributeType="xml" begin="41500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
+	<animate attributeType="xml" begin="4150ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window211" x="500" y="890" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
 </rect>
 <rect id="window220" x="460" y="930" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="930.0" to="630.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="930.0" to="630.0" fill="freeze" />
 </rect>
 <rect id="window221" x="500" y="930" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="930.0" to="630.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="930.0" to="630.0" fill="freeze" />
 </rect>
 <rect id="window230" x="460" y="970" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="970.0" to="590.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="970.0" to="590.0" fill="freeze" />
 </rect>
 <rect id="window231" x="500" y="970" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="970.0" to="590.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="970.0" to="590.0" fill="freeze" />
 </rect>
 <rect id="window240" x="460" y="1010" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1010.0" to="550.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1010.0" to="550.0" fill="freeze" />
 </rect>
 <rect id="window241" x="500" y="1010" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1010.0" to="550.0" fill="freeze" />
-	<animate attributeType="xml" begin="56000ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1010.0" to="550.0" fill="freeze" />
+	<animate attributeType="xml" begin="5600ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window250" x="460" y="1050" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1050.0" to="510.0" fill="freeze" />
-	<animate attributeType="xml" begin="64000ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1050.0" to="510.0" fill="freeze" />
+	<animate attributeType="xml" begin="6400ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window251" x="500" y="1050" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1050.0" to="510.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1050.0" to="510.0" fill="freeze" />
 </rect>
 <rect id="window260" x="460" y="1090" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1090.0" to="470.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1090.0" to="470.0" fill="freeze" />
 </rect>
 <rect id="window261" x="500" y="1090" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1090.0" to="470.0" fill="freeze" />
-	<animate attributeType="xml" begin="48000ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1090.0" to="470.0" fill="freeze" />
+	<animate attributeType="xml" begin="4800ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window270" x="460" y="1130" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1130.0" to="430.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1130.0" to="430.0" fill="freeze" />
 </rect>
 <rect id="window271" x="500" y="1130" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="1130.0" to="430.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="1130.0" to="430.0" fill="freeze" />
 </rect>
 <rect id="window300" x="640" y="-750" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-750.0" to="710.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-750.0" to="710.0" fill="freeze" />
 </rect>
 <rect id="window301" x="680" y="-750" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-750.0" to="710.0" fill="freeze" />
-	<animate attributeType="xml" begin="67500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-750.0" to="710.0" fill="freeze" />
+	<animate attributeType="xml" begin="6750ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window310" x="640" y="-710" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-710.0" to="670.0" fill="freeze" />
-	<animate attributeType="xml" begin="51500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-710.0" to="670.0" fill="freeze" />
+	<animate attributeType="xml" begin="5150ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window311" x="680" y="-710" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-710.0" to="670.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-710.0" to="670.0" fill="freeze" />
 </rect>
 <rect id="window320" x="640" y="-670" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-670.0" to="630.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-670.0" to="630.0" fill="freeze" />
 </rect>
 <rect id="window321" x="680" y="-670" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-670.0" to="630.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-670.0" to="630.0" fill="freeze" />
 </rect>
 <rect id="window330" x="640" y="-630" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-630.0" to="590.0" fill="freeze" />
-	<animate attributeType="xml" begin="40500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-630.0" to="590.0" fill="freeze" />
+	<animate attributeType="xml" begin="4050ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window331" x="680" y="-630" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-630.0" to="590.0" fill="freeze" />
-	<animate attributeType="xml" begin="59500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-630.0" to="590.0" fill="freeze" />
+	<animate attributeType="xml" begin="5950ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window340" x="640" y="-590" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-590.0" to="550.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-590.0" to="550.0" fill="freeze" />
 </rect>
 <rect id="window341" x="680" y="-590" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-590.0" to="550.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-590.0" to="550.0" fill="freeze" />
 </rect>
 <rect id="window350" x="640" y="-550" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-550.0" to="510.0" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-550.0" to="510.0" fill="freeze" />
 </rect>
 <rect id="window351" x="680" y="-550" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-550.0" to="510.0" fill="freeze" />
-	<animate attributeType="xml" begin="50000ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-550.0" to="510.0" fill="freeze" />
+	<animate attributeType="xml" begin="5000ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window360" x="640" y="-510" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-510.0" to="470.0" fill="freeze" />
-	<animate attributeType="xml" begin="49500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-510.0" to="470.0" fill="freeze" />
+	<animate attributeType="xml" begin="4950ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <rect id="window361" x="680" y="-510" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-	<animate attributeType="xml" begin="10000ms" dur="20000ms" attributeName="y" from="-510.0" to="470.0" fill="freeze" />
-	<animate attributeType="xml" begin="49500ms" dur="2500ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+	<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="-510.0" to="470.0" fill="freeze" />
+	<animate attributeType="xml" begin="4950ms" dur="250ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
 </rect>
 <ellipse id="moon" cx="200" cy="200" rx="100" ry="100" fill="rgb(229,229,255)" visibility="visible" >
 </ellipse>
 <ellipse id="eclipse" cx="400" cy="0" rx="100" ry="100" fill="rgb(33,94,248)" visibility="visible" >
-	<animate attributeType="xml" begin="25000ms" dur="20000ms" attributeName="cx" from="400.0" to="230.0" fill="freeze" />
-	<animate attributeType="xml" begin="25000ms" dur="20000ms" attributeName="cy" from="0.0" to="180.0" fill="freeze" />
-	<animate attributeType="xml" begin="25000ms" dur="20000ms" attributeName="fill" from="rgb(33,94,248)" to="rgb(16,45,248)" fill="freeze" />
+	<animate attributeType="xml" begin="2500ms" dur="2000ms" attributeName="cx" from="400.0" to="230.0" fill="freeze" />
+	<animate attributeType="xml" begin="2500ms" dur="2000ms" attributeName="cy" from="0.0" to="180.0" fill="freeze" />
+	<animate attributeType="xml" begin="2500ms" dur="2000ms" attributeName="fill" from="rgb(33,94,248)" to="rgb(16,45,248)" fill="freeze" />
 </ellipse>
 <ellipse id="star4" cx="708" cy="281" rx="6" ry="6" fill="rgb(255,255,255)" visibility="visible" >
 </ellipse>

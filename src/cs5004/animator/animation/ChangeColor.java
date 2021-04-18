@@ -37,15 +37,22 @@ public class ChangeColor extends AbstractAnimation {
   /**
    * This step will be used by controller to perform the color change.
    */
-  public void actionStep() {
-    shape.changeColor(this.newColor);
+  public void actionStep(double tick) {
+
+    double tweenR = (shape.getColor().getRed() * (endingTime - tick) / (endingTime - startingTime)) + (
+        newColor.getRed() * (tick - startingTime) / (endingTime - startingTime));
+    double tweenG = (shape.getColor().getGreen() * (endingTime - tick) / (endingTime - startingTime)) + (
+        newColor.getGreen() * (tick - startingTime) / (endingTime - startingTime));
+    double tweenB = (shape.getColor().getBlue() * (endingTime - tick) / (endingTime - startingTime)) + (
+        newColor.getBlue() * (tick - startingTime) / (endingTime - startingTime));
+    shape.changeColor(new Color((int)tweenR, (int)tweenG, (int)tweenB));
   }
 
 
 
   @Override
   public String toString() {
-    return String.format("%s changes from RGB(%d,%d,%d) to RGB(%d,%d,%d) from time t=%d to t=%d", this.shape.getName(), this.shape.getColor().getRed(),
+    return String.format("%s changes from RGB(%d,%d,%d) to RGB(%d,%d,%d) from time t=%.0f to t=%.0f", this.shape.getName(), this.shape.getColor().getRed(),
         this.shape.getColor().getGreen(), this.shape.getColor().getBlue(),
            newColor.getRed(), newColor.getGreen(), newColor.getBlue(), startingTime, endingTime);
   }
