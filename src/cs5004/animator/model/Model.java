@@ -95,6 +95,10 @@ public interface Model {
 
   void setTicksPerSecond(int ticksPerSecond);
 
+  int getTicksPerSecond();
+
+  double getMilliseconds(double t);
+
   double getCornerX();
 
   double getCornerY();

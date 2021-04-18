@@ -49,7 +49,7 @@ public final class ModelImpl implements Model {
     shapeLedger = new HashMap<>();
   }
 
-  private double getMilliseconds(double t) {
+  public double getMilliseconds(double t) {
     return ((double)t/ticksPerSecond) * 1000;
   }
 
@@ -313,6 +313,11 @@ public final class ModelImpl implements Model {
   @Override
   public void setTicksPerSecond(int ticksPerSecond) {
     this.ticksPerSecond = ticksPerSecond;
+  }
+
+  @Override
+  public int getTicksPerSecond() {
+    return this.ticksPerSecond;
   }
 
   @Override
