@@ -72,9 +72,9 @@ public final class ModelImpl implements Model {
     }
 
     if (type.equalsIgnoreCase("ellipse")) {
-      shape = new Ellipse(getOffsetX(x), getOffsetY(y), width, height, shapeName, r, g, b, canvasWidth, canvasHeight, cornerX, cornerY, getMilliseconds(startingTime), getMilliseconds(endingTime));
+      shape = new Ellipse(getOffsetX(x), getOffsetY(y), width, height, shapeName, r, g, b, getMilliseconds(startingTime), getMilliseconds(endingTime));
     } else if (type.equalsIgnoreCase("rectangle")) {
-      shape = new Rectangle(getOffsetX(x), getOffsetY(y), width, height, shapeName, r,g, b, canvasWidth, canvasHeight, cornerX, cornerY, getMilliseconds(startingTime), getMilliseconds(endingTime));
+      shape = new Rectangle(getOffsetX(x), getOffsetY(y), width, height, shapeName, r,g, b, getMilliseconds(startingTime), getMilliseconds(endingTime));
     }
     this.addShape(shape);
     return shape;

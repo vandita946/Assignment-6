@@ -1,4 +1,4 @@
-/* CS 5004 - Easy Animator - Model
+/* CS 5004 - Easy Animator
  * Vandita Attal & Swapnil Mittal
  */
 
@@ -19,20 +19,8 @@ public class Point2D {
    * @param y the y-coordinate of this point.
    */
   public Point2D(double x, double y) {
-
-
     this.x = x;
     this.y = y;
-  }
-
-  /**
-   * Compute and return the Euclidean distance of this point to the origin.
-   *
-   * @return the euclidean distance.
-   */
-
-  public double distToOrigin() {
-    return Math.sqrt(x * x + y * y);
   }
 
   /**
