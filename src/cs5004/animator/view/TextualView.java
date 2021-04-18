@@ -22,7 +22,7 @@ public class TextualView implements View {
       System.out.println(this.getDescription());
     } else {
       try {
-        java.io.File file = new File("resources/" + outfile);
+        java.io.File file = new File(outfile);
         FileWriter output = new FileWriter(file);
         output.write(this.getDescription());
         output.close();

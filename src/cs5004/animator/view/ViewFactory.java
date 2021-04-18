@@ -4,7 +4,7 @@ import cs5004.animator.model.Model;
 
 public class ViewFactory {
 
-  public static View createView(String viewType, Model model, String outfile,int ticksPerSecond) {
+  public static View createView(String viewType, Model model, String outfile) {
     View view;
     if (viewType.equals("text")) {
       view = new TextualView(model, outfile);
