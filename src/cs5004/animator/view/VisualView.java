@@ -12,7 +12,7 @@ import javax.swing.Timer;
 public class VisualView extends JFrame implements View {
   private VisualPanel panel;
   private int ticksPerSecond;
-  private int t = 1000;
+  private int t = 1;
   private Timer timer;
   private Model model;
 
@@ -36,13 +36,14 @@ public class VisualView extends JFrame implements View {
 
   @Override
   public void publish() {
+    double lastTick = model.getShapeList().get(model.getShapeList().size() - 1).getDisappearTime();
     ActionListener actionListener = event -> {
-      if (model.getShapesAtTick((int) model.getMilliseconds(t)).size() > 0) {
-        t = (int) model.getMilliseconds(t + 1);
+      if (model.getMilliseconds(t) < lastTick) {
         panel.refresh(t);
+        t++;
       }
     };
-    timer = new Timer((1000 / ticksPerSecond), actionListener);
+    timer = new Timer((1000/ticksPerSecond), actionListener);
     timer.start();
   }
 

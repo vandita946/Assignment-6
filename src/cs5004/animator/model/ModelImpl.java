@@ -237,13 +237,23 @@ public final class ModelImpl implements Model {
     animationList.sort(comp);
   }
 
+  public void animateAtTick(double tick) {
+    for (Animation a : animationList) {
+      if (a.getStartingTime() <= tick && tick <= a.getEndingTime()) {
+        a.actionStep(tick);
+      }
+    }
+  }
+
   /**
    * This is a function to get the shapes at a given time on canvas.
    *
    * @param tick is the time at which we need to get the shapes.
    * @return the list of the shapes.
    */
-  public List<Shape> getShapesAtTick(int tick) {
+  public List<Shape> getShapesAtTick(double tick) {
+    tick = getMilliseconds(tick);
+    animateAtTick(tick);
     List<Shape> tickShapes = new ArrayList<>();
     for (Shape s : shapeList) {
       if (s.getAppearTime() <= tick && s.getDisappearTime() >= tick) {

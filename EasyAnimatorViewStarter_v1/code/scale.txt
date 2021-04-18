@@ -1,0 +1,4 @@
+canvas 145 50 1000 1000
+shape disk1 rectangle
+motion disk1 1 190 180 20 30 0 49 90  1 190 180 20 30 0 49 90
+motion disk1 1 190 180 20 30 0 49 90  10 190 180 500 300 0 49 90

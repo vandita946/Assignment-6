@@ -63,7 +63,7 @@ public class SVGView implements View {
           animation.getStartingTime(),(animation.getEndingTime()- animation.getStartingTime()));
         output += String.format("\"%s\" from=\"%s\" to=\"%s\" fill=\"freeze\" />\n",
             change[0], change[1], change[2]);
-      animation.actionStep();
+      animation.actionStep(animation.getEndingTime());
     }
     return output;
   }

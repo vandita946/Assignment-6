@@ -10,8 +10,8 @@ package cs5004.animator.shape;
  */
 public class Rectangle extends AbstractShape {
 
-  private final double width;
-  private final double height;
+  private double width;
+  private double height;
 
   /**
    * Constructs a rectangle object with the given location of its lower-left corner and dimensions.
@@ -48,16 +48,18 @@ public class Rectangle extends AbstractShape {
   }
 
   @Override
-  public Shape changeDimensions(double newWidth, double newHeight) {
-    return new Rectangle(
-        this.reference.getX(), this.reference.getY(),
-        newWidth, newHeight,
-        name, this.getColor().getRed(),
-        this.getColor().getGreen(), this.getColor().getBlue(),
-        canvasWidth, canvasHeight,
-        cornerX, cornerY,
-        appearTime, disappearTime
-    );
+  public void changeDimensions(double newWidth, double newHeight) {
+    this.width = newWidth;
+    this.height = newHeight;
+//    return new Rectangle(
+//        this.reference.getX(), this.reference.getY(),
+//        newWidth, newHeight,
+//        name, this.getColor().getRed(),
+//        this.getColor().getGreen(), this.getColor().getBlue(),
+//        canvasWidth, canvasHeight,
+//        cornerX, cornerY,
+//        appearTime, disappearTime
+//    );
   }
 
 

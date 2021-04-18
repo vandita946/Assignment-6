@@ -65,7 +65,7 @@ public interface Model {
    * @param tick is the time at which we need to get the shapes.
    * @return the list of shapes at the given tick.
    */
-  List<Shape> getShapesAtTick(int tick);
+  List<Shape> getShapesAtTick(double tick);
 
   List<Shape> getShapeList();
 

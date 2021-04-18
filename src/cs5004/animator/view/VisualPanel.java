@@ -53,8 +53,8 @@ public class VisualPanel extends JPanel {
 
   }
 
-  public void refresh(int t) {
-    this.shapeList = model.getShapesAtTick((int)model.getMilliseconds(t));
+  public void refresh(double t) {
+    this.shapeList = model.getShapesAtTick(t);
     this.repaint();
   }
 }

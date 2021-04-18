@@ -50,7 +50,7 @@ public abstract class AbstractAnimation implements Animation {
    * view.
    */
   @Override
-  public void actionStep() {
+  public void actionStep(double tick) {
     //Will be used later.
   }
 

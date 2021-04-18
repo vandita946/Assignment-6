@@ -17,7 +17,7 @@ public interface Animation {
   /**
    * This step is left empty since we believe it will be useful in view and controller.
    */
-  void actionStep();
+  void actionStep(double tick);
 
   /**
    * This is a function for the starting time of an animation.

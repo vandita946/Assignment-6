@@ -15,10 +15,10 @@ public final class EasyAnimator {
   public static void main(String[] args) {
     Model model = new ModelImpl();
     AnimationBuilder<Model> builder = new Builder(model);
-    model.setTicksPerSecond(200);
+    model.setTicksPerSecond(20);
 
     try {
-      model = AnimationReader.parseFile(new FileReader("EasyAnimatorViewStarter_v1/code/toh-3.txt"), builder);
+      model = AnimationReader.parseFile(new FileReader("EasyAnimatorViewStarter_v1/code/scale.txt"), builder);
     } catch (IOException e) {
       System.out.println(e.getMessage());
     }
