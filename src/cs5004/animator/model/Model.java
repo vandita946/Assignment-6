@@ -7,7 +7,6 @@ package cs5004.animator.model;
 import cs5004.animator.animation.Animation;
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
-import java.awt.Color;
 import java.util.List;
 
 /**
@@ -17,18 +16,20 @@ import java.util.List;
 public interface Model {
 
   /**
-   * This function is used to change color of an existing shape.
+   * This function is used to create a color change animation.
    *
    * @param shape        is the shape for which the color changes.
    * @param startingTime is the starting time for this color change.
    * @param endingTime   is the ending time for this color change.
-   * @param newColor     is the new color that the color changes to.
+   * @param red          new RGB red value
+   * @param green        new RGB green value
+   * @param blue         new RGB blue value
    */
   void addChangeColorAnimation(Shape shape, int startingTime, int endingTime,
       int red, int green, int blue);
 
   /**
-   * This function is used to scale the object(i.e. change it's width and height).
+   * This function is used to create a scale animation (i.e. change it's width and height).
    *
    * @param shape        is the shape that will scale.
    * @param type         is the type of shape that will scale.
@@ -42,7 +43,7 @@ public interface Model {
       double newHeight);
 
   /**
-   * This function is used to move the shape object.
+   * This function is used to create a move animation.
    *
    * @param shape        is the shape to be moved.
    * @param type         is the type of shape to be moved.
@@ -55,51 +56,149 @@ public interface Model {
       int toY);
 
   /**
-   * This is a sort function which sorts our list by the increasing order of their time.
+   * This is a sort function which sorts our list of animation by increasing order of starting
+   * time.
    */
   void sortAnimationList();
 
   /**
-   * This is a function that returns us the list of shapes at a certain time.
+   * This is a function that returns us the list of shapes at a given tick.
    *
    * @param tick is the time at which we need to get the shapes.
    * @return the list of shapes at the given tick.
    */
   List<Shape> getShapesAtTick(double tick);
 
+  /**
+   * Returns the list of shapes in the model.
+   *
+   * @return list of shapes
+   */
   List<Shape> getShapeList();
 
+  /**
+   * Returns the list of animations in the model.
+   *
+   * @return list of animations
+   */
   List<Animation> getAnimationList();
 
-  void setCanvasWidth(int newWidth);
+  /**
+   * Sets the canvas width of the animator.
+   *
+   * @param newWidth new width to be set.
+   */
+  void setCanvasWidth(int newWidth) throws IllegalArgumentException;
 
-  void setCanvasHeight(int newHeight);
+  /**
+   * Sets the canvas height of the animator.
+   *
+   * @param newHeight new height to be set.
+   */
+  void setCanvasHeight(int newHeight) throws IllegalArgumentException;
 
-  void addShape(Shape shape);
 
+  /**
+   * Updates the shape ledger (list of unique shape names and their types). Mainly for use by the
+   * builder.
+   *
+   * @param shapeName name of the shape
+   * @param shapeType type of the shape
+   */
   void updateShapeLedger(String shapeName, String shapeType);
 
-  Shape findShape(String shapeName);
 
+  /**
+   * Returns the shape type of a shape with a given name.
+   *
+   * @param shapeName name of the shape
+   * @return String type of the shape
+   */
   String getTypeByName(String shapeName);
 
-  Shape createShape(String shapeName, String type, int x, int y, double width, double height, int startingTime, int endingTime, int r, int g, int b);
+  /**
+   * Creates a shape object. Mainly for use by the builder.
+   *
+   * @param shapeName    unique name of the shape
+   * @param type         type of the shape
+   * @param x            coordinate
+   * @param y            coordinate
+   * @param width        width of the shape
+   * @param height       height of the shape
+   * @param startingTime time that the shape appears
+   * @param endingTime   time that the shape disappears
+   * @param r            RGB red value
+   * @param g            RGB green value
+   * @param b            RGB blue value
+   * @return the created shape object, for use of the builder
+   */
+  Shape createShape(String shapeName, String type, int x, int y, double width, double height,
+      int startingTime, int endingTime, int r, int g, int b);
 
+  /**
+   * Sets the topmost y and leftmost x (corner values).
+   *
+   * @param x topmost x value
+   * @param y leftmost y value
+   */
   void setCornerValues(int x, int y);
 
+  /**
+   * Gets the canvas width.
+   *
+   * @return canvas width
+   */
   double getCanvasWidth();
 
+  /**
+   * Gets the canvas height.
+   *
+   * @return canvas height
+   */
   double getCanvasHeight();
 
+  /**
+   * Returns the List of animations for a given shape.
+   *
+   * @param shape for which the animations need to be found.
+   * @return List of animations for a certain shape
+   */
   List<Animation> getAnimationsByShape(Shape shape);
 
+  /**
+   * Sets the ticksPerSecond speed of the animator.
+   *
+   * @param ticksPerSecond speed
+   */
   void setTicksPerSecond(int ticksPerSecond);
 
+  /**
+   * Gets the ticksPerSecond speed of the animator.
+   *
+   * @return ticksPerSecond speed
+   */
   int getTicksPerSecond();
 
+  /**
+   * Converts a tick into milliseconds based on the speed of the animation.
+   *
+   * @param t tick
+   * @return milliseconds
+   */
   double getMilliseconds(double t);
 
+  /**
+   * Gets the corner X value.
+   *
+   * @return leftmost x value.
+   */
   double getCornerX();
 
+  /**
+   * Gets the corner Y value.
+   *
+   * @return topmost Y value
+   */
   double getCornerY();
+
 }

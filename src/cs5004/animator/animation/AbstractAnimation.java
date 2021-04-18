@@ -7,8 +7,8 @@ package cs5004.animator.animation;
 import cs5004.animator.shape.Shape;
 
 /**
- * This class implements the Animation interface and represents a shape and the methods available to
- * it to make it an animation.
+ * This class implements the Animation interface and represents the methods available to it to
+ * animate a shape.
  */
 public abstract class AbstractAnimation implements Animation {
 
@@ -18,7 +18,7 @@ public abstract class AbstractAnimation implements Animation {
   protected TypeOfAnimation type;
 
   /**
-   * This is a constructor to initialize the given parameters.
+   * This is a constructor to initialize an animation to the given parameters.
    *
    * @param shape        is the object on which the animation will occur.
    * @param startingTime is the starting time for the animation.
@@ -26,15 +26,14 @@ public abstract class AbstractAnimation implements Animation {
    * @param type         is the type of animation.
    * @throws IllegalArgumentException if shape is null or the time entered is invalid.
    */
-  public AbstractAnimation(Shape shape, double startingTime, double endingTime, TypeOfAnimation type)
+  public AbstractAnimation(Shape shape, double startingTime, double endingTime,
+      TypeOfAnimation type)
       throws IllegalArgumentException {
+
     if (shape == null) {
       throw new IllegalArgumentException("Shape cannot be null.");
     }
     if (startingTime < shape.getAppearTime() || endingTime > shape.getDisappearTime()) {
-      System.out.println(shape.getName());
-      System.out.println(shape.getAppearTime() + " " + shape.getDisappearTime());
-      System.out.println(startingTime + " " + endingTime);
       throw new IllegalArgumentException(
           "Starting and ending time must be within shape's appear and disappear time.");
     }
@@ -42,35 +41,26 @@ public abstract class AbstractAnimation implements Animation {
     this.startingTime = startingTime;
     this.endingTime = endingTime;
     this.type = type;
-
   }
 
-  /**
-   * This step is left empty since we believe we will use it later when we work with controller and
-   * view.
-   */
   @Override
-  public void actionStep(double tick) {
-    //Will be used later.
-  }
-
   public double getStartingTime() {
     return this.startingTime;
   }
 
+  @Override
   public double getEndingTime() {
     return this.endingTime;
   }
 
+  @Override
   public Shape getShape() {
     return this.shape;
   }
 
+  @Override
   public TypeOfAnimation getType() {
     return this.type;
   }
-
-
-
 
 }
