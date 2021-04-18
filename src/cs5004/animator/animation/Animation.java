@@ -6,7 +6,6 @@ package cs5004.animator.animation;
 
 import cs5004.animator.shape.Shape;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class is an interface that outlines the methods available to a shape such that it can be
@@ -15,35 +14,29 @@ import java.util.Map;
 public interface Animation {
 
   /**
-   * This step is left empty since we believe it will be useful in view and controller.
+   * Executes the action of the animation at the given tick.
    */
   void actionStep(double tick);
 
   /**
-   * This is a function for the starting time of an animation.
+   * Gets the starting time of an animation.
    *
-   * @return an integer representing the starting time.
+   * @return the starting time.
    */
   double getStartingTime();
 
   /**
-   * This is a function for the ending time of an animation.
+   * Gets the ending time of an animation.
    *
-   * @return an integer representing the ending time.
+   * @return the ending time.
    */
   double getEndingTime();
 
-  /**
-   * Returns a string representation of the animation.
-   *
-   * @return String representation of the animation.
-   */
-  String toString();
 
   /**
    * This method is a getter function to get the shape.
    *
-   * @return the shape on which the animation takes place.
+   * @return the shape that is being animated
    */
   Shape getShape();
 
@@ -54,6 +47,12 @@ public interface Animation {
    */
   TypeOfAnimation getType();
 
+  /**
+   * Returns an List of String[] documenting what the changes are in the animation, providing its
+   * before and after values. This function is a helper for our SVG mainly.
+   *
+   * @return List of String[] of the changes.
+   */
   List<String[]> getChanges();
 
 }

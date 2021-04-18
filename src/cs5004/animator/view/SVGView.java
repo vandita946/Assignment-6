@@ -1,7 +1,13 @@
+/*
+  CS5004
+  Spring 2021
+  Easy Animator
+  Swapnil Mittal & Vandita Attal
+ */
+
 package cs5004.animator.view;
 
 import cs5004.animator.animation.Animation;
-import cs5004.animator.animation.TypeOfAnimation;
 import cs5004.animator.model.Model;
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
@@ -9,11 +15,21 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * SVGView implements the View interface and represents a SVG-based view.
+ */
 public class SVGView implements View {
-  private Model model;
-  private String outfile;
 
-  public SVGView (Model model, String outfile) {
+  private final Model model;
+  private final String outfile;
+
+  /**
+   * Constructs an SVGView object an initializes it to the given model and outfile.
+   *
+   * @param model   Model
+   * @param outfile output file.
+   */
+  public SVGView(Model model, String outfile) {
     this.model = model;
     this.outfile = outfile;
   }
@@ -39,57 +55,90 @@ public class SVGView implements View {
 
   @Override
   public String getDescription() {
-    String description = "";
-    description += getHeader();
-    for (Shape s : model.getShapeList()){
-      description += getShapeBlock(s);
+    StringBuilder description = new StringBuilder();
+    description.append(getHeader());
+    for (Shape s : model.getShapeList()) {
+      description.append(getShapeBlock(s));
     }
-    description += "</svg>";
-    return description;
+    description.append("</svg>");
+    return description.toString();
   }
 
+  /**
+   * Returns the header of the SVG file.
+   *
+   * @return header of SVG
+   */
   private String getHeader() {
     double boxWidth = model.getCanvasWidth() + model.getCornerX();
     double boxHeight = model.getCanvasHeight() + model.getCornerY();
-    return String.format("<svg width=\"%.0f\" height=\"%.0f\" viewBox=\"%.0f %.0f %.0f %.0f\" version=\"1.1\"\n\txmlns=\"http://www.w3.org/2000/svg\">\n",
-        model.getCanvasHeight(), model.getCanvasHeight(), model.getCornerX(), model.getCornerY(), boxWidth, boxHeight);
+    return String.format(
+        "<svg width=\"%.0f\" height=\"%.0f\" viewBox=\"%.0f %.0f %.0f %.0f\" version=\"1.1\"\n\txmlns=\"http://www.w3.org/2000/svg\">\n",
+        model.getCanvasHeight(), model.getCanvasHeight(), model.getCornerX(), model.getCornerY(),
+        boxWidth, boxHeight);
   }
 
+  /**
+   * Returns the xml code for a given animation.
+   *
+   * @param animation to be output in code
+   * @return xml code for the animation
+   */
   private String getAnimateBlock(Animation animation) {
-    String output = "";
-    //int st = animation.getStartingTime()*1000/ticksPerSecond;
+    StringBuilder output = new StringBuilder();
+
     for (String[] change : animation.getChanges()) {
-      output += String.format("\t<animate attributeType=\"xml\" begin=\"%.0fms\" dur=\"%.0fms\" attributeName=",
-          animation.getStartingTime(),(animation.getEndingTime()- animation.getStartingTime()));
-        output += String.format("\"%s\" from=\"%s\" to=\"%s\" fill=\"freeze\" />\n",
-            change[0], change[1], change[2]);
+      output.append(String
+          .format("\t<animate attributeType=\"xml\" begin=\"%.0fms\" dur=\"%.0fms\" attributeName=",
+              animation.getStartingTime(),
+              (animation.getEndingTime() - animation.getStartingTime())));
+      output.append(String
+          .format("\"%s\" from=\"%s\" to=\"%s\" fill=\"freeze\" />\n", change[0], change[1],
+              change[2]));
       animation.actionStep(animation.getEndingTime());
     }
-    return output;
+    return output.toString();
   }
 
+  /**
+   * Returns the xml code for a given shape.
+   *
+   * @param shape Shape to be output in code
+   * @return xml code for the shape
+   */
   private String getShapeBlock(Shape shape) {
-    String output = "";
+
+    StringBuilder output = new StringBuilder();
+
     if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
-      output += String.format("<rect id=\"%s\" x=\"%.0f\" y=\"%.0f\" width=\"%.0f\" height=\"%.0f\" fill=\"rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
-          shape.getName(),shape.getPosition().getX(),shape.getPosition().getY(),shape.getWidth(),shape.getHeight(),shape.getColor().getRed(),
-          shape.getColor().getGreen(),shape.getColor().getBlue());
+
+      output.append(String.format(
+          "<rect id=\"%s\" x=\"%.0f\" y=\"%.0f\" width=\"%.0f\" height=\"%.0f\" fill=\"rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
+          shape.getName(), shape.getPosition().getX(), shape.getPosition().getY(), shape.getWidth(),
+          shape.getHeight(), shape.getColor().getRed(),
+          shape.getColor().getGreen(), shape.getColor().getBlue()));
+
       for (Animation a : model.getAnimationsByShape(shape)) {
-        output += getAnimateBlock(a);
+        output.append(getAnimateBlock(a));
       }
-      //insert animate call here
-      output += "</rect>\n";
+
+      output.append("</rect>\n");
+
     } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
-      output += String.format("<ellipse id=\"%s\" cx=\"%.0f\" cy=\"%.0f\" rx=\"%.0f\" ry=\"%.0f\" fill=\"rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
-          shape.getName(),shape.getPosition().getX(),shape.getPosition().getY(),shape.getWidth(),shape.getHeight(),shape.getColor().getRed(),
-          shape.getColor().getGreen(),shape.getColor().getBlue());
+
+      output.append(String.format(
+          "<ellipse id=\"%s\" cx=\"%.0f\" cy=\"%.0f\" rx=\"%.0f\" ry=\"%.0f\" fill=\"rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
+          shape.getName(), shape.getPosition().getX(), shape.getPosition().getY(), shape.getWidth(),
+          shape.getHeight(), shape.getColor().getRed(),
+          shape.getColor().getGreen(), shape.getColor().getBlue()));
+
       for (Animation a : model.getAnimationsByShape(shape)) {
-        output += getAnimateBlock(a);
+        output.append(getAnimateBlock(a));
       }
-      //insert animate call here
-      output += "</ellipse>\n";
+
+      output.append("</ellipse>\n");
 
     }
-    return output;
+    return output.toString();
   }
 }

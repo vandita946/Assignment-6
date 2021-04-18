@@ -1,4 +1,4 @@
-/* CS 5004 - Easy Animator - Model
+/* CS 5004 - Easy Animator
  * Vandita Attal & Swapnil Mittal
  */
 
@@ -9,38 +9,13 @@ import java.awt.Color;
 /**
  * This interface contains all operations that all types of shapes should support.
  */
-public interface Shape extends Comparable<Shape> {
+public interface Shape {
 
   /**
-   * Returns the distance of this shape from the origin. The distance is measured from whatever
-   * reference position a shape is (e.g. a center for a circle)
-   *
-   * @return the distance from the origin
-   */
-  double distanceFromOrigin();
-
-  /**
-   * Computes and returns the area of this shape.
-   *
-   * @return the area of the shape
-   */
-  double area();
-
-  /**
-   * Computes and returns the perimeter of this shape.
-   *
-   * @return the perimeter of the shape
-   */
-  double perimeter();
-
-
-  /**
-   * Create and return a shape of the same kind as this one, with its dimensions changed by the
-   * provided new width and height.
+   * Sets the dimensions of the shape to a given new width and/or height.
    *
    * @param newWidth  new width
    * @param newHeight new height
-   * @return Shape with changed dimensions
    */
   void changeDimensions(double newWidth, double newHeight);
 
@@ -108,7 +83,15 @@ public interface Shape extends Comparable<Shape> {
    */
   double getDisappearTime();
 
+  /**
+   * Gets the type of shape enum of the object.
+   * @return TypeOfShape type
+   */
   TypeOfShape getTypeOfShape();
 
+  /**
+   * Sets the disappear time to a new given disappearTime.
+   * @param disappearTime new disappear time
+   */
   void setDisappearTime(double disappearTime);
 }

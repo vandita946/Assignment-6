@@ -1,3 +1,10 @@
+/*
+  CS5004
+  Spring 2021
+  Easy Animator
+  Swapnil Mittal & Vandita Attal
+ */
+
 package cs5004.animator;
 
 import cs5004.animator.model.Model;
@@ -14,6 +21,9 @@ import java.io.StringReader;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
+/**
+ * EasyAnimator contains the main function from which the animator runs.
+ */
 public final class EasyAnimator {
 
   public static void main(String[] args) throws FileNotFoundException {
