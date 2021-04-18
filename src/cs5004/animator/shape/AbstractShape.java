@@ -15,10 +15,6 @@ public abstract class AbstractShape implements Shape {
   protected String name;
   protected double appearTime;
   protected double disappearTime;
-  protected double canvasWidth;
-  protected double canvasHeight;
-  protected double cornerX;
-  protected double cornerY;
   private Color color;
   protected TypeOfShape type;
 

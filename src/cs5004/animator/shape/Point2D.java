@@ -9,8 +9,8 @@ package cs5004.animator.shape;
  */
 public class Point2D {
 
-  private double x;
-  private double y;
+  private final double x;
+  private final double y;
 
   /**
    * Construct a 2d point with the given coordinates.

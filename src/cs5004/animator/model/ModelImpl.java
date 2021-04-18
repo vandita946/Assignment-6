@@ -169,8 +169,7 @@ public final class ModelImpl implements Model {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another move animation.");
     }
-    Animation move = new Move(shape, type, getMilliseconds(startingTime), getMilliseconds(endingTime), getOffsetX(toX), getOffsetY(toY), canvasWidth,
-        canvasHeight, cornerX, cornerY);
+    Animation move = new Move(shape, getMilliseconds(startingTime), getMilliseconds(endingTime), getOffsetX(toX), getOffsetY(toY));
     animationList.add(move);
   }
 
