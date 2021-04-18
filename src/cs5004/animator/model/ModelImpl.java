@@ -14,7 +14,6 @@ import cs5004.animator.shape.Rectangle;
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
 import cs5004.animator.util.AnimationBuilder;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -32,39 +31,59 @@ public final class ModelImpl implements Model {
   private double canvasHeight;
   private int cornerX;
   private int cornerY;
-  private List<Shape> shapeList;
-  private Map<String, String> shapeLedger;
-  private List<Animation> animationList;
+  private final List<Shape> shapeList;
+  private final Map<String, String> shapeLedger;
+  private final List<Animation> animationList;
   private int ticksPerSecond;
 
   /**
-   * This is the constructor to initialize the given parameters.
-   *
-   * @param canvasWidth  is the canvas width.
-   * @param canvasHeight is the canvas height.
+   * Constructor to initialize the model. Creates empty animationList, shapeList and shapeLedger.
    */
   public ModelImpl() {
+    //Stores the animations of the model
     animationList = new ArrayList<>();
+
+    //Stores the shapes of the model
     shapeList = new ArrayList<>();
+
+    //Stores the unique shape names with their corresponding types
     shapeLedger = new HashMap<>();
   }
 
+  @Override
   public double getMilliseconds(double t) {
-    return ((double)t/ticksPerSecond) * 1000;
+    return (t / ticksPerSecond) * 1000;
   }
 
-  private int getOffsetX(int x){
+  /**
+   * Returns the x coordinate offset by the corner x value.
+   *
+   * @param x x value
+   * @return offset x value
+   */
+  private int getOffsetX(int x) {
     return x - cornerX;
   }
 
+  /**
+   * Returns the y coordinate offset by the corner y value.
+   *
+   * @param y y value
+   * @return offset y value
+   */
   private int getOffsetY(int y) {
     return y - cornerY;
   }
 
-  public Shape createShape(String shapeName, String type, int x, int y, double width, double height, int startingTime, int endingTime, int r, int g, int b) {
+  @Override
+  public Shape createShape(String shapeName, String type, int x, int y, double width, double height,
+      int startingTime, int endingTime, int r, int g, int b) {
+
+    //Checks if the shape exists already. Will be null if it doesn't.
     Shape shape = findShape(shapeName);
 
     if (shape != null) {
+      //Updates the disappear time of the shape with each new animation added from the builder.
       if (shape.getDisappearTime() < getMilliseconds(endingTime)) {
         shape.setDisappearTime(getMilliseconds(endingTime));
       }
@@ -72,15 +91,26 @@ public final class ModelImpl implements Model {
     }
 
     if (type.equalsIgnoreCase("ellipse")) {
-      shape = new Ellipse(getOffsetX(x), getOffsetY(y), width, height, shapeName, r, g, b, getMilliseconds(startingTime), getMilliseconds(endingTime));
+      shape = new Ellipse(getOffsetX(x), getOffsetY(y), width, height, shapeName, r, g, b,
+          getMilliseconds(startingTime), getMilliseconds(endingTime));
     } else if (type.equalsIgnoreCase("rectangle")) {
-      shape = new Rectangle(getOffsetX(x), getOffsetY(y), width, height, shapeName, r,g, b, getMilliseconds(startingTime), getMilliseconds(endingTime));
+      shape = new Rectangle(getOffsetX(x), getOffsetY(y), width, height, shapeName, r, g, b,
+          getMilliseconds(startingTime), getMilliseconds(endingTime));
     }
+
+    //Adds the shape to the shapeList.
     this.addShape(shape);
     return shape;
   }
 
-  public Shape findShape(String shapeName) {
+
+  /**
+   * Returns the shape with the given name.
+   *
+   * @param shapeName to be found
+   * @return Shape with the given name.
+   */
+  private Shape findShape(String shapeName) {
     for (Shape s : shapeList) {
       if (s.getName().equals(shapeName)) {
         return s;
@@ -90,107 +120,94 @@ public final class ModelImpl implements Model {
   }
 
   /**
-   * This function is used to add shape to the canvas.
+   * Adds a shape to the list of shapes.
    *
-   * @param shape is the shape to be added.
+   * @param shape to be added
    */
-  public void addShape(Shape shape) {
-//    if (shape == null) {
-//      throw new IllegalArgumentException("Shape cannot be null.");
-//    }
+  private void addShape(Shape shape) {
     if (!shapeList.contains(shape)) {
       shapeList.add(shape);
-//      updateShapeLedger(shape.getName(), shape.getTypeOfShape().toString());
     }
   }
 
+  @Override
   public void updateShapeLedger(String shapeName, String shapeType) {
     if (!shapeLedger.containsKey(shapeName)) {
       shapeLedger.put(shapeName, shapeType);
     }
   }
 
-  /**
-   * This function is used to change the color of the shape.
-   *
-   * @param shape        is the shape for which the color changes.
-   * @param startingTime is the starting time for this color change.
-   * @param endingTime   is the ending time for this color change.
-   * @param newColor     is the new color that the color changes to.
-   * @throws IllegalArgumentException if given parameters are invalid.
-   */
-  public void addChangeColorAnimation(Shape shape, int startingTime, int endingTime, int red, int green, int blue) throws IllegalArgumentException {
+  @Override
+  public void addChangeColorAnimation(Shape shape, int startingTime, int endingTime, int red,
+      int green, int blue) throws IllegalArgumentException {
+
     if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.COLOR, shape)) {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another color change animation.");
     }
-    Animation colorChange = new ChangeColor(shape, getMilliseconds(startingTime), getMilliseconds(endingTime), red, green, blue);
+
+    Animation colorChange = new ChangeColor(shape, getMilliseconds(startingTime),
+        getMilliseconds(endingTime), red, green, blue);
+
     animationList.add(colorChange);
   }
 
-  /**
-   * This function is used to scale the shape.
-   *
-   * @param shape        is the shape that will scale.
-   * @param type         is the type of shape that will scale.
-   * @param startingTime is the starting time for this scaling to happen.
-   * @param endingTime   is the ending time for this scaling to stop.
-   * @param newWidth     is the new width of the shape.
-   * @param newHeight    is the new height of the shape.
-   * @throws IllegalArgumentException if given parameters are invalid.
-   */
+  @Override
   public void addScaleAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime,
-      double newWidth,
-      double newHeight) throws IllegalArgumentException {
+      double newWidth, double newHeight) throws IllegalArgumentException {
+
     if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.SCALE, shape)) {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another scale animation.");
     }
-    Animation scale = new Scale(shape, type, getMilliseconds(startingTime), getMilliseconds(endingTime), newWidth, newHeight);
+
+    Animation scale = new Scale(shape, type, getMilliseconds(startingTime),
+        getMilliseconds(endingTime), newWidth, newHeight);
+
     animationList.add(scale);
   }
 
-  /**
-   * This function is used to move the shape.
-   *
-   * @param shape        is the shape to be moved.
-   * @param type         is the type of shape to be moved.
-   * @param startingTime is the starting time of the move.
-   * @param endingTime   is the ending time of the move.
-   * @param toX          is the new x coordinate for the shape to move to.
-   * @param toY          is the new y coordinate for the shape to move to.
-   * @throws IllegalArgumentException if given parameters are invalid.
-   */
+  @Override
   public void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime,
-      int toX,
-      int toY) throws IllegalArgumentException {
-    if (checkLegalTime(getMilliseconds(startingTime), getMilliseconds(endingTime), TypeOfAnimation.MOVE, shape)) {
-      System.out.println(getMilliseconds(startingTime) + " " + getMilliseconds(endingTime));
+      int toX, int toY) throws IllegalArgumentException {
+
+    if (checkLegalTime(getMilliseconds(startingTime), getMilliseconds(endingTime),
+        TypeOfAnimation.MOVE, shape)) {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another move animation.");
     }
-    Animation move = new Move(shape, getMilliseconds(startingTime), getMilliseconds(endingTime), getOffsetX(toX), getOffsetY(toY));
+
+    Animation move = new Move(shape, getMilliseconds(startingTime), getMilliseconds(endingTime),
+        getOffsetX(toX), getOffsetY(toY));
+
     animationList.add(move);
   }
 
   /**
-   * This is a boolean to see if the animation being performed is within an allowed time.
+   * This is a boolean to see if the animation being performed is within the allowed time.
    *
    * @param startingTime is the starting time of the animation.
    * @param endingTime   is the ending time of the animation.
    * @param type         is the type of animation.
+   * @param shape        shape that we're checking for
    * @return a boolean.
    */
-  private boolean checkLegalTime(double startingTime, double endingTime, TypeOfAnimation type, Shape shape) {
+  private boolean checkLegalTime(double startingTime, double endingTime, TypeOfAnimation type,
+      Shape shape) {
+
     for (Animation each : animationList) {
       if (type.equals(each.getType()) && shape.equals(each.getShape())) {
-        if (getMilliseconds(startingTime) <= each.getStartingTime() && getMilliseconds(endingTime) >= each.getEndingTime()) {
+        if (getMilliseconds(startingTime) <= each.getStartingTime()
+            && getMilliseconds(endingTime) >= each.getEndingTime()) {
           return true;
-        } else if (getMilliseconds(startingTime) > each.getStartingTime() && getMilliseconds(endingTime) < each.getEndingTime()) {
+        } else if (getMilliseconds(startingTime) > each.getStartingTime()
+            && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
-        } else if (getMilliseconds(startingTime) > each.getStartingTime() && getMilliseconds(endingTime) < each.getEndingTime()) {
+        } else if (getMilliseconds(startingTime) > each.getStartingTime()
+            && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
-        } else if (getMilliseconds(endingTime) > each.getStartingTime() && getMilliseconds(endingTime) < each.getEndingTime()) {
+        } else if (getMilliseconds(endingTime) > each.getStartingTime()
+            && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         }
       }
@@ -202,18 +219,7 @@ public final class ModelImpl implements Model {
    * This is a helper function to sort our list according to appear time.
    */
   private void sortShapeList() {
-    Comparator<Shape> comp = new Comparator<Shape>() {
-      @Override
-      public int compare(Shape o1, Shape o2) {
-        if (o1.getAppearTime() > o2.getAppearTime()) {
-          return 1;
-        } else if (o2.getAppearTime() > o1.getAppearTime()) {
-          return -1;
-        } else {
-          return 0;
-        }
-      }
-    };
+    Comparator<Shape> comp = Comparator.comparingDouble(Shape::getAppearTime);
     shapeList.sort(comp);
   }
 
@@ -221,22 +227,16 @@ public final class ModelImpl implements Model {
    * This is a helper function to sort our list according to starting time.
    */
   public void sortAnimationList() {
-    Comparator<Animation> comp = new Comparator<Animation>() {
-      @Override
-      public int compare(Animation o1, Animation o2) {
-        if (o1.getStartingTime() > o2.getStartingTime()) {
-          return 1;
-        } else if (o2.getStartingTime() > o1.getStartingTime()) {
-          return -1;
-        } else {
-          return 0;
-        }
-      }
-    };
+    Comparator<Animation> comp = Comparator.comparingDouble(Animation::getStartingTime);
     animationList.sort(comp);
   }
 
-  public void animateAtTick(double tick) {
+  /**
+   * Carries out all the animations at the given tick.
+   *
+   * @param tick given tick
+   */
+  private void animateAtTick(double tick) {
     for (Animation a : animationList) {
       if (a.getStartingTime() <= tick && tick <= a.getEndingTime()) {
         a.actionStep(tick);
@@ -244,24 +244,27 @@ public final class ModelImpl implements Model {
     }
   }
 
-  /**
-   * This is a function to get the shapes at a given time on canvas.
-   *
-   * @param tick is the time at which we need to get the shapes.
-   * @return the list of the shapes.
-   */
+  @Override
   public List<Shape> getShapesAtTick(double tick) {
+
     tick = getMilliseconds(tick);
     animateAtTick(tick);
     List<Shape> tickShapes = new ArrayList<>();
+
     for (Shape s : shapeList) {
       if (s.getAppearTime() <= tick && s.getDisappearTime() >= tick) {
         tickShapes.add(s);
       }
     }
+
     return tickShapes;
   }
 
+  /**
+   * Returns a string representation of the model.
+   *
+   * @return String representation of the model
+   */
   @Override
   public String toString() {
     StringBuilder returnString = new StringBuilder();
@@ -290,32 +293,36 @@ public final class ModelImpl implements Model {
     return returnString.toString();
   }
 
+  @Override
   public List<Shape> getShapeList() {
     sortShapeList();
     return this.shapeList;
   }
 
-
-  public String getTypeByName(String shapeName) {
-    return shapeLedger.get(shapeName);
-  }
-
+  @Override
   public List<Animation> getAnimationList() {
     sortAnimationList();
     return this.animationList;
   }
 
+  @Override
+  public String getTypeByName(String shapeName) {
+    return shapeLedger.get(shapeName);
+  }
+
+  @Override
   public double getCanvasWidth() {
     return this.canvasWidth;
   }
 
+  @Override
   public double getCanvasHeight() {
     return this.canvasHeight;
   }
 
   @Override
   public List<Animation> getAnimationsByShape(Shape shape) {
-    return animationList.stream().filter(a-> a.getShape().equals(shape)).collect(
+    return animationList.stream().filter(a -> a.getShape().equals(shape)).collect(
         Collectors.toList());
   }
 
@@ -339,44 +346,47 @@ public final class ModelImpl implements Model {
     return this.cornerY;
   }
 
-  public void setCanvasWidth(int newWidth) {
+  @Override
+  public void setCanvasWidth(int newWidth) throws IllegalArgumentException {
+    if (canvasWidth < 0) {
+      throw new IllegalArgumentException("Canvas width cannot be negative.");
+    }
     this.canvasWidth = newWidth;
   }
 
+  @Override
   public void setCanvasHeight(int newHeight) {
+    if (canvasHeight < 0) {
+      throw new IllegalArgumentException("Canvas height cannot be negative.");
+    }
     this.canvasHeight = newHeight;
   }
 
+  @Override
   public void setCornerValues(int x, int y) {
     this.cornerX = x;
     this.cornerY = y;
   }
 
   public static final class Builder implements AnimationBuilder<Model> {
-    private Model model;
 
+    private final Model model;
+
+    /**
+     * Constructs a builder object and initializes it to the given model.
+     *
+     * @param model Model
+     */
     public Builder(Model model) {
       this.model = model;
     }
-    /**
-     * Constructs a final document.
-     *
-     * @return the newly constructed document
-     */
+
     @Override
     public Model build() {
       return model;
     }
 
-    /**
-     * Specify the bounding box to be used for the animation.
-     *
-     * @param x      The leftmost x value
-     * @param y      The topmost y value
-     * @param width  The width of the bounding box
-     * @param height The height of the bounding box
-     * @return This {@link AnimationBuilder}
-     */
+
     @Override
     public AnimationBuilder<Model> setBounds(int x, int y, int width, int height) {
       model.setCanvasWidth(width);
@@ -385,71 +395,29 @@ public final class ModelImpl implements Model {
       return this;
     }
 
-    /**
-     * Adds a new shape to the growing document.
-     *
-     * @param name The unique name of the shape to be added. No shape with this name should already
-     *             exist.
-     * @param type The type of shape (e.g. "ellipse", "rectangle") to be added. The set of supported
-     *             shapes is unspecified, but should include "ellipse" and "rectangle" as a
-     *             minimum.
-     * @return This {@link AnimationBuilder}
-     */
+
     @Override
     public AnimationBuilder<Model> declareShape(String name, String type) {
       model.updateShapeLedger(name, type);
       return this;
     }
 
-    /**
-     * Adds a transformation to the growing document.
-     *
-     * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})
-     * @param t1   The start time of this transformation
-     * @param x1   The initial x-position of the shape
-     * @param y1   The initial y-position of the shape
-     * @param w1   The initial width of the shape
-     * @param h1   The initial height of the shape
-     * @param r1   The initial red color-value of the shape
-     * @param g1   The initial green color-value of the shape
-     * @param b1   The initial blue color-value of the shape
-     * @param t2   The end time of this transformation
-     * @param x2   The final x-position of the shape
-     * @param y2   The final y-position of the shape
-     * @param w2   The final width of the shape
-     * @param h2   The final height of the shape
-     * @param r2   The final red color-value of the shape
-     * @param g2   The final green color-value of the shape
-     * @param b2   The final blue color-value of the shape
-     * @return This {@link AnimationBuilder}
-     */
     @Override
     public AnimationBuilder<Model> addMotion(String name, int t1, int x1, int y1, int w1, int h1,
         int r1, int g1, int b1, int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
 
-      //inside the add animation method of each type of animation, we have create shape
-      // that is only IF the shape doesn't exist in the model already
-
-      //createShape method : checks if the shape exists in our shapeList/shapeLedger and then creates the shape if it doesn't exist
-      //model.createShape() then model.addMove
-
-
-      //1. get the shape type by searching in the shapeLedger (getTypeByName method)
-      //2. createShape call and pass shape object into add___Animation method as per before.
-
+      //Gets the type of the shape as it is needed to add animations to the model.
       String shapeType = model.getTypeByName(name);
       Shape shape = model.createShape(name, shapeType, x1, y1, w1, h1, t1, t2, r1, g1, b1);
       if (x1 != x2 || y1 != y2) {
         model.addMoveAnimation(shape, shape.getTypeOfShape(), t1, t2, x2, y2);
       }
       if (r1 != r2 || g1 != g2 || b1 != b2) {
-        Color newColor = new Color(r2, g2, b2);
         model.addChangeColorAnimation(shape, t1, t2, r2, g2, b2);
       }
       if (w1 != w2 || h1 != h2) {
         model.addScaleAnimation(shape, shape.getTypeOfShape(), t1, t2, w2, h2);
       }
-
       return this;
     }
   }
