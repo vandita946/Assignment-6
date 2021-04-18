@@ -52,7 +52,7 @@ public class ChangeColor extends AbstractAnimation {
 
   @Override
   public String toString() {
-    return String.format("%s changes from RGB(%d,%d,%d) to RGB(%d,%d,%d) from time t=%d to t=%d", this.shape.getName(), this.shape.getColor().getRed(),
+    return String.format("%s changes from RGB(%d,%d,%d) to RGB(%d,%d,%d) from time t=%.0f to t=%.0f", this.shape.getName(), this.shape.getColor().getRed(),
         this.shape.getColor().getGreen(), this.shape.getColor().getBlue(),
            newColor.getRed(), newColor.getGreen(), newColor.getBlue(), startingTime, endingTime);
   }

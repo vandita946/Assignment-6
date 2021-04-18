@@ -18,12 +18,12 @@ public final class EasyAnimator {
     model.setTicksPerSecond(20);
 
     try {
-      model = AnimationReader.parseFile(new FileReader("EasyAnimatorViewStarter_v1/code/scale.txt"), builder);
+      model = AnimationReader.parseFile(new FileReader("EasyAnimatorViewStarter_v1/code/hanoi.txt"), builder);
     } catch (IOException e) {
       System.out.println(e.getMessage());
     }
 
-    View view = ViewFactory.createView("visual", model, "", 200);
+    View view = ViewFactory.createView("text", model, "output-hanoi.txt", 200);
     view.publish();
   }
 }
