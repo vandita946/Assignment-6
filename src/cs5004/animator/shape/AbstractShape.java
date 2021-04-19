@@ -15,8 +15,8 @@ public abstract class AbstractShape implements Shape {
   protected String name;
   protected double appearTime;
   protected double disappearTime;
-  private Color color;
   protected TypeOfShape type;
+  private Color color;
 
 
   /**
@@ -83,13 +83,13 @@ public abstract class AbstractShape implements Shape {
   }
 
   @Override
-  public TypeOfShape getTypeOfShape() {
-    return this.type;
+  public void setDisappearTime(double disappearTime) {
+    this.disappearTime = disappearTime;
   }
 
   @Override
-  public void setDisappearTime(double disappearTime) {
-    this.disappearTime = disappearTime;
+  public TypeOfShape getTypeOfShape() {
+    return this.type;
   }
 
 }

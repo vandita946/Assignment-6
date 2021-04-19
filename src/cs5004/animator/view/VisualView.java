@@ -23,8 +23,8 @@ public class VisualView extends JFrame implements View {
 
   private final VisualPanel panel;
   private final int ticksPerSecond;
-  private int t;
   private final Model model;
+  private int t;
 
   /**
    * Constructs a VisualView object and initializes it to the given model. Sets up the JFrame.

@@ -80,21 +80,6 @@ public interface Model {
   List<Animation> getAnimationList();
 
   /**
-   * Sets the canvas width of the animator.
-   *
-   * @param newWidth new width to be set.
-   */
-  void setCanvasWidth(int newWidth) throws IllegalArgumentException;
-
-  /**
-   * Sets the canvas height of the animator.
-   *
-   * @param newHeight new height to be set.
-   */
-  void setCanvasHeight(int newHeight) throws IllegalArgumentException;
-
-
-  /**
    * Updates the shape ledger (list of unique shape names and their types). Mainly for use by the
    * builder.
    *
@@ -102,7 +87,6 @@ public interface Model {
    * @param shapeType type of the shape
    */
   void updateShapeLedger(String shapeName, String shapeType);
-
 
   /**
    * Returns the shape type of a shape with a given name.
@@ -147,6 +131,13 @@ public interface Model {
   double getCanvasWidth();
 
   /**
+   * Sets the canvas width of the animator.
+   *
+   * @param newWidth new width to be set.
+   */
+  void setCanvasWidth(int newWidth) throws IllegalArgumentException;
+
+  /**
    * Gets the canvas height.
    *
    * @return canvas height
@@ -154,7 +145,15 @@ public interface Model {
   double getCanvasHeight();
 
   /**
+   * Sets the canvas height of the animator.
+   *
+   * @param newHeight new height to be set.
+   */
+  void setCanvasHeight(int newHeight) throws IllegalArgumentException;
+
+  /**
    * Returns the shapeLedger from the model.
+   *
    * @return Map of Strings shapeLedger
    */
   Map<String, String> getShapeLedger();
@@ -168,18 +167,18 @@ public interface Model {
   List<Animation> getAnimationsByShape(Shape shape);
 
   /**
-   * Sets the ticksPerSecond speed of the animator.
-   *
-   * @param ticksPerSecond speed
-   */
-  void setTicksPerSecond(int ticksPerSecond);
-
-  /**
    * Gets the ticksPerSecond speed of the animator.
    *
    * @return ticksPerSecond speed
    */
   int getTicksPerSecond();
+
+  /**
+   * Sets the ticksPerSecond speed of the animator.
+   *
+   * @param ticksPerSecond speed
+   */
+  void setTicksPerSecond(int ticksPerSecond);
 
   /**
    * Converts a tick into milliseconds based on the speed of the animation.

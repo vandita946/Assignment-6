@@ -84,14 +84,16 @@ public interface Shape {
   double getDisappearTime();
 
   /**
-   * Gets the type of shape enum of the object.
-   * @return TypeOfShape type
-   */
-  TypeOfShape getTypeOfShape();
-
-  /**
    * Sets the disappear time to a new given disappearTime.
+   *
    * @param disappearTime new disappear time
    */
   void setDisappearTime(double disappearTime);
+
+  /**
+   * Gets the type of shape enum of the object.
+   *
+   * @return TypeOfShape type
+   */
+  TypeOfShape getTypeOfShape();
 }

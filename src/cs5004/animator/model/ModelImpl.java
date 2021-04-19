@@ -27,13 +27,13 @@ import java.util.stream.Collectors;
  */
 public final class ModelImpl implements Model {
 
+  private final List<Shape> shapeList;
+  private final Map<String, String> shapeLedger;
+  private final List<Animation> animationList;
   private double canvasWidth;
   private double canvasHeight;
   private int cornerX;
   private int cornerY;
-  private final List<Shape> shapeList;
-  private final Map<String, String> shapeLedger;
-  private final List<Animation> animationList;
   private int ticksPerSecond;
 
   /**
@@ -72,7 +72,7 @@ public final class ModelImpl implements Model {
    * @return offset y value
    */
   private int getOffsetY(int y) {
-    return y- cornerY;
+    return y - cornerY;
   }
 
   @Override
@@ -200,13 +200,13 @@ public final class ModelImpl implements Model {
             && getMilliseconds(endingTime) >= each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(startingTime) > each.getStartingTime()
-            && getMilliseconds(endingTime) < each.getEndingTime()) {
+                   && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(startingTime) > each.getStartingTime()
-            && getMilliseconds(endingTime) < each.getEndingTime()) {
+                   && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(endingTime) > each.getStartingTime()
-            && getMilliseconds(endingTime) < each.getEndingTime()) {
+                   && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         }
       }
@@ -320,8 +320,24 @@ public final class ModelImpl implements Model {
   }
 
   @Override
+  public void setCanvasWidth(int newWidth) throws IllegalArgumentException {
+    if (canvasWidth < 0) {
+      throw new IllegalArgumentException("Canvas width cannot be negative.");
+    }
+    this.canvasWidth = newWidth;
+  }
+
+  @Override
   public double getCanvasHeight() {
     return this.canvasHeight;
+  }
+
+  @Override
+  public void setCanvasHeight(int newHeight) {
+    if (canvasHeight < 0) {
+      throw new IllegalArgumentException("Canvas height cannot be negative.");
+    }
+    this.canvasHeight = newHeight;
   }
 
   @Override
@@ -331,13 +347,13 @@ public final class ModelImpl implements Model {
   }
 
   @Override
-  public void setTicksPerSecond(int ticksPerSecond) {
-    this.ticksPerSecond = ticksPerSecond;
+  public int getTicksPerSecond() {
+    return this.ticksPerSecond;
   }
 
   @Override
-  public int getTicksPerSecond() {
-    return this.ticksPerSecond;
+  public void setTicksPerSecond(int ticksPerSecond) {
+    this.ticksPerSecond = ticksPerSecond;
   }
 
   @Override
@@ -348,22 +364,6 @@ public final class ModelImpl implements Model {
   @Override
   public double getCornerY() {
     return this.cornerY;
-  }
-
-  @Override
-  public void setCanvasWidth(int newWidth) throws IllegalArgumentException {
-    if (canvasWidth < 0) {
-      throw new IllegalArgumentException("Canvas width cannot be negative.");
-    }
-    this.canvasWidth = newWidth;
-  }
-
-  @Override
-  public void setCanvasHeight(int newHeight) {
-    if (canvasHeight < 0) {
-      throw new IllegalArgumentException("Canvas height cannot be negative.");
-    }
-    this.canvasHeight = newHeight;
   }
 
   @Override

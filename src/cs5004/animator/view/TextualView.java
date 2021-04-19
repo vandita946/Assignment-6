@@ -23,7 +23,8 @@ public class TextualView implements View {
 
   /**
    * Constructs a TextualView object and initializes it to the given model and outfile.
-   * @param model Model
+   *
+   * @param model   Model
    * @param outfile output file
    */
   public TextualView(Model model, String outfile) {

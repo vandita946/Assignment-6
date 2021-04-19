@@ -48,6 +48,7 @@ public class Move extends AbstractAnimation {
 
   /**
    * Returns a string representation of the move animation.
+   *
    * @return string representation of the move animation
    */
   @Override
