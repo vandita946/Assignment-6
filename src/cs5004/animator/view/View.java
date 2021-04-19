@@ -19,6 +19,7 @@ public interface View {
 
   /**
    * Returns the textual/svg description.
+   *
    * @return String representation of the view
    */
   String getDescription();

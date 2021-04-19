@@ -63,6 +63,7 @@ public class Rectangle extends AbstractShape {
 
   /**
    * Returns a string representation of the rectangle.
+   *
    * @return String representation of rectangle
    */
   @Override

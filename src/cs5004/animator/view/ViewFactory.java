@@ -17,9 +17,10 @@ public class ViewFactory {
 
   /**
    * Constructs a view object based on the given viewType.
+   *
    * @param viewType type of view (text, svg or visual)
-   * @param model Model
-   * @param outfile output file
+   * @param model    Model
+   * @param outfile  output file
    * @return a View object
    */
   public static View createView(String viewType, Model model, String outfile) {
@@ -31,7 +32,8 @@ public class ViewFactory {
       case "visual":
         return new VisualView(model);
       default:
-        JOptionPane.showMessageDialog(null,"Please enter a valid view type","Error",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Please enter a valid view type", "Error",
+            JOptionPane.ERROR_MESSAGE);
         System.exit(0);//
         throw new IllegalArgumentException("Invalid view type.");
     }

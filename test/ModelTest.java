@@ -10,9 +10,7 @@ import cs5004.animator.animation.TypeOfAnimation;
 import cs5004.animator.model.Model;
 import cs5004.animator.model.ModelImpl;
 import cs5004.animator.model.ModelImpl.Builder;
-
 import cs5004.animator.util.AnimationBuilder;
-
 import java.util.List;
 import java.util.Map;
 import org.junit.Before;

@@ -50,6 +50,7 @@ public class ChangeColor extends AbstractAnimation {
 
   /**
    * Returns a string representation of the color change animation.
+   *
    * @return String representation of color change animation
    */
   @Override

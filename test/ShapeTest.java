@@ -25,10 +25,14 @@ public class ShapeTest {
 
   @Before
   public void setUp() {
-    rectangle = new Rectangle(0.0, 0.0, 5, 10, "rectangle", Color.BLACK.getRed(), Color.BLACK.getGreen(), Color.BLACK.getBlue(), 1, 100);
-    square = new Rectangle(15, 25, 5, 5, "square", Color.WHITE.getRed(), Color.WHITE.getGreen(), Color.WHITE.getBlue(), 2, 200);
-    oval = new Ellipse(250, 250, 5, 10, "oval", Color.BLUE.getRed(), Color.BLUE.getGreen(), Color.BLUE.getBlue(), 3, 300);
-    circle = new Ellipse(300, 300, 5, "circle", Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), 10, 400);
+    rectangle = new Rectangle(0.0, 0.0, 5, 10, "rectangle", Color.BLACK.getRed(),
+        Color.BLACK.getGreen(), Color.BLACK.getBlue(), 1, 100);
+    square = new Rectangle(15, 25, 5, 5, "square", Color.WHITE.getRed(), Color.WHITE.getGreen(),
+        Color.WHITE.getBlue(), 2, 200);
+    oval = new Ellipse(250, 250, 5, 10, "oval", Color.BLUE.getRed(), Color.BLUE.getGreen(),
+        Color.BLUE.getBlue(), 3, 300);
+    circle = new Ellipse(300, 300, 5, "circle", Color.GREEN.getRed(), Color.GREEN.getGreen(),
+        Color.GREEN.getBlue(), 10, 400);
   }
 
   @Test
@@ -215,8 +219,10 @@ public class ShapeTest {
   public void testToString() {
     assertEquals("RGB(0,0,0) rectangle rectangle with corner at (0,0), width 5 and height 10",
         rectangle.toString());
-    assertEquals("RGB(0,0,255) oval oval with center at (250,250), radius 5 and 10", oval.toString());
-    assertEquals("RGB(0,255,0) oval circle with center at (300,300), radius 5 and 5", circle.toString());
+    assertEquals("RGB(0,0,255) oval oval with center at (250,250), radius 5 and 10",
+        oval.toString());
+    assertEquals("RGB(0,255,0) oval circle with center at (300,300), radius 5 and 5",
+        circle.toString());
   }
 
   @Test
