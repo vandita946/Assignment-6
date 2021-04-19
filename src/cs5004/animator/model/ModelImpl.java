@@ -72,7 +72,7 @@ public final class ModelImpl implements Model {
    * @return offset y value
    */
   private int getOffsetY(int y) {
-    return y - cornerY;
+    return y- cornerY;
   }
 
   @Override
