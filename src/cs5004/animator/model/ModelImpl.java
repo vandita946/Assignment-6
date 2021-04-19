@@ -200,13 +200,13 @@ public final class ModelImpl implements Model {
             && getMilliseconds(endingTime) >= each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(startingTime) > each.getStartingTime()
-                   && getMilliseconds(endingTime) < each.getEndingTime()) {
+            && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(startingTime) > each.getStartingTime()
-                   && getMilliseconds(endingTime) < each.getEndingTime()) {
+            && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(endingTime) > each.getStartingTime()
-                   && getMilliseconds(endingTime) < each.getEndingTime()) {
+            && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         }
       }
@@ -372,6 +372,10 @@ public final class ModelImpl implements Model {
     this.cornerY = y;
   }
 
+  /**
+   * This class implements AnimationBuilder interface and provides the methods needed to build an
+   * animation based on the model.
+   */
   public static final class Builder implements AnimationBuilder<Model> {
 
     private final Model model;

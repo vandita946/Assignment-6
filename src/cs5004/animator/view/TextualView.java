@@ -4,6 +4,7 @@
   Easy Animator
   Swapnil Mittal & Vandita Attal
  */
+
 package cs5004.animator.view;
 
 import cs5004.animator.animation.Animation;

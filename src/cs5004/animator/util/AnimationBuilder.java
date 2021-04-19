@@ -4,6 +4,11 @@
 
 package cs5004.animator.util;
 
+/**
+ * This interface outlines the methods required to build an animation.
+ *
+ * @param <Doc> to be replaced with the type of Doc.
+ */
 public interface AnimationBuilder<Doc> {
 
   /**

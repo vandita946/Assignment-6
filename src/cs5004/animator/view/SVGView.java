@@ -74,7 +74,8 @@ public class SVGView implements View {
     double boxWidth = model.getCanvasWidth() + Math.abs(model.getCornerX());
     double boxHeight = model.getCanvasHeight() + Math.abs(model.getCornerY());
     return String.format(
-        "<svg width=\"%.0f\" height=\"%.0f\" viewBox=\"%.0f %.0f %.0f %.0f\" version=\"1.1\"\n\txmlns=\"http://www.w3.org/2000/svg\">\n",
+        "<svg width=\"%.0f\" height=\"%.0f\" viewBox=\"%.0f %.0f %.0f %.0f\" version=\"1.1\"\n"
+            + "\txmlns=\"http://www.w3.org/2000/svg\">\n",
         model.getCanvasWidth(), model.getCanvasHeight(), 0.0, 0.0, boxWidth, boxHeight);
   }
 
@@ -113,7 +114,8 @@ public class SVGView implements View {
     if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
 
       output.append(String.format(
-          "<rect id=\"%s\" x=\"%.0f\" y=\"%.0f\" width=\"%.0f\" height=\"%.0f\" fill=\"rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
+          "<rect id=\"%s\" x=\"%.0f\" y=\"%.0f\" width=\"%.0f\" height=\"%.0f\" fill=\""
+              + "rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
           shape.getName(), shape.getPosition().getX(), shape.getPosition().getY(), shape.getWidth(),
           shape.getHeight(), shape.getColor().getRed(),
           shape.getColor().getGreen(), shape.getColor().getBlue()));
@@ -127,7 +129,8 @@ public class SVGView implements View {
     } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
 
       output.append(String.format(
-          "<ellipse id=\"%s\" cx=\"%.0f\" cy=\"%.0f\" rx=\"%.0f\" ry=\"%.0f\" fill=\"rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
+          "<ellipse id=\"%s\" cx=\"%.0f\" cy=\"%.0f\" rx=\"%.0f\" ry=\"%.0f\" fill=\"rgb(%d,%d,%d)"
+              + "\" visibility=\"visible\" >\n",
           shape.getName(), shape.getPosition().getX(), shape.getPosition().getY(), shape.getWidth(),
           shape.getHeight(), shape.getColor().getRed(),
           shape.getColor().getGreen(), shape.getColor().getBlue()));

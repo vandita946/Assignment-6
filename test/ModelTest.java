@@ -81,7 +81,8 @@ public class ModelTest {
         "circly changes from RGB(255,255,255) to RGB(0,255,255) from time t=10000 to t=50000",
         animationList.get(1).toString());
     assertEquals(
-        "circly changes radius from 10 to 20 and other radius from 10 to 40 from time t=10000 to t=50000",
+        "circly changes radius from 10 to 20 and other radius from 10 to 40 from time"
+            + " t=10000 to t=50000",
         animationList.get(2).toString());
   }
 
@@ -128,7 +129,8 @@ public class ModelTest {
         "[RGB(248,255,255) rectangle squarey with corner at (0,5), width 10 and height 11]",
         easyAnimator.getShapesAtTick(6).toString());
     assertEquals(
-        "[RGB(63,255,255) oval circly with center at (8,16), radius 18 and 33, RGB(31,255,255) rectangle squarey with corner at (9,18), width 19 and height 36]",
+        "[RGB(63,255,255) oval circly with center at (8,16), radius 18 and 33, "
+            + "RGB(31,255,255) rectangle squarey with corner at (9,18), width 19 and height 36]",
         easyAnimator.getShapesAtTick(40).toString());
     assertEquals("[RGB(1,255,255) oval circly with center at (10,20), radius 20 and 40]",
         easyAnimator.getShapesAtTick(49).toString());
@@ -145,14 +147,16 @@ public class ModelTest {
 
     assertEquals(2, easyAnimator.getShapeList().size());
     assertEquals(
-        "[RGB(255,255,255) rectangle squarey with corner at (0,5), width 10 and height 10, RGB(255,255,255) oval circly with center at (0,5), radius 10 and 10]",
+        "[RGB(255,255,255) rectangle squarey with corner at (0,5), width 10 and height 10,"
+            + " RGB(255,255,255) oval circly with center at (0,5), radius 10 and 10]",
         easyAnimator.getShapeList().toString());
 
     //Checking the shape list doesn't take duplicate shapes
     builder.addMotion("squarey", 51, 0, 5, 10, 10, 255, 255, 255, 60, 10, 20, 20, 40, 0, 255, 255);
     assertEquals(2, easyAnimator.getShapeList().size());
     assertEquals(
-        "[RGB(255,255,255) rectangle squarey with corner at (0,5), width 10 and height 10, RGB(255,255,255) oval circly with center at (0,5), radius 10 and 10]",
+        "[RGB(255,255,255) rectangle squarey with corner at (0,5), width 10 and height 10,"
+            + " RGB(255,255,255) oval circly with center at (0,5), radius 10 and 10]",
         easyAnimator.getShapeList().toString());
 
   }
@@ -171,12 +175,17 @@ public class ModelTest {
     builder.addMotion("squarey", 5, 0, 5, 10, 10, 255, 255, 255, 45, 10, 20, 20, 40, 0, 255, 255);
 
     assertEquals(
-        "[squarey moves from (0,5) to (10,20) from time t=5000 to t=45000, squarey changes from RGB(255,255,255) to RGB(0,255,255) from time t=5000 to t=45000, squarey changes width from 10 to 20 and height from 10 to 40 from time t=5000 to t=45000]",
+        "[squarey moves from (0,5) to (10,20) from time t=5000 to t=45000, squarey changes"
+            + " from RGB(255,255,255) to RGB(0,255,255) from time t=5000 to t=45000, squarey "
+            + "changes width from 10 to 20 and height from 10 to 40 from time t=5000 to t=45000]",
         easyAnimator.getAnimationsByShape(easyAnimator.getShapeList().get(0)).toString());
     assertEquals(3, easyAnimator.getAnimationsByShape(easyAnimator.getShapeList().get(0)).size());
 
     assertEquals(
-        "[circly moves from (0,5) to (10,20) from time t=10000 to t=50000, circly changes from RGB(255,255,255) to RGB(0,255,255) from time t=10000 to t=50000, circly changes radius from 10 to 20 and other radius from 10 to 40 from time t=10000 to t=50000]",
+        "[circly moves from (0,5) to (10,20) from time t=10000 to t=50000, circly changes"
+            + " from RGB(255,255,255) to RGB(0,255,255) from time t=10000 to t=50000, circly "
+            + "changes radius from 10 to 20 and other radius from 10 to 40 from time t=10000 "
+            + "to t=50000]",
         easyAnimator.getAnimationsByShape(easyAnimator.getShapeList().get(1)).toString());
     assertEquals(3, easyAnimator.getAnimationsByShape(easyAnimator.getShapeList().get(1)).size());
   }

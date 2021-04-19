@@ -14,7 +14,6 @@ import cs5004.animator.util.AnimationBuilder;
 import cs5004.animator.util.AnimationReader;
 import cs5004.animator.view.View;
 import cs5004.animator.view.ViewFactory;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -26,7 +25,12 @@ import javax.swing.JOptionPane;
  */
 public final class EasyAnimator {
 
-  public static void main(String[] args) throws FileNotFoundException {
+  /**
+   * Main class to parse command line arguments.
+   *
+   * @param args command line arguments
+   */
+  public static void main(String[] args) {
     Model model = new ModelImpl();
     AnimationBuilder<Model> builder = new Builder(model);
 
@@ -42,7 +46,7 @@ public final class EasyAnimator {
     //Read the cmd line till it has any arguments
     while (scan.hasNext()) {
       String arg = scan.next();
-      line = line + arg + " ";
+      line += arg + " ";
       if (arg.equalsIgnoreCase("-in")) {
         if (scan.hasNext()) {
           inFile = scan.next();

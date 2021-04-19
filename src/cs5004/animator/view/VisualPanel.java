@@ -27,7 +27,7 @@ public class VisualPanel extends JPanel {
   /**
    * Constructs a VisualPanel object initialized to the given model.
    *
-   * @param model
+   * @param model Model
    */
   public VisualPanel(Model model) {
     this.model = model;
