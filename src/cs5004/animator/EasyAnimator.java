@@ -47,25 +47,29 @@ public final class EasyAnimator {
         if (scan.hasNext()) {
           inFile = scan.next();
         } else {
-          throw new FileNotFoundException("The input file is invalid or not available");
+          JOptionPane.showMessageDialog(null,"The input file is invalid or not available","Error",JOptionPane.ERROR_MESSAGE);
+          System.exit(0);
         }
       } else if (arg.equalsIgnoreCase("-view")) {
         if (scan.hasNext()) {
           viewType = scan.next();
         } else {
-          throw new IllegalArgumentException("Please specify the correct view type");
+          JOptionPane.showMessageDialog(null,"Please specify the correct view type","Error",JOptionPane.ERROR_MESSAGE);
+          System.exit(0);
         }
       } else if (arg.equalsIgnoreCase("-out")) {
         if (scan.hasNext()) {
           outFile = scan.next();
         } else {
-          throw new FileNotFoundException("Please specify an output file name");
+          JOptionPane.showMessageDialog(null,"Please specify an output file name","Error",JOptionPane.ERROR_MESSAGE);
+          System.exit(0);
         }
       } else if (arg.equalsIgnoreCase("-speed")) {
         if (scan.hasNext()) {
           speed = Integer.parseInt(scan.next());
         } else {
-          throw new IllegalArgumentException("Please specify valid speed/ticksPerSecond");
+          JOptionPane.showMessageDialog(null,"Please specify valid speed/ticksPerSecond","Error",JOptionPane.ERROR_MESSAGE);
+          System.exit(0);
         }
       }
     }

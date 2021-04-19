@@ -1,8 +1,0 @@
-Create blue oval cricle with center at (20,20), radius 5 and 5
-Create blue rectangle recty with corner at (5,5), width 50 and height 40
-
-cricle appears at time t=20 and disappears at time t=50
-recty appears at time t=30 and disappears at time t=60
-
-cricle changes from blue to green from time t=29 to t=35
-recty moves from (5,5) to (10,12) from time t=30 to t=37

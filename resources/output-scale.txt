@@ -1,5 +1,0 @@
-Create RGB(0,49,90) rectangle disk1 with corner at (45,130), width 20 and height 30
-
-disk1 appears at time t=50.0 and disappears at time t=500.0
-
-disk1 changes width from 20 to 500 and height from 30 to 300 from time t=50 to t=500

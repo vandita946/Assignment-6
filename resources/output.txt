@@ -1,5 +1,0 @@
-Create blue rectangle recty with corner at (5,5), width 50 and height 40
-
-recty appears at time t=1 and disappears at time t=100
-
-recty moves from (5,5) to (10,12) from time t=5 to t=10

@@ -1,7 +1,0 @@
-<svg width="1000" height="1000" viewBox="145 50 1145 1050" version="1.1"
-	xmlns="http://www.w3.org/2000/svg">
-<rect id="disk1" x="45" y="130" width="20" height="30" fill="rgb(0,49,90)" visibility="visible" >
-	<animate attributeType="xml" begin="500ms" dur="4500ms" attributeName="width" from="20.0" to="500.0" fill="freeze" />
-	<animate attributeType="xml" begin="500ms" dur="4500ms" attributeName="height" from="30.0" to="300.0" fill="freeze" />
-</rect>
-</svg>
