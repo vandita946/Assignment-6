@@ -35,10 +35,6 @@ public class Scale extends AbstractAnimation {
       throws IllegalArgumentException {
     super(shape, startingTime, endingTime, TypeOfAnimation.SCALE);
 
-    if (newWidth == shape.getWidth() && newHeight == shape.getHeight()) {
-      throw new IllegalArgumentException("The shape is already at the given dimensions.");
-    }
-
     this.shapeType = shapeType;
     this.newWidth = newWidth;
     this.newHeight = newHeight;

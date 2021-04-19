@@ -171,8 +171,7 @@ public final class ModelImpl implements Model {
   public void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime,
       int toX, int toY) throws IllegalArgumentException {
 
-    if (checkLegalTime(getMilliseconds(startingTime), getMilliseconds(endingTime),
-        TypeOfAnimation.MOVE, shape)) {
+    if (checkLegalTime(startingTime, endingTime, TypeOfAnimation.MOVE, shape)) {
       throw new IllegalArgumentException(
           "There is an illegal time overlap with another move animation.");
     }
@@ -226,7 +225,7 @@ public final class ModelImpl implements Model {
   /**
    * This is a helper function to sort our list according to starting time.
    */
-  public void sortAnimationList() {
+  private void sortAnimationList() {
     Comparator<Animation> comp = Comparator.comparingDouble(Animation::getStartingTime);
     animationList.sort(comp);
   }
@@ -242,6 +241,11 @@ public final class ModelImpl implements Model {
         a.actionStep(tick);
       }
     }
+  }
+
+  @Override
+  public Map<String, String> getShapeLedger() {
+    return this.shapeLedger;
   }
 
   @Override

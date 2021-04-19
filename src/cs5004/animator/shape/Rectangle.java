@@ -43,7 +43,7 @@ public class Rectangle extends AbstractShape {
 
   @Override
   public void changeDimensions(double newWidth, double newHeight) {
-    if (width <= 0 || height <= 0) {
+    if (newWidth <= 0 || newHeight <= 0) {
       throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
     this.width = newWidth;

@@ -8,6 +8,7 @@ import cs5004.animator.animation.Animation;
 import cs5004.animator.shape.Shape;
 import cs5004.animator.shape.TypeOfShape;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class represents the model in an easy animator. It outlines the methods required to store
@@ -55,11 +56,6 @@ public interface Model {
   void addMoveAnimation(Shape shape, TypeOfShape type, int startingTime, int endingTime, int toX,
       int toY);
 
-  /**
-   * This is a sort function which sorts our list of animation by increasing order of starting
-   * time.
-   */
-  void sortAnimationList();
 
   /**
    * This is a function that returns us the list of shapes at a given tick.
@@ -156,6 +152,12 @@ public interface Model {
    * @return canvas height
    */
   double getCanvasHeight();
+
+  /**
+   * Returns the shapeLedger from the model.
+   * @return Map of Strings shapeLedger
+   */
+  Map<String, String> getShapeLedger();
 
   /**
    * Returns the List of animations for a given shape.

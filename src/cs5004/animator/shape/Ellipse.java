@@ -69,7 +69,7 @@ public class Ellipse extends AbstractShape {
 
   @Override
   public void changeDimensions(double newXRadius, double newYRadius) {
-    if (xRadius <= 0 || yRadius <= 0) {
+    if (newXRadius <= 0 || newYRadius <= 0) {
       throw new IllegalArgumentException("Shape dimensions cannot be negative or zero.");
     }
     this.xRadius = newXRadius;
