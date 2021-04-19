@@ -8,6 +8,7 @@
 package cs5004.animator.view;
 
 import cs5004.animator.model.Model;
+import javax.swing.JOptionPane;
 
 /**
  * ViewFactory represents the class that creates the appropriate view based on the given type.
@@ -22,11 +23,17 @@ public class ViewFactory {
    * @return a View object
    */
   public static View createView(String viewType, Model model, String outfile) {
-    return switch (viewType) {
-      case "text" -> new TextualView(model, outfile);
-      case "svg" -> new SVGView(model, outfile);
-      case "visual" -> new VisualView(model);
-      default -> throw new IllegalArgumentException("Invalid view type.");
-    };
+    switch (viewType) {
+      case "text":
+        return new TextualView(model, outfile);
+      case "svg":
+        return new SVGView(model, outfile);
+      case "visual":
+        return new VisualView(model);
+      default:
+        JOptionPane.showMessageDialog(null,"Please enter a valid view type","Error",JOptionPane.ERROR_MESSAGE);
+        System.exit(0);//
+        throw new IllegalArgumentException("Invalid view type.");
+    }
   }
 }

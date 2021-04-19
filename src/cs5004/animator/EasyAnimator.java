@@ -87,7 +87,7 @@ public final class EasyAnimator {
     try {
       model = AnimationReader.parseFile(new FileReader(inFile), builder);
     } catch (IOException e) {
-      System.out.println(e.getMessage());
+      JOptionPane.showMessageDialog(null,"Please enter a valid input file","Error",JOptionPane.ERROR_MESSAGE);
       System.exit(0);
     }
 

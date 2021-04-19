@@ -70,12 +70,12 @@ public class SVGView implements View {
    * @return header of SVG
    */
   private String getHeader() {
-    double boxWidth = model.getCanvasWidth() + model.getCornerX();
-    double boxHeight = model.getCanvasHeight() + model.getCornerY();
+
+    double boxWidth = model.getCanvasWidth() + Math.abs(model.getCornerX());
+    double boxHeight = model.getCanvasHeight() + Math.abs(model.getCornerY());
     return String.format(
         "<svg width=\"%.0f\" height=\"%.0f\" viewBox=\"%.0f %.0f %.0f %.0f\" version=\"1.1\"\n\txmlns=\"http://www.w3.org/2000/svg\">\n",
-        model.getCanvasHeight(), model.getCanvasHeight(), model.getCornerX(), model.getCornerY(),
-        boxWidth, boxHeight);
+        model.getCanvasWidth(),model.getCanvasHeight(),0.0,0.0,boxWidth, boxHeight);
   }
 
   /**
