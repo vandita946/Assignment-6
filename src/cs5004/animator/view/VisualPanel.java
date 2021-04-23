@@ -23,6 +23,7 @@ public class VisualPanel extends JPanel {
 
   private Model model;
   private List<Shape> shapeList;
+  private VisualPanel panel;
 
   /**
    * Constructs a VisualPanel object initialized to the given model.
@@ -32,6 +33,7 @@ public class VisualPanel extends JPanel {
   public VisualPanel(Model model) {
     this.model = model;
     this.shapeList = model.getShapeList();
+    this.panel = new VisualPanel(model);
   }
 
   @Override

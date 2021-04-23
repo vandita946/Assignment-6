@@ -74,7 +74,8 @@ public class VisualView extends JFrame implements View {
   @Override
   public String getDescription() {
     //Design choice: not required for visual view, only for SVG and textual.
-    return "";
+    throw new UnsupportedOperationException(
+        "This method is not applicable to views of visual type.");
   }
 }
 

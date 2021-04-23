@@ -31,6 +31,8 @@ public class ViewFactory {
         return new SVGView(model, outfile);
       case "visual":
         return new VisualView(model);
+      case "playback":
+        return new PlaybackView(model);
       default:
         JOptionPane.showMessageDialog(null, "Please enter a valid view type", "Error",
             JOptionPane.ERROR_MESSAGE);
