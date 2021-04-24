@@ -7,9 +7,12 @@ import javax.swing.JFrame;
 
 public class PlaybackView extends JFrame implements ActionListener, View {
   private Model model;
+  private VisualPanel panel;
 
   public PlaybackView(Model model) {
     this.model = model;
+    this.panel = new VisualPanel(model);
+
   }
 
   @Override
