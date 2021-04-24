@@ -12,4 +12,9 @@ public class ControllerImpl implements Controller {
     this.view = view;
   }
 
+  @Override
+  public void publishView() {
+    view.publish();
+  }
+
 }
