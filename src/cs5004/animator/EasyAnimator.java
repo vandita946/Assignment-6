@@ -7,6 +7,8 @@
 
 package cs5004.animator;
 
+import cs5004.animator.controller.Controller;
+import cs5004.animator.controller.ControllerImpl;
 import cs5004.animator.model.Model;
 import cs5004.animator.model.ModelImpl;
 import cs5004.animator.model.ModelImpl.Builder;
@@ -107,6 +109,7 @@ public final class EasyAnimator {
     }
 
     View view = ViewFactory.createView(viewType, model, outFile);
-    view.publish();
+    Controller controller = new ControllerImpl(model, view);
+    controller.publishView();
   }
 }

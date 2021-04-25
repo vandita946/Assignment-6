@@ -13,6 +13,8 @@ import cs5004.animator.shape.TypeOfShape;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -23,7 +25,7 @@ public class VisualPanel extends JPanel {
 
   private Model model;
   private List<Shape> shapeList;
-  private VisualPanel panel;
+  private boolean reset;
 
   /**
    * Constructs a VisualPanel object initialized to the given model.
@@ -33,26 +35,33 @@ public class VisualPanel extends JPanel {
   public VisualPanel(Model model) {
     this.model = model;
     this.shapeList = model.getShapeList();
-    this.panel = new VisualPanel(model);
+    this.reset = false;
   }
 
   @Override
   public void paintComponent(Graphics g) {
+
     super.paintComponent(g);
     this.setBackground(Color.WHITE);
-
-    Graphics2D g2D = (Graphics2D) g;
-
-    for (Shape shape : shapeList) {
-      g2D.setColor(shape.getColor());
-      if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
-        g2D.fillRect((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
-            (int) shape.getWidth(), (int) shape.getHeight());
-      } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
-        g2D.fillOval((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
-            (int) shape.getWidth(), (int) shape.getHeight());
+    if (reset == false) {
+      Graphics2D g2D = (Graphics2D) g;
+      for (Shape shape : shapeList) {
+        g2D.setColor(shape.getColor());
+        if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
+          g2D.fillRect((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
+              (int) shape.getWidth(), (int) shape.getHeight());
+        } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
+          g2D.fillOval((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
+              (int) shape.getWidth(), (int) shape.getHeight());
+        }
       }
     }
+//    } else {
+//      refresh(1);
+//      reset = false;
+//    }
+
+
   }
 
   /**
@@ -64,4 +73,10 @@ public class VisualPanel extends JPanel {
     this.shapeList = model.getShapesAtTick(t);
     this.repaint();
   }
+
+  public void reset() {
+    reset = true;
+    refresh(1);
+  }
+
 }

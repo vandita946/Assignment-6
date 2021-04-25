@@ -83,6 +83,8 @@ public interface Shape {
    */
   double getDisappearTime();
 
+  void setAppearTime(double appearTime);
+
   /**
    * Sets the disappear time to a new given disappearTime.
    *

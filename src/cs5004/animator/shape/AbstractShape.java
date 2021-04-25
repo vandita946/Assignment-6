@@ -83,6 +83,9 @@ public abstract class AbstractShape implements Shape {
   }
 
   @Override
+  public void setAppearTime(double appearTime){ this.appearTime = appearTime; }
+
+  @Override
   public void setDisappearTime(double disappearTime) {
     this.disappearTime = disappearTime;
   }
