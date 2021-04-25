@@ -27,6 +27,7 @@ public class PlaybackView extends JFrame implements View, ActionListener, ItemLi
   private int t;
   private VisualPanel panel;
   private JButton reset;
+  private JButton start;
   private JButton pause;
   private JLabel sliderLabel;
   private JButton resume;
@@ -58,6 +59,7 @@ public class PlaybackView extends JFrame implements View, ActionListener, ItemLi
     this.add(pane, BorderLayout.CENTER);
 
     reset = new JButton("Reset");
+    start = new JButton("Start");
 
     pause = new JButton("Pause");
     resume = new JButton("Resume");
@@ -65,15 +67,17 @@ public class PlaybackView extends JFrame implements View, ActionListener, ItemLi
     slider = new JSlider(1,200,model.getTicksPerSecond());
     sliderLabel = new JLabel();
     sliderLabel.setText("Speed: "+ slider.getValue());
+    start.addActionListener(this);
     reset.addActionListener(this);
     pause.addActionListener(this);
     resume.addActionListener(this);
     loop.addItemListener(this);
     panel.setLayout(null);
-    reset.setBounds(10, (int)model.getCanvasHeight() + 40,50,20);
-    pause.setBounds(70, (int)model.getCanvasHeight() + 40,50,20);
-    resume.setBounds(130, (int)model.getCanvasHeight() + 40,70,20);
-    loop.setBounds(210, (int)model.getCanvasHeight() + 40,100,20);
+    start.setBounds(10, (int)model.getCanvasHeight() + 40,50,20);
+    reset.setBounds(70, (int)model.getCanvasHeight() + 40,50,20);
+    pause.setBounds(130, (int)model.getCanvasHeight() + 40,50,20);
+    resume.setBounds(190, (int)model.getCanvasHeight() + 40,70,20);
+    loop.setBounds(280, (int)model.getCanvasHeight() + 40,100,20);
 
     slider.setPaintTrack(true);
     slider.setPaintTicks(true);
@@ -90,6 +94,7 @@ public class PlaybackView extends JFrame implements View, ActionListener, ItemLi
     panel.add(slider);
     panel.add(sliderLabel);
 
+    panel.add(start);
     panel.add(reset);
     panel.add(pause);
     panel.add(resume);
@@ -117,7 +122,7 @@ public class PlaybackView extends JFrame implements View, ActionListener, ItemLi
       }
     };
     timer = new Timer((1000 / ticksPerSecond), actionListener);
-    timer.start();
+//    timer.start();
 
   }
 
@@ -129,7 +134,9 @@ public class PlaybackView extends JFrame implements View, ActionListener, ItemLi
 
     @Override
     public void actionPerformed(ActionEvent e) {
-      if (e.getSource() == reset) {
+      if (e.getSource() == start) {
+        timer.start();
+      } else if (e.getSource() == reset) {
         //clear the panel/ make a new one
         timer.stop();
         t=1;

@@ -25,7 +25,6 @@ public class VisualPanel extends JPanel {
 
   private Model model;
   private List<Shape> shapeList;
-  private boolean reset;
 
   /**
    * Constructs a VisualPanel object initialized to the given model.
@@ -35,7 +34,6 @@ public class VisualPanel extends JPanel {
   public VisualPanel(Model model) {
     this.model = model;
     this.shapeList = model.getShapeList();
-    this.reset = false;
   }
 
   @Override
@@ -43,7 +41,6 @@ public class VisualPanel extends JPanel {
 
     super.paintComponent(g);
     this.setBackground(Color.WHITE);
-    if (reset == false) {
       Graphics2D g2D = (Graphics2D) g;
       for (Shape shape : shapeList) {
         g2D.setColor(shape.getColor());
@@ -55,13 +52,6 @@ public class VisualPanel extends JPanel {
               (int) shape.getWidth(), (int) shape.getHeight());
         }
       }
-    }
-//    } else {
-//      refresh(1);
-//      reset = false;
-//    }
-
-
   }
 
   /**
@@ -75,7 +65,6 @@ public class VisualPanel extends JPanel {
   }
 
   public void reset() {
-    reset = true;
     refresh(1);
   }
 
