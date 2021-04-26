@@ -27,9 +27,9 @@ import java.util.stream.Collectors;
  */
 public final class ModelImpl implements Model {
 
-  private List<Shape> shapeList;
   private final Map<String, String> shapeLedger;
   private final List<Animation> animationList;
+  private List<Shape> shapeList;
   private double canvasWidth;
   private double canvasHeight;
   private int cornerX;
@@ -134,30 +134,6 @@ public final class ModelImpl implements Model {
     }
   }
 
-  public List<Shape> resetAllShapes() {
-    List<Shape> tempShapes = this.shapeList;
-    for (Shape shape : shapeList) {
-      shapeList.remove(shape);
-    }
-    this.shapeList = tempShapes;
-    return tempShapes;
-  }
-
-  public void changeSpeed(int newTicksPerSecond) {
-   // create a new shape list with updated ticks per second -> ms values
-    // when the view calls getShapesAtTick(t) it'll get it at the appropriate time.
-//    this.setTicksPerSecond(newTicksPerSecond);
-//    List<Shape> newShapes = new ArrayList<>();
-//    for (Shape shape : shapeList) {
-//      createShape(shape.getName(), shape.getTypeOfShape().toString(), (int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
-//          shape.getWidth(), shape.getHeight(), (int) getMilliseconds(getTick(shape.getAppearTime())),
-//          (int) getMilliseconds(getTick(shape.getDisappearTime())), shape.getColor().getRed(), shape.getColor().getGreen(), shape.getColor().getBlue());
-//      for (Animation a : getAnimationsByShape(shape)) {
-//
-//      }
-//    }
-  }
-
   @Override
   public void updateShapeLedger(String shapeName, String shapeType) {
     if (!shapeLedger.containsKey(shapeName)) {
@@ -228,13 +204,13 @@ public final class ModelImpl implements Model {
             && getMilliseconds(endingTime) >= each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(startingTime) > each.getStartingTime()
-            && getMilliseconds(endingTime) < each.getEndingTime()) {
+                   && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(startingTime) > each.getStartingTime()
-            && getMilliseconds(endingTime) < each.getEndingTime()) {
+                   && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         } else if (getMilliseconds(endingTime) > each.getStartingTime()
-            && getMilliseconds(endingTime) < each.getEndingTime()) {
+                   && getMilliseconds(endingTime) < each.getEndingTime()) {
           return true;
         }
       }
@@ -263,7 +239,7 @@ public final class ModelImpl implements Model {
    *
    * @param tick given tick
    */
-  public void animateAtTick(double tick) {
+  private void animateAtTick(double tick) {
     for (Animation a : animationList) {
       if (a.getStartingTime() <= tick && tick <= a.getEndingTime()) {
         a.actionStep(tick);

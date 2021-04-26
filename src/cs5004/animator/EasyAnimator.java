@@ -109,7 +109,7 @@ public final class EasyAnimator {
     }
 
     View view = ViewFactory.createView(viewType, model, outFile);
-    Controller controller = new ControllerImpl(model, view);
+    Controller controller = new ControllerImpl(view);
     controller.publishView();
   }
 }

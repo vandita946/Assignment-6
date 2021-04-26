@@ -54,12 +54,6 @@ public abstract class AbstractAnimation implements Animation {
   }
 
   @Override
-  public void setStartingTime(double startingTime) {  this.startingTime = startingTime; }
-
-  @Override
-  public void setEndingTime(double endingTime)  { this.endingTime = endingTime; }
-
-  @Override
   public Shape getShape() {
     return this.shape;
   }

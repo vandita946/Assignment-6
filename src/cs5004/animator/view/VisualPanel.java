@@ -13,8 +13,6 @@ import cs5004.animator.shape.TypeOfShape;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -41,17 +39,17 @@ public class VisualPanel extends JPanel {
 
     super.paintComponent(g);
     this.setBackground(Color.WHITE);
-      Graphics2D g2D = (Graphics2D) g;
-      for (Shape shape : shapeList) {
-        g2D.setColor(shape.getColor());
-        if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
-          g2D.fillRect((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
-              (int) shape.getWidth(), (int) shape.getHeight());
-        } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
-          g2D.fillOval((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
-              (int) shape.getWidth(), (int) shape.getHeight());
-        }
+    Graphics2D g2D = (Graphics2D) g;
+    for (Shape shape : shapeList) {
+      g2D.setColor(shape.getColor());
+      if (shape.getTypeOfShape().equals(TypeOfShape.RECTANGLE)) {
+        g2D.fillRect((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
+            (int) shape.getWidth(), (int) shape.getHeight());
+      } else if (shape.getTypeOfShape().equals(TypeOfShape.ELLIPSE)) {
+        g2D.fillOval((int) shape.getPosition().getX(), (int) shape.getPosition().getY(),
+            (int) shape.getWidth(), (int) shape.getHeight());
       }
+    }
   }
 
   /**
@@ -64,8 +62,5 @@ public class VisualPanel extends JPanel {
     this.repaint();
   }
 
-  public void reset() {
-    refresh(1);
-  }
 
 }

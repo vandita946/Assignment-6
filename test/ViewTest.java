@@ -3,14 +3,23 @@
  */
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
+import cs5004.animator.controller.Controller;
+import cs5004.animator.controller.ControllerImpl;
 import cs5004.animator.model.Model;
 import cs5004.animator.model.ModelImpl;
 import cs5004.animator.model.ModelImpl.Builder;
 import cs5004.animator.util.AnimationBuilder;
+import cs5004.animator.view.PlaybackView;
 import cs5004.animator.view.SVGView;
 import cs5004.animator.view.TextualView;
 import cs5004.animator.view.View;
+import cs5004.animator.view.VisualView;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -65,6 +74,53 @@ public class ViewTest {
                  + "circly changes radius from 10 to 20 and other radius from 10 to 40 from time "
                  + "t=10000 to t=50000\n",
         textual.getDescription());
+  }
+
+  @Test
+  public void testPlaybackVisualGetDescription() {
+    View playback = new PlaybackView(model);
+    try {
+      playback.getDescription();
+      fail("UnsupportedOperationException was not called.");
+    } catch (UnsupportedOperationException e) {
+      assertEquals("This method is not applicable to views of visual type.", e.getMessage());
+    }
+
+    View visual = new VisualView(model);
+    try {
+      visual.getDescription();
+      fail("UnsupportedOperationException was not called.");
+    } catch (UnsupportedOperationException e) {
+      assertEquals("This method is not applicable to views of visual type.", e.getMessage());
+    }
+  }
+
+  @Test
+  public void testPlaybackButtons() {
+    PlaybackView playback = new PlaybackView(model);
+    Controller c = new ControllerImpl(playback);
+    c.publishView();
+
+    JButton start = new JButton("Start");
+    ActionEvent e = new ActionEvent(start, 1, "Start");
+    playback.actionPerformed(e);
+    assertTrue(playback.getTimer().isRunning());
+
+    JButton pause = new JButton("Pause");
+    e = new ActionEvent(pause,1,"Pause");
+    playback.actionPerformed(e);
+    assertFalse(playback.getTimer().isRunning());
+
+    JButton resume = new JButton("Resume");
+    e = new ActionEvent(resume, 1, "Resume");
+    playback.actionPerformed(e);
+    assertTrue(playback.getTimer().isRunning());
+
+    JButton reset = new JButton("Reset");
+    e = new ActionEvent(reset, 1, "Reset");
+    playback.actionPerformed(e);
+    assertTrue(playback.getTimer().isRunning());
+
   }
 
 }

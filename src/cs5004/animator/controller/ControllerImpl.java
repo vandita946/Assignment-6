@@ -1,14 +1,25 @@
+/* CS 5004 - Easy Animator
+ * Vandita Attal & Swapnil Mittal
+ */
+
 package cs5004.animator.controller;
 
-import cs5004.animator.model.Model;
 import cs5004.animator.view.View;
 
+/**
+ * ControllerImpl implements the controller interface and outlines the method needed to publish the
+ * view to the user.
+ */
 public class ControllerImpl implements Controller {
-  private Model model;
+
   private View view;
 
-  public ControllerImpl(Model model, View view) {
-    this.model = model;
+  /**
+   * Constructs the controller object and initializes it to the given view.
+   *
+   * @param view View object
+   */
+  public ControllerImpl(View view) {
     this.view = view;
   }
 

@@ -117,7 +117,7 @@ public class Scale extends AbstractAnimation {
       } else {
         return String.format(
             "%s changes radius from %.0f to %.0f and other radius from %.0f to %.0f from time "
-                + "t=%.0f to t=%.0f",
+            + "t=%.0f to t=%.0f",
             shape.getName(), shape.getWidth(), newWidth, shape.getHeight(), newHeight, startingTime,
             endingTime);
       }

@@ -201,11 +201,4 @@ public interface Model {
    * @return topmost Y value
    */
   double getCornerY();
-
-  List<Shape> resetAllShapes();
-
-  void changeSpeed(int ticksPerSecond);
-
-  void animateAtTick(double tick);
-
 }

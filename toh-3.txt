@@ -1,0 +1,32 @@
+Create RGB(0,49,90) rectangle disk1 with corner at (45,130), width 20 and height 30
+Create RGB(6,247,41) rectangle disk2 with corner at (22,160), width 65 and height 30
+Create RGB(11,45,175) rectangle disk3 with corner at (0,190), width 110 and height 30
+
+disk1 appears at time t=1000.0 and disappears at time t=302000.0
+disk2 appears at time t=1000.0 and disappears at time t=302000.0
+disk3 appears at time t=1000.0 and disappears at time t=302000.0
+
+disk1 moves from (45,130) to (45,0) from time t=25000 to t=35000
+disk1 moves from (45,130) to (345,0) from time t=36000 to t=46000
+disk1 moves from (45,130) to (345,190) from time t=47000 to t=57000
+disk2 moves from (22,160) to (22,0) from time t=57000 to t=67000
+disk2 moves from (22,160) to (172,0) from time t=68000 to t=78000
+disk2 moves from (22,160) to (172,190) from time t=79000 to t=89000
+disk1 moves from (45,130) to (345,0) from time t=89000 to t=99000
+disk1 moves from (45,130) to (195,0) from time t=100000 to t=110000
+disk1 moves from (45,130) to (195,160) from time t=111000 to t=121000
+disk3 moves from (0,190) to (0,0) from time t=121000 to t=131000
+disk3 moves from (0,190) to (300,0) from time t=132000 to t=142000
+disk3 moves from (0,190) to (300,190) from time t=143000 to t=153000
+disk1 moves from (45,130) to (195,0) from time t=153000 to t=163000
+disk3 changes from RGB(11,45,175) to RGB(0,255,0) from time t=153000 to t=161000
+disk1 moves from (45,130) to (45,0) from time t=164000 to t=174000
+disk1 moves from (45,130) to (45,190) from time t=175000 to t=185000
+disk2 moves from (22,160) to (172,0) from time t=185000 to t=195000
+disk2 moves from (22,160) to (322,0) from time t=196000 to t=206000
+disk2 moves from (22,160) to (322,160) from time t=207000 to t=217000
+disk1 moves from (45,130) to (45,0) from time t=217000 to t=227000
+disk2 changes from RGB(6,247,41) to RGB(0,255,0) from time t=217000 to t=225000
+disk1 moves from (45,130) to (345,0) from time t=228000 to t=238000
+disk1 moves from (45,130) to (345,130) from time t=239000 to t=249000
+disk1 changes from RGB(0,49,90) to RGB(0,255,0) from time t=249000 to t=257000

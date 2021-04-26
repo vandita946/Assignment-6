@@ -32,11 +32,6 @@ public interface Animation {
    */
   double getEndingTime();
 
-  void setStartingTime(double milliseconds);
-
-  void setEndingTime(double milliseconds);
-
-
   /**
    * This method is a getter function to get the shape.
    *
